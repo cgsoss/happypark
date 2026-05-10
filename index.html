@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<!-- saved from url=(0091)file:///C:/Users/cg/Downloads/%EB%B6%93%EA%B8%80%EC%94%A8%EB%8F%84%EC%9A%B0%EB%AF%B8_6.html -->
+<!-- saved from url=(0091)file:///C:/Users/cg/Downloads/%EB%B6%93%EA%B8%80%EC%94%A8%EB%8F%84%EC%9A%B0%EB%AF%B8_8.html -->
 <html lang="ko"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>붓글씨 글감 도우미</title>
 <link rel="preconnect" href="https://fonts.googleapis.com/">
 <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
-<link href="./붓글씨도우미_files/css2" rel="stylesheet">
+<link href="./index_files/css2" rel="stylesheet">
 <style>
 @font-face {
   font-family: 'CheongdoEupseong';
@@ -297,6 +297,45 @@ header p { font-size: 11px; opacity: 0.55; margin-top: 4px; letter-spacing: 0.05
 .modal-close { width: 30px; height: 30px; background: #f0f0f0; border: none; border-radius: 50%; font-size: 16px; cursor: pointer; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
 
 /* Grid hint bar */
+.modal-paper-bar {
+  display: flex;
+  gap: 5px;
+  margin-bottom: 8px;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  padding: 1px;
+}
+.m-paper-chip {
+  flex-shrink: 0;
+  padding: 6px 10px;
+  border: 1.5px solid #ccc;
+  background: white;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #555;
+  cursor: pointer;
+  transition: all 0.15s;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  line-height: 1.2;
+  min-width: 56px;
+}
+.m-paper-chip em {
+  font-style: normal;
+  font-size: 9px;
+  color: #999;
+  font-weight: 500;
+  margin-top: 1px;
+}
+.m-paper-chip.active {
+  background: #1c1208;
+  border-color: #1c1208;
+  color: white;
+}
+.m-paper-chip.active em { color: rgba(255,255,255,0.6); }
+
 .modal-dim-bar {
   display: flex;
   align-items: center;
@@ -972,6 +1011,15 @@ header p { font-size: 11px; opacity: 0.55; margin-top: 4px; letter-spacing: 0.05
       <button class="modal-close" onclick="closeModal()">✕</button>
     </div>
 
+    <!-- 종이 종류 선택 -->
+    <div class="modal-paper-bar" id="m-paper-bar">
+      <button class="m-paper-chip" data-pw="35" data-ph="68" data-c="4" data-r="10" onclick="setPaperFromModal(this,4,10,35,68)">4절<em>35×68</em></button>
+      <button class="m-paper-chip" data-pw="45" data-ph="70" data-c="5" data-r="12" onclick="setPaperFromModal(this,5,12,45,70)">3절<em>45×70</em></button>
+      <button class="m-paper-chip" data-pw="35" data-ph="135" data-c="4" data-r="15" onclick="setPaperFromModal(this,4,15,35,135)">반절<em>35×135</em></button>
+      <button class="m-paper-chip" data-pw="70" data-ph="135" data-c="6" data-r="20" onclick="setPaperFromModal(this,6,20,70,135)">전지<em>70×135</em></button>
+      <button class="m-paper-chip" data-pw="70" data-ph="200" data-c="6" data-r="25" onclick="setPaperFromModal(this,6,25,70,200)">국전지<em>70×200</em></button>
+    </div>
+
     <div class="modal-dim-bar">
       <div class="dim-ctrl">
         <span class="dim-lbl">열</span>
@@ -1427,6 +1475,11 @@ function syncDimDisplay() {
   // 서체 토글 active
   document.getElementById('script-gungseo').classList.toggle('active', S.script === 'gungseo');
   document.getElementById('script-panbon').classList.toggle('active', S.script === 'panbon');
+  // 종이 종류 칩 active (현재 paperW × paperH 일치하는 칩)
+  document.querySelectorAll('.m-paper-chip').forEach(chip => {
+    const pw = Number(chip.dataset.pw), ph = Number(chip.dataset.ph);
+    chip.classList.toggle('active', pw === S.paperW && ph === S.paperH);
+  });
 }
 
 function modalAdj(key, d) {
@@ -1434,13 +1487,28 @@ function modalAdj(key, d) {
   S[key] = Math.max(1, Math.min(max, S[key] + d));
   document.getElementById(key === 'cols' ? 'cols-v' : 'rows-v').textContent = S[key];
   document.querySelectorAll('.paper-btn').forEach(b => b.classList.remove('active'));
-  // 칸 배열이 바뀌면 cell index 의미 달라지므로 초기화
-  clearedCells.clear();
+  // 새 그리드 범위 밖 좌표는 정리 (지운 상태는 유지하되 범위 밖은 의미 없음)
+  pruneClearedCells();
   syncDimDisplay();
   updateTotal();
   render();
   onUserInput();
   renderGrid();
+}
+
+// 현재 cols x rows 범위 밖의 좌표를 clearedCells에서 제거
+// 키: "c,t<n>" (위에서 n번째) 또는 "c,b<n>" (아래에서 n번째)
+function pruneClearedCells() {
+  const cols = S.cols, rows = S.rows;
+  const toDelete = [];
+  clearedCells.forEach(key => {
+    const [cStr, posStr] = key.split(',');
+    const c = Number(cStr);
+    const n = Number(posStr.slice(1)); // 't' 또는 'b' 제외
+    // 컬럼이 범위 밖이거나, 위/아래 인덱스가 rows를 넘으면 제거
+    if (c >= cols || n >= rows) toDelete.push(key);
+  });
+  toDelete.forEach(k => clearedCells.delete(k));
 }
 
 // 여백(cm) 조정. 좌·우 합이 종이 폭의 80% 이하로 제한
@@ -1461,21 +1529,51 @@ function setScript(s) {
   renderGrid();
 }
 
+// 모달 안에서 종이 종류 변경
+function setPaperFromModal(btn, c, r, w, h) {
+  S.cols = c; S.rows = r;
+  S.paperW = w; S.paperH = h;
+  S.paperName = btn.textContent.replace(/\d+×\d+/, '').trim();
+  // 여백이 종이 폭의 80% 넘으면 클램프
+  const maxTotal = Math.floor(S.paperW * 0.8);
+  if (S.marginLeftCm + S.marginRightCm > maxTotal) {
+    S.marginLeftCm = 0;
+    S.marginRightCm = 0;
+  }
+  // 메인 화면 동기화
+  document.getElementById('cols-v').textContent = c;
+  document.getElementById('rows-v').textContent = r;
+  document.querySelectorAll('.paper-btn').forEach(b => {
+    b.classList.toggle('active',
+      b.querySelector('.pb-cm')?.textContent === w + '×' + h + 'cm');
+  });
+  // 범위 밖 좌표 정리 (지운 상태는 양 끝 기준이라 유지됨)
+  pruneClearedCells();
+  syncDimDisplay();
+  updateTotal();
+  render();
+  onUserInput();
+  renderGrid();
+}
+
 function renderGrid() {
   const chars = modalChars;
   const cols = S.cols, rows = S.rows;
   const total = cols * rows;
 
-  // 글자 배치 (clearedCells 적용)
+  // 글자 배치 (clearedCells 적용 — 키는 "c,t<n>"(위 n번째) 또는 "c,b<n>"(아래 n번째))
   let charIdx = 0;
   const cellMap = new Array(total);
-  for (let i = 0; i < total; i++) {
-    if (clearedCells.has(i)) {
-      cellMap[i] = { type: 'blank' };
-    } else {
-      cellMap[i] = charIdx < chars.length
-        ? { type: 'char', ch: chars[charIdx++] }
-        : { type: 'empty' };
+  for (let c = 0; c < cols; c++) {
+    for (let r = 0; r < rows; r++) {
+      const i = c * rows + r;
+      if (isCellCleared(c, r, rows)) {
+        cellMap[i] = { type: 'blank' };
+      } else {
+        cellMap[i] = charIdx < chars.length
+          ? { type: 'char', ch: chars[charIdx++] }
+          : { type: 'empty' };
+      }
     }
   }
   const overflowChars = chars.slice(charIdx);
@@ -1593,7 +1691,7 @@ function renderGrid() {
           content = `<span class="cell-glyph">${cell.ch}</span>`;
         }
       }
-      html += `<div class="${cls}" style="width:${cellW}px;height:${ch}px;font-size:${baseFs}px" onclick="toggleCell(${i})">${content}</div>`;
+      html += `<div class="${cls}" style="width:${cellW}px;height:${ch}px;font-size:${baseFs}px" onclick="toggleCell(${c},${r})">${content}</div>`;
     }
     html += '</div>';
   }
@@ -1631,11 +1729,29 @@ function renderGrid() {
   }
 }
 
-function toggleCell(idx) {
-  if (clearedCells.has(idx)) {
-    clearedCells.delete(idx);
+// 셀이 비워져 있는지 (양 끝 기준 키로 체크)
+// 위쪽 절반 클릭은 "c,t<r>" 키, 아래쪽은 "c,b<rows-1-r>" 키로 저장됨
+function isCellCleared(c, r, rows) {
+  // t 키 체크 (위에서 r번째)
+  if (clearedCells.has(c + ',t' + r)) return true;
+  // b 키 체크 (아래에서 rows-1-r번째)
+  if (clearedCells.has(c + ',b' + (rows - 1 - r))) return true;
+  return false;
+}
+
+function toggleCell(c, r) {
+  const rows = S.rows;
+  // 컬럼 위쪽 절반이면 top 기준, 아래쪽이면 bottom 기준
+  const isTop = r < rows / 2;
+  const key = isTop ? (c + ',t' + r) : (c + ',b' + (rows - 1 - r));
+  // 단, 이미 반대편 키로 저장되어 있으면 그것 우선 토글
+  const altKey = isTop ? (c + ',b' + (rows - 1 - r)) : (c + ',t' + r);
+  if (clearedCells.has(altKey)) {
+    clearedCells.delete(altKey);
+  } else if (clearedCells.has(key)) {
+    clearedCells.delete(key);
   } else {
-    clearedCells.add(idx);
+    clearedCells.add(key);
   }
   renderGrid();
 }
