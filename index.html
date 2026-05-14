@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- saved from url=(0091)file:///C:/Users/cg/Downloads/%EB%B6%93%EA%B8%80%EC%94%A8%EB%8F%84%EC%9A%B0%EB%AF%B8_8.html -->
+<!-- saved from url=(0092)file:///C:/Users/cg/Downloads/%EB%B6%93%EA%B8%80%EC%94%A8%EB%8F%84%EC%9A%B0%EB%AF%B8_12.html -->
 <html lang="ko"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -392,7 +392,170 @@ header p { font-size: 11px; opacity: 0.55; margin-top: 4px; letter-spacing: 0.05
 .legend-dot { display: inline-block; width: 10px; height: 10px; border-radius: 2px; margin-right: 4px; vertical-align: middle; }
 
 /* Paper grid */
-.paper-container { overflow-x: auto; -webkit-overflow-scrolling: touch; margin-bottom: 12px; padding: 4px 2px; }
+.paper-container {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  margin-bottom: 12px;
+  padding: 4px 2px;
+}
+
+/* 우측 사이드 패널 */
+.side-panel {
+  width: 130px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.side-card {
+  border-radius: 8px;
+  padding: 10px 8px 8px;
+  text-align: center;
+  position: relative;
+  line-height: 1.2;
+}
+.side-card.main-card {
+  background: #1c1208;
+  color: #e8d5b0;
+}
+.side-card.sub-card {
+  background: rgba(232,213,176,0.5);
+}
+.side-label {
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+.main-card .side-label { opacity: 0.8; }
+.sub-card .side-label { color: #6b5530; }
+.side-sub {
+  font-size: 10px;
+  margin: 5px 0 3px;
+  opacity: 0.6;
+}
+.sub-card .side-sub { color: #888; opacity: 1; }
+.side-ctrl {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+.side-btn {
+  width: 24px;
+  height: 24px;
+  border-radius: 5px;
+  font-size: 14px;
+  line-height: 1;
+  padding: 0;
+  cursor: pointer;
+  flex-shrink: 0;
+  position: relative;
+  font-weight: 600;
+}
+.side-btn.dark {
+  border: 1px solid rgba(255,255,255,0.35);
+  background: transparent;
+  color: #e8d5b0;
+}
+.side-btn.dark:active { background: rgba(255,255,255,0.1); }
+.side-btn.light {
+  border: 1px solid #b8a070;
+  background: white;
+  color: #5a3e1b;
+}
+.side-btn.light:active { background: rgba(184,160,112,0.15); }
+.side-card b {
+  font-size: 16px;
+  min-width: 22px;
+  display: inline-block;
+  font-weight: 800;
+}
+.main-card b { color: #e8d5b0; }
+.sub-card b { color: #1c1208; }
+.side-total {
+  font-size: 10px;
+  opacity: 0.6;
+  margin-top: 8px;
+  padding-top: 6px;
+  border-top: 0.5px solid rgba(255,255,255,0.15);
+}
+.side-total b { font-size: 13px; opacity: 1; min-width: 0; }
+.side-x {
+  position: absolute;
+  top: 2px;
+  right: 4px;
+  border: none;
+  background: transparent;
+  color: #888;
+  font-size: 16px;
+  cursor: pointer;
+  line-height: 1;
+  padding: 4px;
+}
+.side-toggle {
+  padding: 8px 5px;
+  border: 1.5px dashed #b8a070;
+  background: transparent;
+  color: #6b5530;
+  border-radius: 7px;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  line-height: 1.3;
+}
+.side-toggle:active { background: rgba(184,160,112,0.15); }
+
+/* 여백 카드 (사이드 패널 안) */
+.margin-card {
+  background: #f8f4ec;
+  border: 1px solid #e0d4b8;
+  border-radius: 8px;
+  padding: 9px 7px;
+}
+.margin-title {
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  font-weight: 700;
+  color: #6b5530;
+  margin-bottom: 7px;
+  text-align: center;
+}
+.margin-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 3px;
+  margin-bottom: 6px;
+}
+.margin-row:last-child { margin-bottom: 0; }
+.margin-row .margin-lbl {
+  font-size: 11px;
+  color: #6b5530;
+  font-weight: 700;
+  min-width: 26px;
+}
+.margin-row b {
+  font-size: 13px;
+  color: #1c1208;
+  min-width: 16px;
+  text-align: center;
+  font-weight: 800;
+}
+
+/* 부영역 (그리드와 같은 시각, 약간 다른 톤) */
+.sub-zone {
+  display: inline-flex;
+  flex-direction: row-reverse;
+  background: rgba(232,213,176,0.12);
+  flex-shrink: 0;
+}
+.sub-zone.empty { display: none; }
+.sub-zone .grid-col { border-left: 1px solid rgba(160,130,80,0.2); }
+.sub-zone .grid-col:last-child { border-left: none; }
 
 /* 서체 토글 */
 .script-toggle {
@@ -484,6 +647,7 @@ header p { font-size: 11px; opacity: 0.55; margin-top: 4px; letter-spacing: 0.05
   box-shadow: 3px 3px 12px rgba(0,0,0,0.15);
   position: relative;
   box-sizing: border-box;
+  overflow: hidden;
 }
 
 /* 여백 영역 (cm 단위로 폭이 결정되는 빈 영역) */
@@ -1020,45 +1184,11 @@ header p { font-size: 11px; opacity: 0.55; margin-top: 4px; letter-spacing: 0.05
       <button class="m-paper-chip" data-pw="70" data-ph="200" data-c="6" data-r="25" onclick="setPaperFromModal(this,6,25,70,200)">국전지<em>70×200</em></button>
     </div>
 
-    <div class="modal-dim-bar">
-      <div class="dim-ctrl">
-        <span class="dim-lbl">열</span>
-        <button class="dim-btn" onclick="modalAdj(&#39;cols&#39;,-1)">−</button>
-        <span class="dim-num" id="m-cols">4</span>
-        <button class="dim-btn" onclick="modalAdj(&#39;cols&#39;,+1)">+</button>
-      </div>
-      <span class="dim-x">×</span>
-      <div class="dim-ctrl">
-        <span class="dim-lbl">칸</span>
-        <button class="dim-btn" onclick="modalAdj(&#39;rows&#39;,-1)">−</button>
-        <span class="dim-num" id="m-rows">15</span>
-        <button class="dim-btn" onclick="modalAdj(&#39;rows&#39;,+1)">+</button>
-      </div>
-      <span class="dim-eq">본문 <b id="m-total">60</b>칸</span>
-    </div>
-
     <!-- 서체 선택 -->
     <div class="script-toggle">
       <span class="script-lbl">서체</span>
       <button class="script-btn" id="script-gungseo" onclick="setScript(&#39;gungseo&#39;)">궁서체</button>
       <button class="script-btn" id="script-panbon" onclick="setScript(&#39;panbon&#39;)">판본체</button>
-    </div>
-
-    <!-- 여백 영역 설정 (시안 2) -->
-    <div class="margin-bar">
-      <div class="margin-labels">
-        <span>◀ 좌 여백</span>
-        <span>우 여백 ▶</span>
-      </div>
-      <div class="margin-controls">
-        <button class="dim-btn dark" onclick="adjMargin(&#39;left&#39;,-1)">−</button>
-        <span class="margin-num"><b id="m-margin-left">0</b><em>cm</em></span>
-        <button class="dim-btn dark" onclick="adjMargin(&#39;left&#39;,+1)">+</button>
-        <div class="margin-divider"></div>
-        <button class="dim-btn dark" onclick="adjMargin(&#39;right&#39;,-1)">−</button>
-        <span class="margin-num"><b id="m-margin-right">0</b><em>cm</em></span>
-        <button class="dim-btn dark" onclick="adjMargin(&#39;right&#39;,+1)">+</button>
-      </div>
     </div>
 
     <div class="grid-toolbar">
@@ -1077,8 +1207,98 @@ header p { font-size: 11px; opacity: 0.55; margin-top: 4px; letter-spacing: 0.05
     <div class="paper-container">
       <div class="paper-wrap" id="m-paper-wrap">
         <div class="margin-zone left" id="m-margin-zone-left"></div>
+        <div class="sub-zone left" id="m-sub-zone-left"></div>
         <div class="paper-grid" id="m-grid"></div>
+        <div class="sub-zone right" id="m-sub-zone-right"></div>
         <div class="margin-zone right" id="m-margin-zone-right"></div>
+      </div>
+
+      <!-- 우측 사이드 패널 (주영역 + 부영역 토글) -->
+      <div class="side-panel">
+        <!-- 주영역 카드 -->
+        <div class="side-card main-card">
+          <div class="side-label">주영역</div>
+          <div class="side-sub">열</div>
+          <div class="side-ctrl">
+            <button class="side-btn dark" onclick="modalAdj(&#39;cols&#39;,-1)">−</button>
+            <b id="m-cols">4</b>
+            <button class="side-btn dark" onclick="modalAdj(&#39;cols&#39;,+1)">+</button>
+          </div>
+          <div class="side-sub">칸</div>
+          <div class="side-ctrl">
+            <button class="side-btn dark" onclick="modalAdj(&#39;rows&#39;,-1)">−</button>
+            <b id="m-rows">15</b>
+            <button class="side-btn dark" onclick="modalAdj(&#39;rows&#39;,+1)">+</button>
+          </div>
+          <div class="side-total">본문 <b id="m-total">60</b>칸</div>
+        </div>
+
+        <!-- 우측 부영역 (활성 시 카드, 비활성 시 토글 칩) -->
+        <div class="side-card sub-card" id="sub-card-right" style="display:none;">
+          <button class="side-x" onclick="toggleSubZone(&#39;right&#39;,false)" title="비활성화">×</button>
+          <div class="side-label">우측 ▶</div>
+          <div class="side-sub">열</div>
+          <div class="side-ctrl">
+            <button class="side-btn light" onclick="adjSub(&#39;right&#39;,&#39;cols&#39;,-1)">−</button>
+            <b id="m-sub-right-cols">1</b>
+            <button class="side-btn light" onclick="adjSub(&#39;right&#39;,&#39;cols&#39;,+1)">+</button>
+          </div>
+          <div class="side-sub">칸</div>
+          <div class="side-ctrl">
+            <button class="side-btn light" onclick="adjSub(&#39;right&#39;,&#39;rows&#39;,-1)">−</button>
+            <b id="m-sub-right-rows">25</b>
+            <button class="side-btn light" onclick="adjSub(&#39;right&#39;,&#39;rows&#39;,+1)">+</button>
+          </div>
+        </div>
+        <button class="side-toggle" id="sub-toggle-right" onclick="toggleSubZone(&#39;right&#39;,true)">＋ 우측</button>
+
+        <!-- 좌측 부영역 -->
+        <div class="side-card sub-card" id="sub-card-left" style="display:none;">
+          <button class="side-x" onclick="toggleSubZone(&#39;left&#39;,false)" title="비활성화">×</button>
+          <div class="side-label">◀ 좌측</div>
+          <div class="side-sub">열</div>
+          <div class="side-ctrl">
+            <button class="side-btn light" onclick="adjSub(&#39;left&#39;,&#39;cols&#39;,-1)">−</button>
+            <b id="m-sub-left-cols">1</b>
+            <button class="side-btn light" onclick="adjSub(&#39;left&#39;,&#39;cols&#39;,+1)">+</button>
+          </div>
+          <div class="side-sub">칸</div>
+          <div class="side-ctrl">
+            <button class="side-btn light" onclick="adjSub(&#39;left&#39;,&#39;rows&#39;,-1)">−</button>
+            <b id="m-sub-left-rows">25</b>
+            <button class="side-btn light" onclick="adjSub(&#39;left&#39;,&#39;rows&#39;,+1)">+</button>
+          </div>
+        </div>
+        <button class="side-toggle" id="sub-toggle-left" onclick="toggleSubZone(&#39;left&#39;,true)">＋ 좌측</button>
+
+        <!-- 여백 카드 (4행) -->
+        <div class="margin-card">
+          <div class="margin-title">여백 ㎝</div>
+          <div class="margin-row">
+            <span class="margin-lbl">◀ 좌</span>
+            <button class="side-btn light" onclick="adjMargin(&#39;left&#39;,-1)">−</button>
+            <b id="m-margin-left">0</b>
+            <button class="side-btn light" onclick="adjMargin(&#39;left&#39;,+1)">+</button>
+          </div>
+          <div class="margin-row">
+            <span class="margin-lbl">우 ▶</span>
+            <button class="side-btn light" onclick="adjMargin(&#39;right&#39;,-1)">−</button>
+            <b id="m-margin-right">0</b>
+            <button class="side-btn light" onclick="adjMargin(&#39;right&#39;,+1)">+</button>
+          </div>
+          <div class="margin-row">
+            <span class="margin-lbl">▲ 상</span>
+            <button class="side-btn light" onclick="adjMargin(&#39;top&#39;,-1)">−</button>
+            <b id="m-margin-top">0</b>
+            <button class="side-btn light" onclick="adjMargin(&#39;top&#39;,+1)">+</button>
+          </div>
+          <div class="margin-row">
+            <span class="margin-lbl">▼ 하</span>
+            <button class="side-btn light" onclick="adjMargin(&#39;bottom&#39;,-1)">−</button>
+            <b id="m-margin-bottom">0</b>
+            <button class="side-btn light" onclick="adjMargin(&#39;bottom&#39;,+1)">+</button>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -1179,9 +1399,14 @@ const DB = [
 const S = {
   cols: 4, rows: 15,
   paperW: 35, paperH: 135, paperName: '반절',
-  marginLeftCm: 0,    // 좌측 여백 (cm)
-  marginRightCm: 0,   // 우측 여백 (cm)
-  script: 'gungseo', // 'gungseo'(궁서체, 균등) | 'panbon'(판본체, 가변)
+  marginLeftCm: 0,
+  marginRightCm: 0,
+  marginTopCm: 0,
+  marginBottomCm: 0,
+  script: 'gungseo',
+  // 부영역 (활성화 시에만 사용)
+  subRight: { active: false, cols: 1, rows: 25 },
+  subLeft:  { active: false, cols: 1, rows: 25 },
   tol: 3, filter: 'all', mode: 'search'
 };
 // 본문 영역 기준 목표 글자수 (낙관은 cm 단위 공간이라 본문 칸 수에 영향 없음)
@@ -1216,12 +1441,12 @@ function charWeight(ch) {
   const complexJong = COMPLEX_JONG.has(jong);
 
   let w;
-  if (tallCho && tallJong)         w = 1.65;  // 을/를/흥/졸/얼/종 — 사진에서 가장 김
-  else if (tallCho && complexJong) w = 1.50;  // 키 큰 초성 + 쌍받침
-  else if (tallCho)                w = 1.40;  // 키 큰 초성 + 일반 받침 (한/학)
-  else if (tallJong)               w = 1.45;  // 일반 초성 + 키 큰 받침 (강/봉/달/말)
-  else if (complexJong)            w = 1.40;  // 일반 초성 + 쌍받침 (값/닭)
-  else                             w = 1.30;  // 일반 초성 + 일반 받침 (곳/박/는)
+  if (tallCho && tallJong)         w = 1.40;  // 을/를/흥/졸/얼/종 — 최대
+  else if (tallCho && complexJong) w = 1.30;  // 키 큰 초성 + 쌍받침
+  else if (tallCho)                w = 1.30;  // 키 큰 초성 + 일반 받침 (한/학)
+  else if (tallJong)               w = 1.30;  // 일반 초성 + 키 큰 받침 (강/봉/달/말)
+  else if (complexJong)            w = 1.30;  // 일반 초성 + 쌍받침 (값/닭)
+  else                             w = 1.25;  // 일반 초성 + 일반 받침 (곳/박/는)
 
   return w;
 }
@@ -1247,11 +1472,17 @@ function setPaper(btn, c, r, w, h) {
   S.cols = c; S.rows = r;
   S.paperW = w; S.paperH = h;
   S.paperName = btn.querySelector('.pb-name')?.textContent || '';
-  // 여백 합이 종이 폭의 80% 넘으면 클램프
-  const maxTotal = Math.floor(S.paperW * 0.8);
-  if (S.marginLeftCm + S.marginRightCm > maxTotal) {
+  // 좌·우 여백 클램프
+  const maxLR = Math.floor(S.paperW * 0.8);
+  if (S.marginLeftCm + S.marginRightCm > maxLR) {
     S.marginLeftCm = 0;
     S.marginRightCm = 0;
+  }
+  // 상·하 여백 클램프
+  const maxTB = Math.floor(S.paperH * 0.8);
+  if (S.marginTopCm + S.marginBottomCm > maxTB) {
+    S.marginTopCm = 0;
+    S.marginBottomCm = 0;
   }
   document.getElementById('cols-v').textContent = c;
   document.getElementById('rows-v').textContent = r;
@@ -1471,14 +1702,31 @@ function syncDimDisplay() {
   document.getElementById('m-rows').textContent = S.rows;
   document.getElementById('m-margin-left').textContent = S.marginLeftCm;
   document.getElementById('m-margin-right').textContent = S.marginRightCm;
+  document.getElementById('m-margin-top').textContent = S.marginTopCm;
+  document.getElementById('m-margin-bottom').textContent = S.marginBottomCm;
   document.getElementById('m-total').textContent = bodyTarget();
   // 서체 토글 active
   document.getElementById('script-gungseo').classList.toggle('active', S.script === 'gungseo');
   document.getElementById('script-panbon').classList.toggle('active', S.script === 'panbon');
-  // 종이 종류 칩 active (현재 paperW × paperH 일치하는 칩)
+  // 종이 종류 칩 active
   document.querySelectorAll('.m-paper-chip').forEach(chip => {
     const pw = Number(chip.dataset.pw), ph = Number(chip.dataset.ph);
     chip.classList.toggle('active', pw === S.paperW && ph === S.paperH);
+  });
+  // 부영역 카드 / 토글 표시
+  ['right', 'left'].forEach(side => {
+    const sub = side === 'right' ? S.subRight : S.subLeft;
+    const card = document.getElementById('sub-card-' + side);
+    const tog  = document.getElementById('sub-toggle-' + side);
+    if (sub.active) {
+      card.style.display = '';
+      tog.style.display = 'none';
+      document.getElementById('m-sub-' + side + '-cols').textContent = sub.cols;
+      document.getElementById('m-sub-' + side + '-rows').textContent = sub.rows;
+    } else {
+      card.style.display = 'none';
+      tog.style.display = '';
+    }
   });
 }
 
@@ -1496,28 +1744,23 @@ function modalAdj(key, d) {
   renderGrid();
 }
 
-// 현재 cols x rows 범위 밖의 좌표를 clearedCells에서 제거
-// 키: "c,t<n>" (위에서 n번째) 또는 "c,b<n>" (아래에서 n번째)
-function pruneClearedCells() {
-  const cols = S.cols, rows = S.rows;
-  const toDelete = [];
-  clearedCells.forEach(key => {
-    const [cStr, posStr] = key.split(',');
-    const c = Number(cStr);
-    const n = Number(posStr.slice(1)); // 't' 또는 'b' 제외
-    // 컬럼이 범위 밖이거나, 위/아래 인덱스가 rows를 넘으면 제거
-    if (c >= cols || n >= rows) toDelete.push(key);
-  });
-  toDelete.forEach(k => clearedCells.delete(k));
-}
+// (pruneClearedCells는 zone 키 처리 버전이 아래에 정의됨)
 
-// 여백(cm) 조정. 좌·우 합이 종이 폭의 80% 이하로 제한
+// 여백(cm) 조정. 좌·우 합이 종이 폭의 80% 이하, 상·하 합이 종이 높이의 80% 이하
 function adjMargin(side, d) {
-  const key = side === 'left' ? 'marginLeftCm' : 'marginRightCm';
-  const otherKey = side === 'left' ? 'marginRightCm' : 'marginLeftCm';
-  const maxTotal = Math.floor(S.paperW * 0.8);
-  const maxThis = Math.max(0, maxTotal - S[otherKey]);
-  S[key] = Math.max(0, Math.min(maxThis, S[key] + d));
+  if (side === 'left' || side === 'right') {
+    const key = side === 'left' ? 'marginLeftCm' : 'marginRightCm';
+    const otherKey = side === 'left' ? 'marginRightCm' : 'marginLeftCm';
+    const maxTotal = Math.floor(S.paperW * 0.8);
+    const maxThis = Math.max(0, maxTotal - S[otherKey]);
+    S[key] = Math.max(0, Math.min(maxThis, S[key] + d));
+  } else if (side === 'top' || side === 'bottom') {
+    const key = side === 'top' ? 'marginTopCm' : 'marginBottomCm';
+    const otherKey = side === 'top' ? 'marginBottomCm' : 'marginTopCm';
+    const maxTotal = Math.floor(S.paperH * 0.8);
+    const maxThis = Math.max(0, maxTotal - S[otherKey]);
+    S[key] = Math.max(0, Math.min(maxThis, S[key] + d));
+  }
   syncDimDisplay();
   renderGrid();
 }
@@ -1529,25 +1772,52 @@ function setScript(s) {
   renderGrid();
 }
 
+// 부영역 활성/비활성 토글
+function toggleSubZone(side, active) {
+  const sub = side === 'right' ? S.subRight : S.subLeft;
+  sub.active = active;
+  if (active) {
+    // 활성 시 기본값으로 리셋
+    sub.cols = 1;
+    sub.rows = Math.round(S.rows * 1.6); // 주 rows의 ~1.6배
+  }
+  syncDimDisplay();
+  renderGrid();
+}
+
+// 부영역 cols/rows 조정
+function adjSub(side, key, d) {
+  const sub = side === 'right' ? S.subRight : S.subLeft;
+  if (!sub.active) return;
+  if (key === 'cols') sub.cols = Math.max(1, Math.min(5, sub.cols + d));
+  else                sub.rows = Math.max(1, Math.min(60, sub.rows + d));
+  syncDimDisplay();
+  renderGrid();
+}
+
 // 모달 안에서 종이 종류 변경
 function setPaperFromModal(btn, c, r, w, h) {
   S.cols = c; S.rows = r;
   S.paperW = w; S.paperH = h;
   S.paperName = btn.textContent.replace(/\d+×\d+/, '').trim();
-  // 여백이 종이 폭의 80% 넘으면 클램프
-  const maxTotal = Math.floor(S.paperW * 0.8);
-  if (S.marginLeftCm + S.marginRightCm > maxTotal) {
+  // 좌·우 여백 클램프
+  const maxLR = Math.floor(S.paperW * 0.8);
+  if (S.marginLeftCm + S.marginRightCm > maxLR) {
     S.marginLeftCm = 0;
     S.marginRightCm = 0;
   }
-  // 메인 화면 동기화
+  // 상·하 여백 클램프
+  const maxTB = Math.floor(S.paperH * 0.8);
+  if (S.marginTopCm + S.marginBottomCm > maxTB) {
+    S.marginTopCm = 0;
+    S.marginBottomCm = 0;
+  }
   document.getElementById('cols-v').textContent = c;
   document.getElementById('rows-v').textContent = r;
   document.querySelectorAll('.paper-btn').forEach(b => {
     b.classList.toggle('active',
       b.querySelector('.pb-cm')?.textContent === w + '×' + h + 'cm');
   });
-  // 범위 밖 좌표 정리 (지운 상태는 양 끝 기준이라 유지됨)
   pruneClearedCells();
   syncDimDisplay();
   updateTotal();
@@ -1558,29 +1828,42 @@ function setPaperFromModal(btn, c, r, w, h) {
 
 function renderGrid() {
   const chars = modalChars;
-  const cols = S.cols, rows = S.rows;
-  const total = cols * rows;
+  const mainCols = S.cols, mainRows = S.rows;
+  const subR = S.subRight.active ? S.subRight : null;
+  const subL = S.subLeft.active  ? S.subLeft  : null;
 
-  // 글자 배치 (clearedCells 적용 — 키는 "c,t<n>"(위 n번째) 또는 "c,b<n>"(아래 n번째))
+  // 각 영역의 cellMap을 만듦. 영역 키 prefix: 'r' / 'm' / 'l'
+  // 글자 흐름 순서: 우부 → 주 → 좌부 (시각적 우→좌)
   let charIdx = 0;
-  const cellMap = new Array(total);
-  for (let c = 0; c < cols; c++) {
-    for (let r = 0; r < rows; r++) {
-      const i = c * rows + r;
-      if (isCellCleared(c, r, rows)) {
-        cellMap[i] = { type: 'blank' };
-      } else {
-        cellMap[i] = charIdx < chars.length
-          ? { type: 'char', ch: chars[charIdx++] }
-          : { type: 'empty' };
+  const cellMapsByZone = { r: null, m: null, l: null };
+
+  const fillZone = (zoneKey, cols, rows) => {
+    const total = cols * rows;
+    const map = new Array(total);
+    for (let c = 0; c < cols; c++) {
+      for (let r = 0; r < rows; r++) {
+        const i = c * rows + r;
+        if (isCellCleared(zoneKey, c, r, rows)) {
+          map[i] = { type: 'blank' };
+        } else {
+          map[i] = charIdx < chars.length
+            ? { type: 'char', ch: chars[charIdx++] }
+            : { type: 'empty' };
+        }
       }
     }
-  }
+    return map;
+  };
+
+  if (subR) cellMapsByZone.r = fillZone('r', subR.cols, subR.rows);
+  cellMapsByZone.m = fillZone('m', mainCols, mainRows);
+  if (subL) cellMapsByZone.l = fillZone('l', subL.cols, subL.rows);
+
   const overflowChars = chars.slice(charIdx);
 
   // ── 종이 전체 박스 크기 계산 (paperW × paperH cm 비율 유지) ──
   const aspect = S.paperW / S.paperH;
-  const maxW = Math.min(window.innerWidth - 56, 360);
+  const maxW = Math.min(window.innerWidth - 56 - 138, 360); // 사이드 패널 폭 130 + gap 8 차감
   const maxH = window.innerHeight * 0.62;
   let paperPxW, paperPxH;
   if (maxW / aspect <= maxH) {
@@ -1591,135 +1874,191 @@ function renderGrid() {
     paperPxW = maxH * aspect;
   }
 
-  // ── 좌/우 여백 픽셀 변환 ──
-  const cmToPx = paperPxW / S.paperW;
-  const leftPxW  = Math.round(S.marginLeftCm  * cmToPx);
-  const rightPxW = Math.round(S.marginRightCm * cmToPx);
+  // ── 좌·우·상·하 여백 픽셀 변환 ──
+  const cmToPxW = paperPxW / S.paperW;
+  const cmToPxH = paperPxH / S.paperH;
+  const leftPxW   = Math.round(S.marginLeftCm   * cmToPxW);
+  const rightPxW  = Math.round(S.marginRightCm  * cmToPxW);
+  const topPxH    = Math.round(S.marginTopCm    * cmToPxH);
+  const bottomPxH = Math.round(S.marginBottomCm * cmToPxH);
 
-  // ── 본문 영역 = 종이 - 좌여백 - 우여백 ──
-  const bodyPxW = Math.max(0, paperPxW - leftPxW - rightPxW);
-  const bodyPxH = paperPxH;
+  // ── 본문 영역(여백 제외) 폭·높이 ──
+  const innerPxW = Math.max(0, paperPxW - leftPxW - rightPxW);
+  const innerPxH = Math.max(0, paperPxH - topPxH - bottomPxH);
 
-  // ── 본문 영역 안에서만 cols × rows 분할 ──
-  const cellW = Math.max(1, Math.floor(bodyPxW / cols));
-  // 컬럼별 총 높이 (정수 픽셀 단위로 동일하게)
-  const colPxH = Math.max(1, Math.floor(bodyPxH / 1)); // 컬럼 한 개의 세로 길이 = 본문 높이
-  // 균등 모드용 cellH (궁서체) — floor로 정수화
-  const uniformCellH = Math.max(1, Math.floor(bodyPxH / rows));
-  const gridPxW = cellW * cols;
-  const gridPxH = uniformCellH * rows; // 모든 컬럼 동일 높이 사용
-  // 폰트 기준은 균등 칸 기준 (가로 폭 기반)
-  const minDim = Math.min(cellW, uniformCellH);
-  const baseFs = Math.max(6, Math.min(Math.floor(minDim * 0.75), 26));
+  // ── 부영역(우/좌) 폭 비율로 분배 ──
+  // 부영역 1열당 폭 ≈ 주영역 1열 폭의 70% (작아 보이게)
+  const subColRatio = 0.70;
+  const totalColsWeighted = mainCols + (subR ? subR.cols * subColRatio : 0) + (subL ? subL.cols * subColRatio : 0);
+  const unitW = innerPxW / totalColsWeighted; // 주영역 1열 폭 단위
+  const mainCellW = Math.max(1, Math.floor(unitW));
+  const subRCellW = subR ? Math.max(1, Math.floor(unitW * subColRatio)) : 0;
+  const subLCellW = subL ? Math.max(1, Math.floor(unitW * subColRatio)) : 0;
 
-  // ── paper-wrap (좌·우 여백 모두 항상 같은 방향) ──
+  const mainPxW = mainCellW * mainCols;
+  const subRPxW = subR ? subRCellW * subR.cols : 0;
+  const subLPxW = subL ? subLCellW * subL.cols : 0;
+
+  // 그리드 높이 (innerPxH의 정수 floor를 mainRows로 나눈 결과)
+  const mainCellH = Math.max(1, Math.floor(innerPxH / mainRows));
+  const gridPxH = mainCellH * mainRows;
+  // 부영역 셀 높이는 부영역 rows 기준
+  const subRCellH = subR ? Math.max(1, Math.floor(gridPxH / subR.rows)) : 0;
+  const subLCellH = subL ? Math.max(1, Math.floor(gridPxH / subL.rows)) : 0;
+
+  // 폰트 크기
+  const mainFs = Math.max(6, Math.min(Math.floor(Math.min(mainCellW, mainCellH) * 0.75), 26));
+  const subRFs = subR ? Math.max(6, Math.min(Math.floor(Math.min(subRCellW, subRCellH) * 0.75), 26)) : mainFs;
+  const subLFs = subL ? Math.max(6, Math.min(Math.floor(Math.min(subLCellW, subLCellH) * 0.75), 26)) : mainFs;
+
+  // ── paper-wrap 크기 명시 (전체 종이 비율 유지, 상·하는 padding으로 처리) ──
   const wrap = document.getElementById('m-paper-wrap');
-  wrap.classList.remove('seal-left', 'seal-right'); // 이전 클래스 정리
+  const fullW = leftPxW + subRPxW + mainPxW + subLPxW + rightPxW;
+  wrap.style.width  = fullW + 'px';
+  wrap.style.height = (gridPxH + topPxH + bottomPxH) + 'px';
+  wrap.style.paddingTop    = topPxH + 'px';
+  wrap.style.paddingBottom = bottomPxH + 'px';
 
-  // ── 좌·우 여백 영역 ──
-  const setMarginZone = (id, pxW, gridH) => {
+  // ── 여백 영역 ──
+  const setMarginZone = (id, pxW) => {
     const el = document.getElementById(id);
     if (pxW > 0) {
       el.style.display = '';
       el.style.width = pxW + 'px';
-      el.style.height = gridH + 'px';
-      el.classList.remove('empty');
+      el.style.height = gridPxH + 'px';
     } else {
       el.style.display = 'none';
-      el.classList.add('empty');
     }
   };
-  setMarginZone('m-margin-zone-left',  leftPxW,  gridPxH);
-  setMarginZone('m-margin-zone-right', rightPxW, gridPxH);
+  setMarginZone('m-margin-zone-left',  leftPxW);
+  setMarginZone('m-margin-zone-right', rightPxW);
 
   const isPanbon = (S.script === 'panbon');
 
-  // ── 본문 그리드 HTML ──
-  let html = '';
-  for (let c = 0; c < cols; c++) {
-    // 컬럼별 셀 높이 계산
-    let cellHeights;
-    if (isPanbon) {
-      // 판본체: 각 칸의 글자 weight로 가변 분배
-      const weights = [];
-      let wSum = 0;
-      for (let r = 0; r < rows; r++) {
-        const i = c * rows + r;
-        const cell = cellMap[i];
-        let w = 1.0;
-        if (cell.type === 'char') w = charWeight(cell.ch);
-        weights.push(w);
-        wSum += w;
-      }
-      // 컬럼 전체 높이를 weight 비율로 분배 (정수 픽셀)
-      cellHeights = new Array(rows);
-      let used = 0;
-      for (let r = 0; r < rows - 1; r++) {
-        const h = Math.max(1, Math.floor(gridPxH * weights[r] / wSum));
-        cellHeights[r] = h;
-        used += h;
-      }
-      cellHeights[rows - 1] = Math.max(1, gridPxH - used); // 마지막 칸이 잔량 흡수
-    } else {
-      // 궁서체: 균등
-      cellHeights = new Array(rows).fill(uniformCellH);
-    }
-
-    html += `<div class="grid-col" style="width:${cellW}px;height:${gridPxH}px">`;
-    for (let r = 0; r < rows; r++) {
-      const i = c * rows + r;
-      const cell = cellMap[i];
-      const ch = cellHeights[r];
-      let cls, content;
-      if (cell.type === 'blank') {
-        cls = 'grid-cell cleared';
-        content = '';
-      } else if (cell.type === 'empty') {
-        cls = 'grid-cell empty';
-        content = '<span class="cell-glyph">·</span>';
-      } else {
-        cls = 'grid-cell';
-        if (isPanbon) {
-          // 글자가 칸을 꽉 채우도록 scaleX/scaleY 적용
-          // 가로 92%, 세로 88%
-          const padX = 0.92;
-          const padY = 0.88;
-          const sx = (cellW * padX) / baseFs;
-          const sy = (ch * padY) / baseFs;
-          content = `<span class="cell-glyph stretch" style="transform:scale(${sx.toFixed(3)},${sy.toFixed(3)})">${cell.ch}</span>`;
-        } else {
-          content = `<span class="cell-glyph">${cell.ch}</span>`;
+  // ── 그리드 HTML 빌드 함수 (영역별) ──
+  // zoneKey: 'r' | 'm' | 'l'
+  function buildZoneHtml(zoneKey, cols, rows, cellW, cellH, fs, gridH) {
+    const map = cellMapsByZone[zoneKey];
+    let html = '';
+    for (let c = 0; c < cols; c++) {
+      // 컬럼별 셀 높이 (판본체 가변)
+      let cellHeights;
+      if (isPanbon) {
+        // 1단계: 비움 칸은 균등 cellH로 고정 (모든 영역에서 같은 픽셀)
+        // 2단계: 남은 공간을 글자/빈 칸들이 weight로 분배
+        cellHeights = new Array(rows);
+        let blankSum = 0;
+        const charIdxList = [];
+        const weights = [];
+        let wSum = 0;
+        for (let r = 0; r < rows; r++) {
+          const cell = map[c * rows + r];
+          if (cell.type === 'blank') {
+            cellHeights[r] = cellH; // 비움은 균등 고정
+            blankSum += cellH;
+          } else {
+            let w = 1.0;
+            if (cell.type === 'char') w = charWeight(cell.ch);
+            charIdxList.push(r);
+            weights.push(w);
+            wSum += w;
+          }
         }
+        const remainH = Math.max(1, gridH - blankSum);
+        let used = 0;
+        for (let k = 0; k < charIdxList.length - 1; k++) {
+          const h = Math.max(1, Math.floor(remainH * weights[k] / wSum));
+          cellHeights[charIdxList[k]] = h;
+          used += h;
+        }
+        if (charIdxList.length > 0) {
+          cellHeights[charIdxList[charIdxList.length - 1]] = Math.max(1, remainH - used);
+        }
+      } else {
+        cellHeights = new Array(rows).fill(cellH);
       }
-      html += `<div class="${cls}" style="width:${cellW}px;height:${ch}px;font-size:${baseFs}px" onclick="toggleCell(${c},${r})">${content}</div>`;
+
+      html += `<div class="grid-col" style="width:${cellW}px;height:${gridH}px">`;
+      for (let r = 0; r < rows; r++) {
+        const cell = map[c * rows + r];
+        const ch = cellHeights[r];
+        let cls, content;
+        if (cell.type === 'blank') {
+          cls = 'grid-cell cleared';
+          content = '';
+        } else if (cell.type === 'empty') {
+          cls = 'grid-cell empty';
+          content = '';
+        } else {
+          cls = 'grid-cell';
+          if (isPanbon) {
+            const padX = 0.92, padY = 0.88;
+            const sx = (cellW * padX) / fs;
+            const sy = (ch * padY) / fs;
+            content = `<span class="cell-glyph stretch" style="transform:scale(${sx.toFixed(3)},${sy.toFixed(3)})">${cell.ch}</span>`;
+          } else {
+            content = `<span class="cell-glyph">${cell.ch}</span>`;
+          }
+        }
+        html += `<div class="${cls}" style="width:${cellW}px;height:${ch}px;font-size:${fs}px" onclick="toggleCell('${zoneKey}',${c},${r})">${content}</div>`;
+      }
+      html += '</div>';
     }
-    html += '</div>';
+    return html;
   }
+
+  // ── 주 그리드 ──
   const grid = document.getElementById('m-grid');
-  grid.style.width = gridPxW + 'px';
+  grid.style.width  = mainPxW + 'px';
   grid.style.height = gridPxH + 'px';
   grid.classList.toggle('script-gungseo', !isPanbon);
   grid.classList.toggle('script-panbon', isPanbon);
-  grid.innerHTML = html;
+  grid.innerHTML = buildZoneHtml('m', mainCols, mainRows, mainCellW, mainCellH, mainFs, gridPxH);
+
+  // ── 우부 영역 ──
+  const subRZone = document.getElementById('m-sub-zone-right');
+  if (subR) {
+    subRZone.style.display = '';
+    subRZone.style.width  = subRPxW + 'px';
+    subRZone.style.height = gridPxH + 'px';
+    subRZone.classList.toggle('script-gungseo', !isPanbon);
+    subRZone.classList.toggle('script-panbon', isPanbon);
+    subRZone.innerHTML = buildZoneHtml('r', subR.cols, subR.rows, subRCellW, subRCellH, subRFs, gridPxH);
+  } else {
+    subRZone.style.display = 'none';
+  }
+
+  // ── 좌부 영역 ──
+  const subLZone = document.getElementById('m-sub-zone-left');
+  if (subL) {
+    subLZone.style.display = '';
+    subLZone.style.width  = subLPxW + 'px';
+    subLZone.style.height = gridPxH + 'px';
+    subLZone.classList.toggle('script-gungseo', !isPanbon);
+    subLZone.classList.toggle('script-panbon', isPanbon);
+    subLZone.innerHTML = buildZoneHtml('l', subL.cols, subL.rows, subLCellW, subLCellH, subLFs, gridPxH);
+  } else {
+    subLZone.style.display = 'none';
+  }
 
   // ── 통계 ──
   const placed     = charIdx;
+  const mainTotal  = mainCols * mainRows;
+  const subRTotal  = subR ? subR.cols * subR.rows : 0;
+  const subLTotal  = subL ? subL.cols * subL.rows : 0;
+  const total      = mainTotal + subRTotal + subLTotal;
   const blanks     = clearedCells.size;
   const emptySlots = total - blanks - placed;
   const over       = overflowChars.length;
-  const totalMargin = S.marginLeftCm + S.marginRightCm;
-  const bodyCm     = (S.paperW - totalMargin).toFixed(0);
 
   document.getElementById('m-stats').innerHTML = `
     <div class="stat-item"><span class="stat-num gold">${placed}</span><span class="stat-lbl">쓸 글자</span></div>
     <div class="stat-item"><span class="stat-num">${total}</span><span class="stat-lbl">총 칸</span></div>
     <div class="stat-item"><span class="stat-num">${blanks}</span><span class="stat-lbl">띄운 칸</span></div>
     <div class="stat-item"><span class="stat-num">${emptySlots}</span><span class="stat-lbl">빈 칸</span></div>
-    ${totalMargin > 0 ? `<div class="stat-item"><span class="stat-num">${bodyCm}<em style="font-size:10px;font-weight:500;color:#888">cm</em></span><span class="stat-lbl">본문 폭</span></div>` : ''}
     ${over ? `<div class="stat-item"><span class="stat-num red">${over}</span><span class="stat-lbl">넘침</span></div>` : ''}
   `;
 
-  // ── 넘침 글자 안내 ──
   const ovEl = document.getElementById('m-overflow');
   if (over > 0) {
     ovEl.style.display = 'block';
@@ -1729,23 +2068,26 @@ function renderGrid() {
   }
 }
 
-// 셀이 비워져 있는지 (양 끝 기준 키로 체크)
-// 위쪽 절반 클릭은 "c,t<r>" 키, 아래쪽은 "c,b<rows-1-r>" 키로 저장됨
-function isCellCleared(c, r, rows) {
-  // t 키 체크 (위에서 r번째)
-  if (clearedCells.has(c + ',t' + r)) return true;
-  // b 키 체크 (아래에서 rows-1-r번째)
-  if (clearedCells.has(c + ',b' + (rows - 1 - r))) return true;
+// 셀이 비워져 있는지 (zone + 양 끝 기준 키로 체크)
+// 키 형식: "<zone>:c,t<r>" 또는 "<zone>:c,b<rows-1-r>"
+// zone: 'm' 주영역, 'r' 우부, 'l' 좌부
+function isCellCleared(zone, c, r, rows) {
+  if (clearedCells.has(zone + ':' + c + ',t' + r)) return true;
+  if (clearedCells.has(zone + ':' + c + ',b' + (rows - 1 - r))) return true;
   return false;
 }
 
-function toggleCell(c, r) {
-  const rows = S.rows;
-  // 컬럼 위쪽 절반이면 top 기준, 아래쪽이면 bottom 기준
+function toggleCell(zone, c, r) {
+  // zone에 맞는 rows 가져오기
+  let rows;
+  if (zone === 'm') rows = S.rows;
+  else if (zone === 'r') rows = S.subRight.rows;
+  else if (zone === 'l') rows = S.subLeft.rows;
+  else return;
+
   const isTop = r < rows / 2;
-  const key = isTop ? (c + ',t' + r) : (c + ',b' + (rows - 1 - r));
-  // 단, 이미 반대편 키로 저장되어 있으면 그것 우선 토글
-  const altKey = isTop ? (c + ',b' + (rows - 1 - r)) : (c + ',t' + r);
+  const key = zone + ':' + c + ',' + (isTop ? 't' + r : 'b' + (rows - 1 - r));
+  const altKey = zone + ':' + c + ',' + (isTop ? 'b' + (rows - 1 - r) : 't' + r);
   if (clearedCells.has(altKey)) {
     clearedCells.delete(altKey);
   } else if (clearedCells.has(key)) {
@@ -1754,6 +2096,28 @@ function toggleCell(c, r) {
     clearedCells.add(key);
   }
   renderGrid();
+}
+
+// 현재 영역 범위 밖의 좌표를 clearedCells에서 제거
+function pruneClearedCells() {
+  const toDelete = [];
+  clearedCells.forEach(key => {
+    const [zone, rest] = key.split(':');
+    const [cStr, posStr] = rest.split(',');
+    const c = Number(cStr);
+    const n = Number(posStr.slice(1));
+    let cols, rows;
+    if (zone === 'm') { cols = S.cols; rows = S.rows; }
+    else if (zone === 'r') {
+      if (!S.subRight.active) { toDelete.push(key); return; }
+      cols = S.subRight.cols; rows = S.subRight.rows;
+    } else if (zone === 'l') {
+      if (!S.subLeft.active) { toDelete.push(key); return; }
+      cols = S.subLeft.cols; rows = S.subLeft.rows;
+    } else { toDelete.push(key); return; }
+    if (c >= cols || n >= rows) toDelete.push(key);
+  });
+  toDelete.forEach(k => clearedCells.delete(k));
 }
 
 function resetClearedCells() {
