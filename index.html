@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- saved from url=(0092)file:///C:/Users/cg/Downloads/%EB%B6%93%EA%B8%80%EC%94%A8%EB%8F%84%EC%9A%B0%EB%AF%B8_12.html -->
+<!-- saved from url=(0092)file:///C:/Users/cg/Downloads/%EB%B6%93%EA%B8%80%EC%94%A8%EB%8F%84%EC%9A%B0%EB%AF%B8_13.html -->
 <html lang="ko"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -532,6 +532,11 @@ header p { font-size: 11px; opacity: 0.55; margin-top: 4px; letter-spacing: 0.05
   margin-bottom: 6px;
 }
 .margin-row:last-child { margin-bottom: 0; }
+.margin-divider-line {
+  height: 1px;
+  background: rgba(184,160,112,0.3);
+  margin: 7px 0 6px;
+}
 .margin-row .margin-lbl {
   font-size: 11px;
   color: #6b5530;
@@ -657,6 +662,13 @@ header p { font-size: 11px; opacity: 0.55; margin-top: 4px; letter-spacing: 0.05
 }
 .margin-zone.empty { display: none; }
 
+/* 영역간 여백 (주↔부 사이) */
+.zone-gap {
+  background: transparent;
+  flex-shrink: 0;
+}
+.zone-gap.empty { display: none; }
+
 .paper-grid {
   display: inline-flex;
   flex-direction: row-reverse;
@@ -749,7 +761,7 @@ header p { font-size: 11px; opacity: 0.55; margin-top: 4px; letter-spacing: 0.05
       <span class="pb-cm">45×70cm</span>
       <span class="pb-grid">5열×12칸</span>
     </button>
-    <button class="paper-btn active" onclick="setPaper(this,4,15,35,135)">
+    <button class="paper-btn" onclick="setPaper(this,4,15,35,135)">
       <span class="pb-name">반절</span>
       <span class="pb-cm">35×135cm</span>
       <span class="pb-grid">4열×15칸</span>
@@ -771,19 +783,19 @@ header p { font-size: 11px; opacity: 0.55; margin-top: 4px; letter-spacing: 0.05
       <label>열 (세로줄 수)</label>
       <div class="counter">
         <button class="count-btn" onclick="adj(&#39;cols&#39;,-1)">−</button>
-        <span class="count-val" id="cols-v">4</span>
+        <span class="count-val" id="cols-v">2</span>
         <button class="count-btn" onclick="adj(&#39;cols&#39;,+1)">+</button>
       </div>
     </div>
     <div class="total-display">
-      <span class="total-num" id="total-v">60</span>
+      <span class="total-num" id="total-v">48</span>
       <span class="total-label">총 글자 수</span>
     </div>
     <div class="input-group">
       <label>칸 (열당 글자)</label>
       <div class="counter">
         <button class="count-btn" onclick="adj(&#39;rows&#39;,-1)">−</button>
-        <span class="count-val" id="rows-v">15</span>
+        <span class="count-val" id="rows-v">24</span>
         <button class="count-btn" onclick="adj(&#39;rows&#39;,+1)">+</button>
       </div>
     </div>
@@ -792,7 +804,7 @@ header p { font-size: 11px; opacity: 0.55; margin-top: 4px; letter-spacing: 0.05
   <div class="tol-row">
     <span>허용 오차</span>
     <input type="range" id="tol-range" min="0" max="15" value="3" oninput="setTol(this.value)">
-    <span id="tol-label">±3자</span>
+    <span id="tol-label">±15자</span>
   </div>
 </div>
 
@@ -815,16 +827,16 @@ header p { font-size: 11px; opacity: 0.55; margin-top: 4px; letter-spacing: 0.05
     </div>
   </div>
   <div class="results">
-    <div class="result-info" id="result-info">목표 60자 (±3자) · 15개 글감</div>
-    <div id="poem-list"><div class="card exact-match" onclick="toggleCard(this,0,44)">
+    <div class="result-info" id="result-info">목표 48자 (±15자) · 90개 글감</div>
+    <div id="poem-list"><div class="card exact-match" onclick="toggleCard(this,0,59)">
       <div class="card-top">
         <div class="card-left">
-          <div class="type-badge">불경·경전</div>
-          <div class="card-title">자비의 마음</div>
-          <div class="card-author">불교 경전</div>
+          <div class="type-badge">시조</div>
+          <div class="card-title">어부사 일부</div>
+          <div class="card-author">윤선도</div>
         </div>
         <div class="card-count">
-          <span class="count-num">60</span>
+          <span class="count-num">48</span>
           <span class="count-unit">글자</span>
         </div>
       </div>
@@ -832,138 +844,1377 @@ header p { font-size: 11px; opacity: 0.55; margin-top: 4px; letter-spacing: 0.05
         <div class="match-bar"><div class="match-fill" style="width:100%"></div></div>
         <span class="match-txt exact">정확히 일치</span>
       </div>
-      <div class="preview-text" id="pt-0">모든 중생이 행복하기를 모든 중생이 평화롭기를 모든…</div>
+      <div class="preview-text" id="pt-0">우는 것이 뻐꾸기인가 푸른 것이 버들숲인가 어촌 두…</div>
       <div class="card-btns" id="cb-0">
-        <button class="cbtn" onclick="doCopy(event,44)">텍스트 복사</button>
-        <button class="cbtn primary" onclick="doPreviewDB(event,44)">배열 미리보기</button>
+        <button class="cbtn" onclick="doCopy(event,59)">텍스트 복사</button>
+        <button class="cbtn primary" onclick="doPreviewDB(event,59)">배열 미리보기</button>
       </div>
-    </div><div class="card" onclick="toggleCard(this,1,26)">
+    </div><div class="card exact-match" onclick="toggleCard(this,1,74)">
+      <div class="card-top">
+        <div class="card-left">
+          <div class="type-badge">시조</div>
+          <div class="card-title">재 너머 성권농 집에</div>
+          <div class="card-author">정철</div>
+        </div>
+        <div class="card-count">
+          <span class="count-num">48</span>
+          <span class="count-unit">글자</span>
+        </div>
+      </div>
+      <div class="match-bar-wrap">
+        <div class="match-bar"><div class="match-fill" style="width:100%"></div></div>
+        <span class="match-txt exact">정확히 일치</span>
+      </div>
+      <div class="preview-text" id="pt-1">재 너머 성권농 집에 술 익단 말 어제 듣고 누운 …</div>
+      <div class="card-btns" id="cb-1">
+        <button class="cbtn" onclick="doCopy(event,74)">텍스트 복사</button>
+        <button class="cbtn primary" onclick="doPreviewDB(event,74)">배열 미리보기</button>
+      </div>
+    </div><div class="card exact-match" onclick="toggleCard(this,2,88)">
+      <div class="card-top">
+        <div class="card-left">
+          <div class="type-badge">유교·한시</div>
+          <div class="card-title">송별</div>
+          <div class="card-author">왕유 (당나라)</div>
+        </div>
+        <div class="card-count">
+          <span class="count-num">48</span>
+          <span class="count-unit">글자</span>
+        </div>
+      </div>
+      <div class="match-bar-wrap">
+        <div class="match-bar"><div class="match-fill" style="width:100%"></div></div>
+        <span class="match-txt exact">정확히 일치</span>
+      </div>
+      <div class="preview-text" id="pt-2">산속에서 그대를 보내고 날이 저물어 사립문을 닫는다…</div>
+      <div class="card-btns" id="cb-2">
+        <button class="cbtn" onclick="doCopy(event,88)">텍스트 복사</button>
+        <button class="cbtn primary" onclick="doPreviewDB(event,88)">배열 미리보기</button>
+      </div>
+    </div><div class="card exact-match" onclick="toggleCard(this,3,91)">
+      <div class="card-top">
+        <div class="card-left">
+          <div class="type-badge">유교·한시</div>
+          <div class="card-title">야설</div>
+          <div class="card-author">이양연 (조선)</div>
+        </div>
+        <div class="card-count">
+          <span class="count-num">48</span>
+          <span class="count-unit">글자</span>
+        </div>
+      </div>
+      <div class="match-bar-wrap">
+        <div class="match-bar"><div class="match-fill" style="width:100%"></div></div>
+        <span class="match-txt exact">정확히 일치</span>
+      </div>
+      <div class="preview-text" id="pt-3">눈 덮인 들판을 걸어갈 때 함부로 어지러이 걷지 말…</div>
+      <div class="card-btns" id="cb-3">
+        <button class="cbtn" onclick="doCopy(event,91)">텍스트 복사</button>
+        <button class="cbtn primary" onclick="doPreviewDB(event,91)">배열 미리보기</button>
+      </div>
+    </div><div class="card exact-match" onclick="toggleCard(this,4,94)">
       <div class="card-top">
         <div class="card-left">
           <div class="type-badge">현대시</div>
-          <div class="card-title">향수</div>
-          <div class="card-author">정지용</div>
+          <div class="card-title">진달래꽃 후반</div>
+          <div class="card-author">김소월</div>
         </div>
         <div class="card-count">
-          <span class="count-num">59</span>
+          <span class="count-num">48</span>
+          <span class="count-unit">글자</span>
+        </div>
+      </div>
+      <div class="match-bar-wrap">
+        <div class="match-bar"><div class="match-fill" style="width:100%"></div></div>
+        <span class="match-txt exact">정확히 일치</span>
+      </div>
+      <div class="preview-text" id="pt-4">가시는 걸음 걸음 놓인 그 꽃을 사뿐히 즈려 밟고 …</div>
+      <div class="card-btns" id="cb-4">
+        <button class="cbtn" onclick="doCopy(event,94)">텍스트 복사</button>
+        <button class="cbtn primary" onclick="doPreviewDB(event,94)">배열 미리보기</button>
+      </div>
+    </div><div class="card" onclick="toggleCard(this,5,8)">
+      <div class="card-top">
+        <div class="card-left">
+          <div class="type-badge">시조</div>
+          <div class="card-title">오우가 · 물</div>
+          <div class="card-author">윤선도 (조선)</div>
+        </div>
+        <div class="card-count">
+          <span class="count-num">47</span>
+          <span class="count-unit">글자</span>
+        </div>
+      </div>
+      <div class="match-bar-wrap">
+        <div class="match-bar"><div class="match-fill" style="width:93.33333333333333%"></div></div>
+        <span class="match-txt">1자 부족</span>
+      </div>
+      <div class="preview-text" id="pt-5">구름 빛이 좋다 하나 검기를 자로 한다 바람 소리 …</div>
+      <div class="card-btns" id="cb-5">
+        <button class="cbtn" onclick="doCopy(event,8)">텍스트 복사</button>
+        <button class="cbtn primary" onclick="doPreviewDB(event,8)">배열 미리보기</button>
+      </div>
+    </div><div class="card" onclick="toggleCard(this,6,60)">
+      <div class="card-top">
+        <div class="card-left">
+          <div class="type-badge">시조</div>
+          <div class="card-title">동지달 기나긴 밤</div>
+          <div class="card-author">황진이</div>
+        </div>
+        <div class="card-count">
+          <span class="count-num">47</span>
+          <span class="count-unit">글자</span>
+        </div>
+      </div>
+      <div class="match-bar-wrap">
+        <div class="match-bar"><div class="match-fill" style="width:93.33333333333333%"></div></div>
+        <span class="match-txt">1자 부족</span>
+      </div>
+      <div class="preview-text" id="pt-6">동지달 기나긴 밤을 한 허리를 베어내어 춘풍 이불 …</div>
+      <div class="card-btns" id="cb-6">
+        <button class="cbtn" onclick="doCopy(event,60)">텍스트 복사</button>
+        <button class="cbtn primary" onclick="doPreviewDB(event,60)">배열 미리보기</button>
+      </div>
+    </div><div class="card" onclick="toggleCard(this,7,72)">
+      <div class="card-top">
+        <div class="card-left">
+          <div class="type-badge">시조</div>
+          <div class="card-title">한 손에 가시 들고</div>
+          <div class="card-author">우탁</div>
+        </div>
+        <div class="card-count">
+          <span class="count-num">49</span>
+          <span class="count-unit">글자</span>
+        </div>
+      </div>
+      <div class="match-bar-wrap">
+        <div class="match-bar"><div class="match-fill" style="width:93.33333333333333%"></div></div>
+        <span class="match-txt">1자 초과</span>
+      </div>
+      <div class="preview-text" id="pt-7">한 손에 가시 들고 또 한 손에 막대 들고 늙는 길…</div>
+      <div class="card-btns" id="cb-7">
+        <button class="cbtn" onclick="doCopy(event,72)">텍스트 복사</button>
+        <button class="cbtn primary" onclick="doPreviewDB(event,72)">배열 미리보기</button>
+      </div>
+    </div><div class="card" onclick="toggleCard(this,8,5)">
+      <div class="card-top">
+        <div class="card-left">
+          <div class="type-badge">시조</div>
+          <div class="card-title">하여가</div>
+          <div class="card-author">이방원 (조선)</div>
+        </div>
+        <div class="card-count">
+          <span class="count-num">46</span>
+          <span class="count-unit">글자</span>
+        </div>
+      </div>
+      <div class="match-bar-wrap">
+        <div class="match-bar"><div class="match-fill" style="width:86.66666666666667%"></div></div>
+        <span class="match-txt">2자 부족</span>
+      </div>
+      <div class="preview-text" id="pt-8">이런들 어떠하리 저런들 어떠하리 만수산 드렁칡이 얽…</div>
+      <div class="card-btns" id="cb-8">
+        <button class="cbtn" onclick="doCopy(event,5)">텍스트 복사</button>
+        <button class="cbtn primary" onclick="doPreviewDB(event,5)">배열 미리보기</button>
+      </div>
+    </div><div class="card" onclick="toggleCard(this,9,62)">
+      <div class="card-top">
+        <div class="card-left">
+          <div class="type-badge">시조</div>
+          <div class="card-title">산은 옛산이로되</div>
+          <div class="card-author">황진이</div>
+        </div>
+        <div class="card-count">
+          <span class="count-num">46</span>
+          <span class="count-unit">글자</span>
+        </div>
+      </div>
+      <div class="match-bar-wrap">
+        <div class="match-bar"><div class="match-fill" style="width:86.66666666666667%"></div></div>
+        <span class="match-txt">2자 부족</span>
+      </div>
+      <div class="preview-text" id="pt-9">산은 옛 산이로되 물은 옛 물이 아니로다 주야에 흐…</div>
+      <div class="card-btns" id="cb-9">
+        <button class="cbtn" onclick="doCopy(event,62)">텍스트 복사</button>
+        <button class="cbtn primary" onclick="doPreviewDB(event,62)">배열 미리보기</button>
+      </div>
+    </div><div class="card" onclick="toggleCard(this,10,65)">
+      <div class="card-top">
+        <div class="card-left">
+          <div class="type-badge">시조</div>
+          <div class="card-title">태산이 높다 하되</div>
+          <div class="card-author">양사언</div>
+        </div>
+        <div class="card-count">
+          <span class="count-num">46</span>
+          <span class="count-unit">글자</span>
+        </div>
+      </div>
+      <div class="match-bar-wrap">
+        <div class="match-bar"><div class="match-fill" style="width:86.66666666666667%"></div></div>
+        <span class="match-txt">2자 부족</span>
+      </div>
+      <div class="preview-text" id="pt-10">태산이 높다 하되 하늘 아래 뫼이로다 오르고 또 오…</div>
+      <div class="card-btns" id="cb-10">
+        <button class="cbtn" onclick="doCopy(event,65)">텍스트 복사</button>
+        <button class="cbtn primary" onclick="doPreviewDB(event,65)">배열 미리보기</button>
+      </div>
+    </div><div class="card" onclick="toggleCard(this,11,68)">
+      <div class="card-top">
+        <div class="card-left">
+          <div class="type-badge">시조</div>
+          <div class="card-title">이런들 어떠하리</div>
+          <div class="card-author">이방원</div>
+        </div>
+        <div class="card-count">
+          <span class="count-num">46</span>
+          <span class="count-unit">글자</span>
+        </div>
+      </div>
+      <div class="match-bar-wrap">
+        <div class="match-bar"><div class="match-fill" style="width:86.66666666666667%"></div></div>
+        <span class="match-txt">2자 부족</span>
+      </div>
+      <div class="preview-text" id="pt-11">이런들 어떠하며 저런들 어떠하리 만수산 드렁칡이 얽…</div>
+      <div class="card-btns" id="cb-11">
+        <button class="cbtn" onclick="doCopy(event,68)">텍스트 복사</button>
+        <button class="cbtn primary" onclick="doPreviewDB(event,68)">배열 미리보기</button>
+      </div>
+    </div><div class="card" onclick="toggleCard(this,12,70)">
+      <div class="card-top">
+        <div class="card-left">
+          <div class="type-badge">시조</div>
+          <div class="card-title">십년을 경영하여</div>
+          <div class="card-author">송순</div>
+        </div>
+        <div class="card-count">
+          <span class="count-num">46</span>
+          <span class="count-unit">글자</span>
+        </div>
+      </div>
+      <div class="match-bar-wrap">
+        <div class="match-bar"><div class="match-fill" style="width:86.66666666666667%"></div></div>
+        <span class="match-txt">2자 부족</span>
+      </div>
+      <div class="preview-text" id="pt-12">십년을 경영하여 초려삼간 지어내니 나 한 칸 달 한…</div>
+      <div class="card-btns" id="cb-12">
+        <button class="cbtn" onclick="doCopy(event,70)">텍스트 복사</button>
+        <button class="cbtn primary" onclick="doPreviewDB(event,70)">배열 미리보기</button>
+      </div>
+    </div><div class="card" onclick="toggleCard(this,13,87)">
+      <div class="card-top">
+        <div class="card-left">
+          <div class="type-badge">유교·한시</div>
+          <div class="card-title">녹시</div>
+          <div class="card-author">왕유 (당나라)</div>
+        </div>
+        <div class="card-count">
+          <span class="count-num">50</span>
+          <span class="count-unit">글자</span>
+        </div>
+      </div>
+      <div class="match-bar-wrap">
+        <div class="match-bar"><div class="match-fill" style="width:86.66666666666667%"></div></div>
+        <span class="match-txt">2자 초과</span>
+      </div>
+      <div class="preview-text" id="pt-13">빈 산에 사람은 보이지 아니하고 다만 사람의 말소리…</div>
+      <div class="card-btns" id="cb-13">
+        <button class="cbtn" onclick="doCopy(event,87)">텍스트 복사</button>
+        <button class="cbtn primary" onclick="doPreviewDB(event,87)">배열 미리보기</button>
+      </div>
+    </div><div class="card" onclick="toggleCard(this,14,93)">
+      <div class="card-top">
+        <div class="card-left">
+          <div class="type-badge">현대시</div>
+          <div class="card-title">진달래꽃</div>
+          <div class="card-author">김소월</div>
+        </div>
+        <div class="card-count">
+          <span class="count-num">46</span>
+          <span class="count-unit">글자</span>
+        </div>
+      </div>
+      <div class="match-bar-wrap">
+        <div class="match-bar"><div class="match-fill" style="width:86.66666666666667%"></div></div>
+        <span class="match-txt">2자 부족</span>
+      </div>
+      <div class="preview-text" id="pt-14">나 보기가 역겨워 가실 때에는 말없이 고이 보내 드…</div>
+      <div class="card-btns" id="cb-14">
+        <button class="cbtn" onclick="doCopy(event,93)">텍스트 복사</button>
+        <button class="cbtn primary" onclick="doPreviewDB(event,93)">배열 미리보기</button>
+      </div>
+    </div><div class="card" onclick="toggleCard(this,15,114)">
+      <div class="card-top">
+        <div class="card-left">
+          <div class="type-badge">명언·좋은글</div>
+          <div class="card-title">상선약수</div>
+          <div class="card-author">노자</div>
+        </div>
+        <div class="card-count">
+          <span class="count-num">50</span>
+          <span class="count-unit">글자</span>
+        </div>
+      </div>
+      <div class="match-bar-wrap">
+        <div class="match-bar"><div class="match-fill" style="width:86.66666666666667%"></div></div>
+        <span class="match-txt">2자 초과</span>
+      </div>
+      <div class="preview-text" id="pt-15">가장 좋은 것은 물과 같으니 물은 만물을 이롭게 하…</div>
+      <div class="card-btns" id="cb-15">
+        <button class="cbtn" onclick="doCopy(event,114)">텍스트 복사</button>
+        <button class="cbtn primary" onclick="doPreviewDB(event,114)">배열 미리보기</button>
+      </div>
+    </div><div class="card" onclick="toggleCard(this,16,2)">
+      <div class="card-top">
+        <div class="card-left">
+          <div class="type-badge">시조</div>
+          <div class="card-title">청산은 내 뜻이요</div>
+          <div class="card-author">이황 (조선)</div>
+        </div>
+        <div class="card-count">
+          <span class="count-num">45</span>
+          <span class="count-unit">글자</span>
+        </div>
+      </div>
+      <div class="match-bar-wrap">
+        <div class="match-bar"><div class="match-fill" style="width:80%"></div></div>
+        <span class="match-txt">3자 부족</span>
+      </div>
+      <div class="preview-text" id="pt-16">청산은 내 뜻이요 녹수는 님의 정이 녹수 흘러간들 …</div>
+      <div class="card-btns" id="cb-16">
+        <button class="cbtn" onclick="doCopy(event,2)">텍스트 복사</button>
+        <button class="cbtn primary" onclick="doPreviewDB(event,2)">배열 미리보기</button>
+      </div>
+    </div><div class="card" onclick="toggleCard(this,17,3)">
+      <div class="card-top">
+        <div class="card-left">
+          <div class="type-badge">시조</div>
+          <div class="card-title">동창이 밝았느냐</div>
+          <div class="card-author">남구만 (조선)</div>
+        </div>
+        <div class="card-count">
+          <span class="count-num">45</span>
+          <span class="count-unit">글자</span>
+        </div>
+      </div>
+      <div class="match-bar-wrap">
+        <div class="match-bar"><div class="match-fill" style="width:80%"></div></div>
+        <span class="match-txt">3자 부족</span>
+      </div>
+      <div class="preview-text" id="pt-17">동창이 밝았느냐 노고지리 우지진다 소치는 아해들은 …</div>
+      <div class="card-btns" id="cb-17">
+        <button class="cbtn" onclick="doCopy(event,3)">텍스트 복사</button>
+        <button class="cbtn primary" onclick="doPreviewDB(event,3)">배열 미리보기</button>
+      </div>
+    </div><div class="card" onclick="toggleCard(this,18,4)">
+      <div class="card-top">
+        <div class="card-left">
+          <div class="type-badge">시조</div>
+          <div class="card-title">단심가</div>
+          <div class="card-author">정몽주 (고려)</div>
+        </div>
+        <div class="card-count">
+          <span class="count-num">45</span>
+          <span class="count-unit">글자</span>
+        </div>
+      </div>
+      <div class="match-bar-wrap">
+        <div class="match-bar"><div class="match-fill" style="width:80%"></div></div>
+        <span class="match-txt">3자 부족</span>
+      </div>
+      <div class="preview-text" id="pt-18">이 몸이 죽고 죽어 일백 번 고쳐 죽어 백골이 진토…</div>
+      <div class="card-btns" id="cb-18">
+        <button class="cbtn" onclick="doCopy(event,4)">텍스트 복사</button>
+        <button class="cbtn primary" onclick="doPreviewDB(event,4)">배열 미리보기</button>
+      </div>
+    </div><div class="card" onclick="toggleCard(this,19,14)">
+      <div class="card-top">
+        <div class="card-left">
+          <div class="type-badge">시조</div>
+          <div class="card-title">산은 옛 산이로되</div>
+          <div class="card-author">작자미상</div>
+        </div>
+        <div class="card-count">
+          <span class="count-num">45</span>
+          <span class="count-unit">글자</span>
+        </div>
+      </div>
+      <div class="match-bar-wrap">
+        <div class="match-bar"><div class="match-fill" style="width:80%"></div></div>
+        <span class="match-txt">3자 부족</span>
+      </div>
+      <div class="preview-text" id="pt-19">산은 옛 산이로되 물은 옛 물이 아니로다 주야에 흐…</div>
+      <div class="card-btns" id="cb-19">
+        <button class="cbtn" onclick="doCopy(event,14)">텍스트 복사</button>
+        <button class="cbtn primary" onclick="doPreviewDB(event,14)">배열 미리보기</button>
+      </div>
+    </div><div class="card" onclick="toggleCard(this,20,18)">
+      <div class="card-top">
+        <div class="card-left">
+          <div class="type-badge">시조</div>
+          <div class="card-title">묏버들 가려 꺾어</div>
+          <div class="card-author">홍랑 (조선)</div>
+        </div>
+        <div class="card-count">
+          <span class="count-num">45</span>
+          <span class="count-unit">글자</span>
+        </div>
+      </div>
+      <div class="match-bar-wrap">
+        <div class="match-bar"><div class="match-fill" style="width:80%"></div></div>
+        <span class="match-txt">3자 부족</span>
+      </div>
+      <div class="preview-text" id="pt-20">묏버들 가려 꺾어 보내노라 임의 손에 자시는 창 밖…</div>
+      <div class="card-btns" id="cb-20">
+        <button class="cbtn" onclick="doCopy(event,18)">텍스트 복사</button>
+        <button class="cbtn primary" onclick="doPreviewDB(event,18)">배열 미리보기</button>
+      </div>
+    </div><div class="card" onclick="toggleCard(this,21,56)">
+      <div class="card-top">
+        <div class="card-left">
+          <div class="type-badge">유교·한시</div>
+          <div class="card-title">강설 · 유종원</div>
+          <div class="card-author">유종원 (당나라)</div>
+        </div>
+        <div class="card-count">
+          <span class="count-num">51</span>
+          <span class="count-unit">글자</span>
+        </div>
+      </div>
+      <div class="match-bar-wrap">
+        <div class="match-bar"><div class="match-fill" style="width:80%"></div></div>
+        <span class="match-txt">3자 초과</span>
+      </div>
+      <div class="preview-text" id="pt-21">천 산에 새 날아다님 끊어지고 만 길에 사람 자취 …</div>
+      <div class="card-btns" id="cb-21">
+        <button class="cbtn" onclick="doCopy(event,56)">텍스트 복사</button>
+        <button class="cbtn primary" onclick="doPreviewDB(event,56)">배열 미리보기</button>
+      </div>
+    </div><div class="card" onclick="toggleCard(this,22,67)">
+      <div class="card-top">
+        <div class="card-left">
+          <div class="type-badge">시조</div>
+          <div class="card-title">이몸이 죽고죽어</div>
+          <div class="card-author">정몽주</div>
+        </div>
+        <div class="card-count">
+          <span class="count-num">45</span>
+          <span class="count-unit">글자</span>
+        </div>
+      </div>
+      <div class="match-bar-wrap">
+        <div class="match-bar"><div class="match-fill" style="width:80%"></div></div>
+        <span class="match-txt">3자 부족</span>
+      </div>
+      <div class="preview-text" id="pt-22">이 몸이 죽고 죽어 일백 번 고쳐 죽어 백골이 진토…</div>
+      <div class="card-btns" id="cb-22">
+        <button class="cbtn" onclick="doCopy(event,67)">텍스트 복사</button>
+        <button class="cbtn primary" onclick="doPreviewDB(event,67)">배열 미리보기</button>
+      </div>
+    </div><div class="card" onclick="toggleCard(this,23,71)">
+      <div class="card-top">
+        <div class="card-left">
+          <div class="type-badge">시조</div>
+          <div class="card-title">두류산 양단수를</div>
+          <div class="card-author">조식</div>
+        </div>
+        <div class="card-count">
+          <span class="count-num">45</span>
+          <span class="count-unit">글자</span>
+        </div>
+      </div>
+      <div class="match-bar-wrap">
+        <div class="match-bar"><div class="match-fill" style="width:80%"></div></div>
+        <span class="match-txt">3자 부족</span>
+      </div>
+      <div class="preview-text" id="pt-23">두류산 양단수를 예 듣고 이제 보니 도화 뜬 맑은 …</div>
+      <div class="card-btns" id="cb-23">
+        <button class="cbtn" onclick="doCopy(event,71)">텍스트 복사</button>
+        <button class="cbtn primary" onclick="doPreviewDB(event,71)">배열 미리보기</button>
+      </div>
+    </div><div class="card" onclick="toggleCard(this,24,119)">
+      <div class="card-top">
+        <div class="card-left">
+          <div class="type-badge">명언·좋은글</div>
+          <div class="card-title">적선지가</div>
+          <div class="card-author">주역</div>
+        </div>
+        <div class="card-count">
+          <span class="count-num">45</span>
+          <span class="count-unit">글자</span>
+        </div>
+      </div>
+      <div class="match-bar-wrap">
+        <div class="match-bar"><div class="match-fill" style="width:80%"></div></div>
+        <span class="match-txt">3자 부족</span>
+      </div>
+      <div class="preview-text" id="pt-24">선을 쌓은 집에는 반드시 남은 경사가 있고 불선을 …</div>
+      <div class="card-btns" id="cb-24">
+        <button class="cbtn" onclick="doCopy(event,119)">텍스트 복사</button>
+        <button class="cbtn primary" onclick="doPreviewDB(event,119)">배열 미리보기</button>
+      </div>
+    </div><div class="card" onclick="toggleCard(this,25,0)">
+      <div class="card-top">
+        <div class="card-left">
+          <div class="type-badge">시조</div>
+          <div class="card-title">청산리 벽계수야</div>
+          <div class="card-author">황진이 (조선)</div>
+        </div>
+        <div class="card-count">
+          <span class="count-num">44</span>
+          <span class="count-unit">글자</span>
+        </div>
+      </div>
+      <div class="match-bar-wrap">
+        <div class="match-bar"><div class="match-fill" style="width:73.33333333333334%"></div></div>
+        <span class="match-txt">4자 부족</span>
+      </div>
+      <div class="preview-text" id="pt-25">청산리 벽계수야 수이 감을 자랑 마라 일도 창해 하…</div>
+      <div class="card-btns" id="cb-25">
+        <button class="cbtn" onclick="doCopy(event,0)">텍스트 복사</button>
+        <button class="cbtn primary" onclick="doPreviewDB(event,0)">배열 미리보기</button>
+      </div>
+    </div><div class="card" onclick="toggleCard(this,26,7)">
+      <div class="card-top">
+        <div class="card-left">
+          <div class="type-badge">시조</div>
+          <div class="card-title">수양산 바라보며</div>
+          <div class="card-author">성삼문 (조선)</div>
+        </div>
+        <div class="card-count">
+          <span class="count-num">44</span>
+          <span class="count-unit">글자</span>
+        </div>
+      </div>
+      <div class="match-bar-wrap">
+        <div class="match-bar"><div class="match-fill" style="width:73.33333333333334%"></div></div>
+        <span class="match-txt">4자 부족</span>
+      </div>
+      <div class="preview-text" id="pt-26">수양산 바라보며 이제를 한하노라 주려 죽을지언정 채…</div>
+      <div class="card-btns" id="cb-26">
+        <button class="cbtn" onclick="doCopy(event,7)">텍스트 복사</button>
+        <button class="cbtn primary" onclick="doPreviewDB(event,7)">배열 미리보기</button>
+      </div>
+    </div><div class="card" onclick="toggleCard(this,27,11)">
+      <div class="card-top">
+        <div class="card-left">
+          <div class="type-badge">시조</div>
+          <div class="card-title">오우가 · 달</div>
+          <div class="card-author">윤선도 (조선)</div>
+        </div>
+        <div class="card-count">
+          <span class="count-num">44</span>
+          <span class="count-unit">글자</span>
+        </div>
+      </div>
+      <div class="match-bar-wrap">
+        <div class="match-bar"><div class="match-fill" style="width:73.33333333333334%"></div></div>
+        <span class="match-txt">4자 부족</span>
+      </div>
+      <div class="preview-text" id="pt-27">작은 것이 높이 떠서 만물을 다 비추니 밤중의 광명…</div>
+      <div class="card-btns" id="cb-27">
+        <button class="cbtn" onclick="doCopy(event,11)">텍스트 복사</button>
+        <button class="cbtn primary" onclick="doPreviewDB(event,11)">배열 미리보기</button>
+      </div>
+    </div><div class="card" onclick="toggleCard(this,28,13)">
+      <div class="card-top">
+        <div class="card-left">
+          <div class="type-badge">시조</div>
+          <div class="card-title">청초 우거진 골에</div>
+          <div class="card-author">임제 (조선)</div>
+        </div>
+        <div class="card-count">
+          <span class="count-num">44</span>
+          <span class="count-unit">글자</span>
+        </div>
+      </div>
+      <div class="match-bar-wrap">
+        <div class="match-bar"><div class="match-fill" style="width:73.33333333333334%"></div></div>
+        <span class="match-txt">4자 부족</span>
+      </div>
+      <div class="preview-text" id="pt-28">청초 우거진 골에 자난다 누웠난다 홍안은 어디 두고…</div>
+      <div class="card-btns" id="cb-28">
+        <button class="cbtn" onclick="doCopy(event,13)">텍스트 복사</button>
+        <button class="cbtn primary" onclick="doPreviewDB(event,13)">배열 미리보기</button>
+      </div>
+    </div><div class="card" onclick="toggleCard(this,29,16)">
+      <div class="card-top">
+        <div class="card-left">
+          <div class="type-badge">시조</div>
+          <div class="card-title">훈민가 · 부모 공경</div>
+          <div class="card-author">정철 (조선)</div>
+        </div>
+        <div class="card-count">
+          <span class="count-num">44</span>
+          <span class="count-unit">글자</span>
+        </div>
+      </div>
+      <div class="match-bar-wrap">
+        <div class="match-bar"><div class="match-fill" style="width:73.33333333333334%"></div></div>
+        <span class="match-txt">4자 부족</span>
+      </div>
+      <div class="preview-text" id="pt-29">아버님 날 낳으시고 어머님 날 기르시니 두 분 곧 …</div>
+      <div class="card-btns" id="cb-29">
+        <button class="cbtn" onclick="doCopy(event,16)">텍스트 복사</button>
+        <button class="cbtn primary" onclick="doPreviewDB(event,16)">배열 미리보기</button>
+      </div>
+    </div><div class="card" onclick="toggleCard(this,30,61)">
+      <div class="card-top">
+        <div class="card-left">
+          <div class="type-badge">시조</div>
+          <div class="card-title">청산리 벽계수야</div>
+          <div class="card-author">황진이</div>
+        </div>
+        <div class="card-count">
+          <span class="count-num">44</span>
+          <span class="count-unit">글자</span>
+        </div>
+      </div>
+      <div class="match-bar-wrap">
+        <div class="match-bar"><div class="match-fill" style="width:73.33333333333334%"></div></div>
+        <span class="match-txt">4자 부족</span>
+      </div>
+      <div class="preview-text" id="pt-30">청산리 벽계수야 쉬이 감을 자랑마라 일도창해하면 다…</div>
+      <div class="card-btns" id="cb-30">
+        <button class="cbtn" onclick="doCopy(event,61)">텍스트 복사</button>
+        <button class="cbtn primary" onclick="doPreviewDB(event,61)">배열 미리보기</button>
+      </div>
+    </div><div class="card" onclick="toggleCard(this,31,73)">
+      <div class="card-top">
+        <div class="card-left">
+          <div class="type-badge">시조</div>
+          <div class="card-title">어버이 살아실 제</div>
+          <div class="card-author">정철</div>
+        </div>
+        <div class="card-count">
+          <span class="count-num">44</span>
+          <span class="count-unit">글자</span>
+        </div>
+      </div>
+      <div class="match-bar-wrap">
+        <div class="match-bar"><div class="match-fill" style="width:73.33333333333334%"></div></div>
+        <span class="match-txt">4자 부족</span>
+      </div>
+      <div class="preview-text" id="pt-31">어버이 살아실 제 섬길 일을 다 하여라 지나간 후이…</div>
+      <div class="card-btns" id="cb-31">
+        <button class="cbtn" onclick="doCopy(event,73)">텍스트 복사</button>
+        <button class="cbtn primary" onclick="doPreviewDB(event,73)">배열 미리보기</button>
+      </div>
+    </div><div class="card" onclick="toggleCard(this,32,75)">
+      <div class="card-top">
+        <div class="card-left">
+          <div class="type-badge">시조</div>
+          <div class="card-title">마음이 어린 후이니</div>
+          <div class="card-author">서경덕</div>
+        </div>
+        <div class="card-count">
+          <span class="count-num">44</span>
+          <span class="count-unit">글자</span>
+        </div>
+      </div>
+      <div class="match-bar-wrap">
+        <div class="match-bar"><div class="match-fill" style="width:73.33333333333334%"></div></div>
+        <span class="match-txt">4자 부족</span>
+      </div>
+      <div class="preview-text" id="pt-32">마음이 어린 후이니 하는 일이 다 어리다 만중운산에…</div>
+      <div class="card-btns" id="cb-32">
+        <button class="cbtn" onclick="doCopy(event,75)">텍스트 복사</button>
+        <button class="cbtn primary" onclick="doPreviewDB(event,75)">배열 미리보기</button>
+      </div>
+    </div><div class="card" onclick="toggleCard(this,33,113)">
+      <div class="card-top">
+        <div class="card-left">
+          <div class="type-badge">명언·좋은글</div>
+          <div class="card-title">천리길</div>
+          <div class="card-author">노자</div>
+        </div>
+        <div class="card-count">
+          <span class="count-num">44</span>
+          <span class="count-unit">글자</span>
+        </div>
+      </div>
+      <div class="match-bar-wrap">
+        <div class="match-bar"><div class="match-fill" style="width:73.33333333333334%"></div></div>
+        <span class="match-txt">4자 부족</span>
+      </div>
+      <div class="preview-text" id="pt-33">천리 길도 한걸음에서 시작되고 아홉 길 누대도 한 …</div>
+      <div class="card-btns" id="cb-33">
+        <button class="cbtn" onclick="doCopy(event,113)">텍스트 복사</button>
+        <button class="cbtn primary" onclick="doPreviewDB(event,113)">배열 미리보기</button>
+      </div>
+    </div><div class="card" onclick="toggleCard(this,34,1)">
+      <div class="card-top">
+        <div class="card-left">
+          <div class="type-badge">시조</div>
+          <div class="card-title">어져 내 일이야</div>
+          <div class="card-author">황진이 (조선)</div>
+        </div>
+        <div class="card-count">
+          <span class="count-num">43</span>
           <span class="count-unit">글자</span>
         </div>
       </div>
       <div class="match-bar-wrap">
         <div class="match-bar"><div class="match-fill" style="width:66.66666666666667%"></div></div>
-        <span class="match-txt">1자 부족</span>
+        <span class="match-txt">5자 부족</span>
       </div>
-      <div class="preview-text" id="pt-1">넓은 벌 동쪽 끝으로 옛이야기 지줄대는 실개천이 휘…</div>
-      <div class="card-btns" id="cb-1">
-        <button class="cbtn" onclick="doCopy(event,26)">텍스트 복사</button>
-        <button class="cbtn primary" onclick="doPreviewDB(event,26)">배열 미리보기</button>
+      <div class="preview-text" id="pt-34">어져 내 일이야 그릴 줄을 모르던가 있으라 하더면 …</div>
+      <div class="card-btns" id="cb-34">
+        <button class="cbtn" onclick="doCopy(event,1)">텍스트 복사</button>
+        <button class="cbtn primary" onclick="doPreviewDB(event,1)">배열 미리보기</button>
       </div>
-    </div><div class="card" onclick="toggleCard(this,2,40)">
+    </div><div class="card" onclick="toggleCard(this,35,6)">
+      <div class="card-top">
+        <div class="card-left">
+          <div class="type-badge">시조</div>
+          <div class="card-title">흥망이 유수하니</div>
+          <div class="card-author">원천석 (고려)</div>
+        </div>
+        <div class="card-count">
+          <span class="count-num">43</span>
+          <span class="count-unit">글자</span>
+        </div>
+      </div>
+      <div class="match-bar-wrap">
+        <div class="match-bar"><div class="match-fill" style="width:66.66666666666667%"></div></div>
+        <span class="match-txt">5자 부족</span>
+      </div>
+      <div class="preview-text" id="pt-35">흥망이 유수하니 만월대도 추초로다 오백 년 왕업이 …</div>
+      <div class="card-btns" id="cb-35">
+        <button class="cbtn" onclick="doCopy(event,6)">텍스트 복사</button>
+        <button class="cbtn primary" onclick="doPreviewDB(event,6)">배열 미리보기</button>
+      </div>
+    </div><div class="card" onclick="toggleCard(this,36,9)">
+      <div class="card-top">
+        <div class="card-left">
+          <div class="type-badge">시조</div>
+          <div class="card-title">오우가 · 바위</div>
+          <div class="card-author">윤선도 (조선)</div>
+        </div>
+        <div class="card-count">
+          <span class="count-num">43</span>
+          <span class="count-unit">글자</span>
+        </div>
+      </div>
+      <div class="match-bar-wrap">
+        <div class="match-bar"><div class="match-fill" style="width:66.66666666666667%"></div></div>
+        <span class="match-txt">5자 부족</span>
+      </div>
+      <div class="preview-text" id="pt-36">꽃은 무슨 일로 피면서 쉬이 지고 풀은 어이하여 푸…</div>
+      <div class="card-btns" id="cb-36">
+        <button class="cbtn" onclick="doCopy(event,9)">텍스트 복사</button>
+        <button class="cbtn primary" onclick="doPreviewDB(event,9)">배열 미리보기</button>
+      </div>
+    </div><div class="card" onclick="toggleCard(this,37,10)">
+      <div class="card-top">
+        <div class="card-left">
+          <div class="type-badge">시조</div>
+          <div class="card-title">오우가 · 소나무</div>
+          <div class="card-author">윤선도 (조선)</div>
+        </div>
+        <div class="card-count">
+          <span class="count-num">43</span>
+          <span class="count-unit">글자</span>
+        </div>
+      </div>
+      <div class="match-bar-wrap">
+        <div class="match-bar"><div class="match-fill" style="width:66.66666666666667%"></div></div>
+        <span class="match-txt">5자 부족</span>
+      </div>
+      <div class="preview-text" id="pt-37">더우면 꽃 피고 추우면 잎 지거늘 솔아 너는 어찌 …</div>
+      <div class="card-btns" id="cb-37">
+        <button class="cbtn" onclick="doCopy(event,10)">텍스트 복사</button>
+        <button class="cbtn primary" onclick="doPreviewDB(event,10)">배열 미리보기</button>
+      </div>
+    </div><div class="card" onclick="toggleCard(this,38,12)">
+      <div class="card-top">
+        <div class="card-left">
+          <div class="type-badge">시조</div>
+          <div class="card-title">만흥</div>
+          <div class="card-author">윤선도 (조선)</div>
+        </div>
+        <div class="card-count">
+          <span class="count-num">53</span>
+          <span class="count-unit">글자</span>
+        </div>
+      </div>
+      <div class="match-bar-wrap">
+        <div class="match-bar"><div class="match-fill" style="width:66.66666666666667%"></div></div>
+        <span class="match-txt">5자 초과</span>
+      </div>
+      <div class="preview-text" id="pt-38">산수간 바위 아래 뜻을 두고 지었는데 그 나믄 여남…</div>
+      <div class="card-btns" id="cb-38">
+        <button class="cbtn" onclick="doCopy(event,12)">텍스트 복사</button>
+        <button class="cbtn primary" onclick="doPreviewDB(event,12)">배열 미리보기</button>
+      </div>
+    </div><div class="card" onclick="toggleCard(this,39,15)">
+      <div class="card-top">
+        <div class="card-left">
+          <div class="type-badge">시조</div>
+          <div class="card-title">가노라 삼각산아</div>
+          <div class="card-author">김상헌 (조선)</div>
+        </div>
+        <div class="card-count">
+          <span class="count-num">43</span>
+          <span class="count-unit">글자</span>
+        </div>
+      </div>
+      <div class="match-bar-wrap">
+        <div class="match-bar"><div class="match-fill" style="width:66.66666666666667%"></div></div>
+        <span class="match-txt">5자 부족</span>
+      </div>
+      <div class="preview-text" id="pt-39">가노라 삼각산아 다시 보자 한강수야 고국 산천을 떠…</div>
+      <div class="card-btns" id="cb-39">
+        <button class="cbtn" onclick="doCopy(event,15)">텍스트 복사</button>
+        <button class="cbtn primary" onclick="doPreviewDB(event,15)">배열 미리보기</button>
+      </div>
+    </div><div class="card" onclick="toggleCard(this,40,19)">
+      <div class="card-top">
+        <div class="card-left">
+          <div class="type-badge">시조</div>
+          <div class="card-title">백설이 잦아진 골에</div>
+          <div class="card-author">이색 (고려)</div>
+        </div>
+        <div class="card-count">
+          <span class="count-num">43</span>
+          <span class="count-unit">글자</span>
+        </div>
+      </div>
+      <div class="match-bar-wrap">
+        <div class="match-bar"><div class="match-fill" style="width:66.66666666666667%"></div></div>
+        <span class="match-txt">5자 부족</span>
+      </div>
+      <div class="preview-text" id="pt-40">백설이 잦아진 골에 구름이 머흐레라 반가운 매화는 …</div>
+      <div class="card-btns" id="cb-40">
+        <button class="cbtn" onclick="doCopy(event,19)">텍스트 복사</button>
+        <button class="cbtn primary" onclick="doPreviewDB(event,19)">배열 미리보기</button>
+      </div>
+    </div><div class="card" onclick="toggleCard(this,41,66)">
+      <div class="card-top">
+        <div class="card-left">
+          <div class="type-badge">시조</div>
+          <div class="card-title">백설이 자자진 골에</div>
+          <div class="card-author">이색</div>
+        </div>
+        <div class="card-count">
+          <span class="count-num">43</span>
+          <span class="count-unit">글자</span>
+        </div>
+      </div>
+      <div class="match-bar-wrap">
+        <div class="match-bar"><div class="match-fill" style="width:66.66666666666667%"></div></div>
+        <span class="match-txt">5자 부족</span>
+      </div>
+      <div class="preview-text" id="pt-41">백설이 잦아진 골에 구름이 험하구나 반가운 매화는 …</div>
+      <div class="card-btns" id="cb-41">
+        <button class="cbtn" onclick="doCopy(event,66)">텍스트 복사</button>
+        <button class="cbtn primary" onclick="doPreviewDB(event,66)">배열 미리보기</button>
+      </div>
+    </div><div class="card" onclick="toggleCard(this,42,76)">
+      <div class="card-top">
+        <div class="card-left">
+          <div class="type-badge">시조</div>
+          <div class="card-title">간밤에 부던 바람</div>
+          <div class="card-author">유응부</div>
+        </div>
+        <div class="card-count">
+          <span class="count-num">43</span>
+          <span class="count-unit">글자</span>
+        </div>
+      </div>
+      <div class="match-bar-wrap">
+        <div class="match-bar"><div class="match-fill" style="width:66.66666666666667%"></div></div>
+        <span class="match-txt">5자 부족</span>
+      </div>
+      <div class="preview-text" id="pt-42">간밤에 부던 바람 눈서리 치단 말가 낙락장송이 다 …</div>
+      <div class="card-btns" id="cb-42">
+        <button class="cbtn" onclick="doCopy(event,76)">텍스트 복사</button>
+        <button class="cbtn primary" onclick="doPreviewDB(event,76)">배열 미리보기</button>
+      </div>
+    </div><div class="card" onclick="toggleCard(this,43,77)">
+      <div class="card-top">
+        <div class="card-left">
+          <div class="type-badge">시조</div>
+          <div class="card-title">벽오동 심은 뜻은</div>
+          <div class="card-author">이세보</div>
+        </div>
+        <div class="card-count">
+          <span class="count-num">43</span>
+          <span class="count-unit">글자</span>
+        </div>
+      </div>
+      <div class="match-bar-wrap">
+        <div class="match-bar"><div class="match-fill" style="width:66.66666666666667%"></div></div>
+        <span class="match-txt">5자 부족</span>
+      </div>
+      <div class="preview-text" id="pt-43">벽오동 심은 뜻은 봉황을 보려더니 봉황은 아니 오고…</div>
+      <div class="card-btns" id="cb-43">
+        <button class="cbtn" onclick="doCopy(event,77)">텍스트 복사</button>
+        <button class="cbtn primary" onclick="doPreviewDB(event,77)">배열 미리보기</button>
+      </div>
+    </div><div class="card" onclick="toggleCard(this,44,89)">
+      <div class="card-top">
+        <div class="card-left">
+          <div class="type-badge">유교·한시</div>
+          <div class="card-title">추야우중</div>
+          <div class="card-author">최치원 (신라)</div>
+        </div>
+        <div class="card-count">
+          <span class="count-num">43</span>
+          <span class="count-unit">글자</span>
+        </div>
+      </div>
+      <div class="match-bar-wrap">
+        <div class="match-bar"><div class="match-fill" style="width:66.66666666666667%"></div></div>
+        <span class="match-txt">5자 부족</span>
+      </div>
+      <div class="preview-text" id="pt-44">가을바람에 괴로이 읊조리니 세상에 알아주는 이 적도…</div>
+      <div class="card-btns" id="cb-44">
+        <button class="cbtn" onclick="doCopy(event,89)">텍스트 복사</button>
+        <button class="cbtn primary" onclick="doPreviewDB(event,89)">배열 미리보기</button>
+      </div>
+    </div><div class="card" onclick="toggleCard(this,45,116)">
       <div class="card-top">
         <div class="card-left">
           <div class="type-badge">명언·좋은글</div>
-          <div class="card-title">꽃이 피는 이유</div>
+          <div class="card-title">화광동진</div>
+          <div class="card-author">노자</div>
+        </div>
+        <div class="card-count">
+          <span class="count-num">43</span>
+          <span class="count-unit">글자</span>
+        </div>
+      </div>
+      <div class="match-bar-wrap">
+        <div class="match-bar"><div class="match-fill" style="width:66.66666666666667%"></div></div>
+        <span class="match-txt">5자 부족</span>
+      </div>
+      <div class="preview-text" id="pt-45">그 빛을 부드럽게 하여 티끌과 함께하니 깊고 깊어 …</div>
+      <div class="card-btns" id="cb-45">
+        <button class="cbtn" onclick="doCopy(event,116)">텍스트 복사</button>
+        <button class="cbtn primary" onclick="doPreviewDB(event,116)">배열 미리보기</button>
+      </div>
+    </div><div class="card" onclick="toggleCard(this,46,118)">
+      <div class="card-top">
+        <div class="card-left">
+          <div class="type-badge">명언·좋은글</div>
+          <div class="card-title">역경 격언</div>
+          <div class="card-author">주역</div>
+        </div>
+        <div class="card-count">
+          <span class="count-num">53</span>
+          <span class="count-unit">글자</span>
+        </div>
+      </div>
+      <div class="match-bar-wrap">
+        <div class="match-bar"><div class="match-fill" style="width:66.66666666666667%"></div></div>
+        <span class="match-txt">5자 초과</span>
+      </div>
+      <div class="preview-text" id="pt-46">하늘의 운행은 굳세니 군자는 이로써 스스로 굳세고 …</div>
+      <div class="card-btns" id="cb-46">
+        <button class="cbtn" onclick="doCopy(event,118)">텍스트 복사</button>
+        <button class="cbtn primary" onclick="doPreviewDB(event,118)">배열 미리보기</button>
+      </div>
+    </div><div class="card" onclick="toggleCard(this,47,64)">
+      <div class="card-top">
+        <div class="card-left">
+          <div class="type-badge">시조</div>
+          <div class="card-title">반중 조홍감이</div>
+          <div class="card-author">박인로</div>
+        </div>
+        <div class="card-count">
+          <span class="count-num">42</span>
+          <span class="count-unit">글자</span>
+        </div>
+      </div>
+      <div class="match-bar-wrap">
+        <div class="match-bar"><div class="match-fill" style="width:60%"></div></div>
+        <span class="match-txt">6자 부족</span>
+      </div>
+      <div class="preview-text" id="pt-47">반중 조홍감이 곱게도 보이는구나 유자 아니라도 품음…</div>
+      <div class="card-btns" id="cb-47">
+        <button class="cbtn" onclick="doCopy(event,64)">텍스트 복사</button>
+        <button class="cbtn primary" onclick="doPreviewDB(event,64)">배열 미리보기</button>
+      </div>
+    </div><div class="card" onclick="toggleCard(this,48,69)">
+      <div class="card-top">
+        <div class="card-left">
+          <div class="type-badge">시조</div>
+          <div class="card-title">어부단가</div>
+          <div class="card-author">이현보</div>
+        </div>
+        <div class="card-count">
+          <span class="count-num">42</span>
+          <span class="count-unit">글자</span>
+        </div>
+      </div>
+      <div class="match-bar-wrap">
+        <div class="match-bar"><div class="match-fill" style="width:60%"></div></div>
+        <span class="match-txt">6자 부족</span>
+      </div>
+      <div class="preview-text" id="pt-48">이중에 시름 없으니 어부의 생애로다 일엽편주를 만경…</div>
+      <div class="card-btns" id="cb-48">
+        <button class="cbtn" onclick="doCopy(event,69)">텍스트 복사</button>
+        <button class="cbtn primary" onclick="doPreviewDB(event,69)">배열 미리보기</button>
+      </div>
+    </div><div class="card" onclick="toggleCard(this,49,78)">
+      <div class="card-top">
+        <div class="card-left">
+          <div class="type-badge">시조</div>
+          <div class="card-title">국화야 너는 어이</div>
+          <div class="card-author">이정보</div>
+        </div>
+        <div class="card-count">
+          <span class="count-num">42</span>
+          <span class="count-unit">글자</span>
+        </div>
+      </div>
+      <div class="match-bar-wrap">
+        <div class="match-bar"><div class="match-fill" style="width:60%"></div></div>
+        <span class="match-txt">6자 부족</span>
+      </div>
+      <div class="preview-text" id="pt-49">국화야 너는 어이 삼월동풍 다 보내고 낙목한천에 너…</div>
+      <div class="card-btns" id="cb-49">
+        <button class="cbtn" onclick="doCopy(event,78)">텍스트 복사</button>
+        <button class="cbtn primary" onclick="doPreviewDB(event,78)">배열 미리보기</button>
+      </div>
+    </div><div class="card" onclick="toggleCard(this,50,103)">
+      <div class="card-top">
+        <div class="card-left">
+          <div class="type-badge">현대시</div>
+          <div class="card-title">님의 침묵 일부</div>
+          <div class="card-author">한용운</div>
+        </div>
+        <div class="card-count">
+          <span class="count-num">54</span>
+          <span class="count-unit">글자</span>
+        </div>
+      </div>
+      <div class="match-bar-wrap">
+        <div class="match-bar"><div class="match-fill" style="width:60%"></div></div>
+        <span class="match-txt">6자 초과</span>
+      </div>
+      <div class="preview-text" id="pt-50">님은 갔습니다 아아 사랑하는 나의 님은 갔습니다 푸…</div>
+      <div class="card-btns" id="cb-50">
+        <button class="cbtn" onclick="doCopy(event,103)">텍스트 복사</button>
+        <button class="cbtn primary" onclick="doPreviewDB(event,103)">배열 미리보기</button>
+      </div>
+    </div><div class="card" onclick="toggleCard(this,51,120)">
+      <div class="card-top">
+        <div class="card-left">
+          <div class="type-badge">명언·좋은글</div>
+          <div class="card-title">겸손</div>
+          <div class="card-author">명심보감</div>
+        </div>
+        <div class="card-count">
+          <span class="count-num">54</span>
+          <span class="count-unit">글자</span>
+        </div>
+      </div>
+      <div class="match-bar-wrap">
+        <div class="match-bar"><div class="match-fill" style="width:60%"></div></div>
+        <span class="match-txt">6자 초과</span>
+      </div>
+      <div class="preview-text" id="pt-51">산이 높고 클지라도 아무도 알아주지 않으면 그 높음…</div>
+      <div class="card-btns" id="cb-51">
+        <button class="cbtn" onclick="doCopy(event,120)">텍스트 복사</button>
+        <button class="cbtn primary" onclick="doPreviewDB(event,120)">배열 미리보기</button>
+      </div>
+    </div><div class="card" onclick="toggleCard(this,52,32)">
+      <div class="card-top">
+        <div class="card-left">
+          <div class="type-badge">현대시</div>
+          <div class="card-title">봄은 고양이로다</div>
+          <div class="card-author">이장희</div>
+        </div>
+        <div class="card-count">
+          <span class="count-num">55</span>
+          <span class="count-unit">글자</span>
+        </div>
+      </div>
+      <div class="match-bar-wrap">
+        <div class="match-bar"><div class="match-fill" style="width:53.333333333333336%"></div></div>
+        <span class="match-txt">7자 초과</span>
+      </div>
+      <div class="preview-text" id="pt-52">꽃가루와 같이 부드러운 고양이의 털에 고운 봄의 향…</div>
+      <div class="card-btns" id="cb-52">
+        <button class="cbtn" onclick="doCopy(event,32)">텍스트 복사</button>
+        <button class="cbtn primary" onclick="doPreviewDB(event,32)">배열 미리보기</button>
+      </div>
+    </div><div class="card" onclick="toggleCard(this,53,34)">
+      <div class="card-top">
+        <div class="card-left">
+          <div class="type-badge">명언·좋은글</div>
+          <div class="card-title">무소유</div>
+          <div class="card-author">법정 스님</div>
+        </div>
+        <div class="card-count">
+          <span class="count-num">55</span>
+          <span class="count-unit">글자</span>
+        </div>
+      </div>
+      <div class="match-bar-wrap">
+        <div class="match-bar"><div class="match-fill" style="width:53.333333333333336%"></div></div>
+        <span class="match-txt">7자 초과</span>
+      </div>
+      <div class="preview-text" id="pt-53">무소유란 아무것도 갖지 않는다는 것이 아니라 불필요…</div>
+      <div class="card-btns" id="cb-53">
+        <button class="cbtn" onclick="doCopy(event,34)">텍스트 복사</button>
+        <button class="cbtn primary" onclick="doPreviewDB(event,34)">배열 미리보기</button>
+      </div>
+    </div><div class="card" onclick="toggleCard(this,54,37)">
+      <div class="card-top">
+        <div class="card-left">
+          <div class="type-badge">명언·좋은글</div>
+          <div class="card-title">지금 이 순간</div>
           <div class="card-author">현대 명언</div>
         </div>
         <div class="card-count">
-          <span class="count-num">59</span>
+          <span class="count-num">55</span>
           <span class="count-unit">글자</span>
         </div>
       </div>
       <div class="match-bar-wrap">
-        <div class="match-bar"><div class="match-fill" style="width:66.66666666666667%"></div></div>
-        <span class="match-txt">1자 부족</span>
+        <div class="match-bar"><div class="match-fill" style="width:53.333333333333336%"></div></div>
+        <span class="match-txt">7자 초과</span>
       </div>
-      <div class="preview-text" id="pt-2">꽃이 피는 것은 봄 때문이 아니다 꽃이 피고 싶어서…</div>
-      <div class="card-btns" id="cb-2">
-        <button class="cbtn" onclick="doCopy(event,40)">텍스트 복사</button>
-        <button class="cbtn primary" onclick="doPreviewDB(event,40)">배열 미리보기</button>
+      <div class="preview-text" id="pt-54">지금 이 순간이 가장 소중하다 과거는 이미 지나갔고…</div>
+      <div class="card-btns" id="cb-54">
+        <button class="cbtn" onclick="doCopy(event,37)">텍스트 복사</button>
+        <button class="cbtn primary" onclick="doPreviewDB(event,37)">배열 미리보기</button>
       </div>
-    </div><div class="card" onclick="toggleCard(this,3,42)">
+    </div><div class="card" onclick="toggleCard(this,55,63)">
+      <div class="card-top">
+        <div class="card-left">
+          <div class="type-badge">시조</div>
+          <div class="card-title">까마귀 검다 하고</div>
+          <div class="card-author">이직</div>
+        </div>
+        <div class="card-count">
+          <span class="count-num">41</span>
+          <span class="count-unit">글자</span>
+        </div>
+      </div>
+      <div class="match-bar-wrap">
+        <div class="match-bar"><div class="match-fill" style="width:53.333333333333336%"></div></div>
+        <span class="match-txt">7자 부족</span>
+      </div>
+      <div class="preview-text" id="pt-55">까마귀 검다 하고 백로야 웃지 마라 겉이 검다고 속…</div>
+      <div class="card-btns" id="cb-55">
+        <button class="cbtn" onclick="doCopy(event,63)">텍스트 복사</button>
+        <button class="cbtn primary" onclick="doPreviewDB(event,63)">배열 미리보기</button>
+      </div>
+    </div><div class="card" onclick="toggleCard(this,56,79)">
+      <div class="card-top">
+        <div class="card-left">
+          <div class="type-badge">유교·한시</div>
+          <div class="card-title">산중문답</div>
+          <div class="card-author">이백 (당나라)</div>
+        </div>
+        <div class="card-count">
+          <span class="count-num">55</span>
+          <span class="count-unit">글자</span>
+        </div>
+      </div>
+      <div class="match-bar-wrap">
+        <div class="match-bar"><div class="match-fill" style="width:53.333333333333336%"></div></div>
+        <span class="match-txt">7자 초과</span>
+      </div>
+      <div class="preview-text" id="pt-56">무슨 일로 청산에 사느냐 묻기에 웃으며 답 아니하니…</div>
+      <div class="card-btns" id="cb-56">
+        <button class="cbtn" onclick="doCopy(event,79)">텍스트 복사</button>
+        <button class="cbtn primary" onclick="doPreviewDB(event,79)">배열 미리보기</button>
+      </div>
+    </div><div class="card" onclick="toggleCard(this,57,97)">
+      <div class="card-top">
+        <div class="card-left">
+          <div class="type-badge">현대시</div>
+          <div class="card-title">엄마야 누나야</div>
+          <div class="card-author">김소월</div>
+        </div>
+        <div class="card-count">
+          <span class="count-num">41</span>
+          <span class="count-unit">글자</span>
+        </div>
+      </div>
+      <div class="match-bar-wrap">
+        <div class="match-bar"><div class="match-fill" style="width:53.333333333333336%"></div></div>
+        <span class="match-txt">7자 부족</span>
+      </div>
+      <div class="preview-text" id="pt-57">엄마야 누나야 강변 살자 뜰에는 반짝이는 금모래빛 …</div>
+      <div class="card-btns" id="cb-57">
+        <button class="cbtn" onclick="doCopy(event,97)">텍스트 복사</button>
+        <button class="cbtn primary" onclick="doPreviewDB(event,97)">배열 미리보기</button>
+      </div>
+    </div><div class="card" onclick="toggleCard(this,58,115)">
       <div class="card-top">
         <div class="card-left">
           <div class="type-badge">명언·좋은글</div>
-          <div class="card-title">먹과 종이의 만남</div>
-          <div class="card-author">서예 명언</div>
+          <div class="card-title">대기만성</div>
+          <div class="card-author">노자</div>
         </div>
         <div class="card-count">
-          <span class="count-num">59</span>
+          <span class="count-num">41</span>
           <span class="count-unit">글자</span>
         </div>
       </div>
       <div class="match-bar-wrap">
-        <div class="match-bar"><div class="match-fill" style="width:66.66666666666667%"></div></div>
-        <span class="match-txt">1자 부족</span>
+        <div class="match-bar"><div class="match-fill" style="width:53.333333333333336%"></div></div>
+        <span class="match-txt">7자 부족</span>
       </div>
-      <div class="preview-text" id="pt-3">한 번 내려간 붓은 되돌릴 수 없다 그러니 매 획마…</div>
-      <div class="card-btns" id="cb-3">
-        <button class="cbtn" onclick="doCopy(event,42)">텍스트 복사</button>
-        <button class="cbtn primary" onclick="doPreviewDB(event,42)">배열 미리보기</button>
+      <div class="preview-text" id="pt-58">큰 그릇은 늦게 이루어지고 큰 소리는 들리지 않으며…</div>
+      <div class="card-btns" id="cb-58">
+        <button class="cbtn" onclick="doCopy(event,115)">텍스트 복사</button>
+        <button class="cbtn primary" onclick="doPreviewDB(event,115)">배열 미리보기</button>
       </div>
-    </div><div class="card" onclick="toggleCard(this,4,45)">
+    </div><div class="card" onclick="toggleCard(this,59,22)">
       <div class="card-top">
         <div class="card-left">
-          <div class="type-badge">불경·경전</div>
-          <div class="card-title">인연의 가르침</div>
-          <div class="card-author">불교 경전</div>
+          <div class="type-badge">현대시</div>
+          <div class="card-title">나그네</div>
+          <div class="card-author">박목월</div>
         </div>
         <div class="card-count">
-          <span class="count-num">59</span>
+          <span class="count-num">56</span>
           <span class="count-unit">글자</span>
         </div>
       </div>
       <div class="match-bar-wrap">
-        <div class="match-bar"><div class="match-fill" style="width:66.66666666666667%"></div></div>
-        <span class="match-txt">1자 부족</span>
+        <div class="match-bar"><div class="match-fill" style="width:46.666666666666664%"></div></div>
+        <span class="match-txt">8자 초과</span>
       </div>
-      <div class="preview-text" id="pt-4">모든 것은 인연으로 모이고 인연이 다하면 흩어진다 …</div>
-      <div class="card-btns" id="cb-4">
-        <button class="cbtn" onclick="doCopy(event,45)">텍스트 복사</button>
-        <button class="cbtn primary" onclick="doPreviewDB(event,45)">배열 미리보기</button>
+      <div class="preview-text" id="pt-59">강나루 건너서 밀밭 길을 구름에 달 가듯이 가는 나…</div>
+      <div class="card-btns" id="cb-59">
+        <button class="cbtn" onclick="doCopy(event,22)">텍스트 복사</button>
+        <button class="cbtn primary" onclick="doPreviewDB(event,22)">배열 미리보기</button>
       </div>
-    </div><div class="card" onclick="toggleCard(this,5,50)">
+    </div><div class="card" onclick="toggleCard(this,60,27)">
+      <div class="card-top">
+        <div class="card-left">
+          <div class="type-badge">현대시</div>
+          <div class="card-title">광야</div>
+          <div class="card-author">이육사</div>
+        </div>
+        <div class="card-count">
+          <span class="count-num">56</span>
+          <span class="count-unit">글자</span>
+        </div>
+      </div>
+      <div class="match-bar-wrap">
+        <div class="match-bar"><div class="match-fill" style="width:46.666666666666664%"></div></div>
+        <span class="match-txt">8자 초과</span>
+      </div>
+      <div class="preview-text" id="pt-60">까마득한 날에 하늘이 처음 열리고 어데 닭 우는 소…</div>
+      <div class="card-btns" id="cb-60">
+        <button class="cbtn" onclick="doCopy(event,27)">텍스트 복사</button>
+        <button class="cbtn primary" onclick="doPreviewDB(event,27)">배열 미리보기</button>
+      </div>
+    </div><div class="card" onclick="toggleCard(this,61,80)">
       <div class="card-top">
         <div class="card-left">
           <div class="type-badge">유교·한시</div>
-          <div class="card-title">학이시습지</div>
-          <div class="card-author">논어 · 학이편</div>
+          <div class="card-title">정야사</div>
+          <div class="card-author">이백 (당나라)</div>
         </div>
         <div class="card-count">
-          <span class="count-num">61</span>
+          <span class="count-num">40</span>
           <span class="count-unit">글자</span>
         </div>
       </div>
       <div class="match-bar-wrap">
-        <div class="match-bar"><div class="match-fill" style="width:66.66666666666667%"></div></div>
-        <span class="match-txt">1자 초과</span>
+        <div class="match-bar"><div class="match-fill" style="width:46.666666666666664%"></div></div>
+        <span class="match-txt">8자 부족</span>
       </div>
-      <div class="preview-text" id="pt-5">배우고 때때로 익히면 또한 기쁘지 아니한가 벗이 멀…</div>
-      <div class="card-btns" id="cb-5">
-        <button class="cbtn" onclick="doCopy(event,50)">텍스트 복사</button>
-        <button class="cbtn primary" onclick="doPreviewDB(event,50)">배열 미리보기</button>
+      <div class="preview-text" id="pt-61">침상 앞 밝은 달빛 땅 위에 서리 내린 듯하구나 머…</div>
+      <div class="card-btns" id="cb-61">
+        <button class="cbtn" onclick="doCopy(event,80)">텍스트 복사</button>
+        <button class="cbtn primary" onclick="doPreviewDB(event,80)">배열 미리보기</button>
       </div>
-    </div><div class="card" onclick="toggleCard(this,6,54)">
+    </div><div class="card" onclick="toggleCard(this,62,33)">
+      <div class="card-top">
+        <div class="card-left">
+          <div class="type-badge">명언·좋은글</div>
+          <div class="card-title">하루를 살아도</div>
+          <div class="card-author">법정 스님</div>
+        </div>
+        <div class="card-count">
+          <span class="count-num">57</span>
+          <span class="count-unit">글자</span>
+        </div>
+      </div>
+      <div class="match-bar-wrap">
+        <div class="match-bar"><div class="match-fill" style="width:40%"></div></div>
+        <span class="match-txt">9자 초과</span>
+      </div>
+      <div class="preview-text" id="pt-62">하루를 살아도 맑고 향기롭게 살아라 좋은 생각을 가…</div>
+      <div class="card-btns" id="cb-62">
+        <button class="cbtn" onclick="doCopy(event,33)">텍스트 복사</button>
+        <button class="cbtn primary" onclick="doPreviewDB(event,33)">배열 미리보기</button>
+      </div>
+    </div><div class="card" onclick="toggleCard(this,63,38)">
+      <div class="card-top">
+        <div class="card-left">
+          <div class="type-badge">명언·좋은글</div>
+          <div class="card-title">작은 것의 소중함</div>
+          <div class="card-author">현대 명언</div>
+        </div>
+        <div class="card-count">
+          <span class="count-num">57</span>
+          <span class="count-unit">글자</span>
+        </div>
+      </div>
+      <div class="match-bar-wrap">
+        <div class="match-bar"><div class="match-fill" style="width:40%"></div></div>
+        <span class="match-txt">9자 초과</span>
+      </div>
+      <div class="preview-text" id="pt-63">작은 것에 감사할 줄 아는 사람이 큰 것도 얻을 수…</div>
+      <div class="card-btns" id="cb-63">
+        <button class="cbtn" onclick="doCopy(event,38)">텍스트 복사</button>
+        <button class="cbtn primary" onclick="doPreviewDB(event,38)">배열 미리보기</button>
+      </div>
+    </div><div class="card" onclick="toggleCard(this,64,92)">
       <div class="card-top">
         <div class="card-left">
           <div class="type-badge">유교·한시</div>
-          <div class="card-title">호연지기</div>
-          <div class="card-author">맹자</div>
+          <div class="card-title">관저</div>
+          <div class="card-author">시경</div>
         </div>
         <div class="card-count">
-          <span class="count-num">61</span>
+          <span class="count-num">57</span>
           <span class="count-unit">글자</span>
         </div>
       </div>
       <div class="match-bar-wrap">
-        <div class="match-bar"><div class="match-fill" style="width:66.66666666666667%"></div></div>
-        <span class="match-txt">1자 초과</span>
+        <div class="match-bar"><div class="match-fill" style="width:40%"></div></div>
+        <span class="match-txt">9자 초과</span>
       </div>
-      <div class="preview-text" id="pt-6">호연지기란 지극히 크고 지극히 강한 것이니 곧게 길…</div>
-      <div class="card-btns" id="cb-6">
-        <button class="cbtn" onclick="doCopy(event,54)">텍스트 복사</button>
-        <button class="cbtn primary" onclick="doPreviewDB(event,54)">배열 미리보기</button>
+      <div class="preview-text" id="pt-64">꾸욱꾸욱 우는 물수리는 황하의 모래섬에 있구나 아리…</div>
+      <div class="card-btns" id="cb-64">
+        <button class="cbtn" onclick="doCopy(event,92)">텍스트 복사</button>
+        <button class="cbtn primary" onclick="doPreviewDB(event,92)">배열 미리보기</button>
       </div>
-    </div><div class="card" onclick="toggleCard(this,7,17)">
+    </div><div class="card" onclick="toggleCard(this,65,111)">
+      <div class="card-top">
+        <div class="card-left">
+          <div class="type-badge">현대시</div>
+          <div class="card-title">고향</div>
+          <div class="card-author">정지용</div>
+        </div>
+        <div class="card-count">
+          <span class="count-num">57</span>
+          <span class="count-unit">글자</span>
+        </div>
+      </div>
+      <div class="match-bar-wrap">
+        <div class="match-bar"><div class="match-fill" style="width:40%"></div></div>
+        <span class="match-txt">9자 초과</span>
+      </div>
+      <div class="preview-text" id="pt-65">고향에 고향에 돌아와도 그리던 고향은 아니러뇨 산꿩…</div>
+      <div class="card-btns" id="cb-65">
+        <button class="cbtn" onclick="doCopy(event,111)">텍스트 복사</button>
+        <button class="cbtn primary" onclick="doPreviewDB(event,111)">배열 미리보기</button>
+      </div>
+    </div><div class="card" onclick="toggleCard(this,66,17)">
       <div class="card-top">
         <div class="card-left">
           <div class="type-badge">시조</div>
@@ -977,14 +2228,14 @@ header p { font-size: 11px; opacity: 0.55; margin-top: 4px; letter-spacing: 0.05
       </div>
       <div class="match-bar-wrap">
         <div class="match-bar"><div class="match-fill" style="width:33.333333333333336%"></div></div>
-        <span class="match-txt">2자 부족</span>
+        <span class="match-txt">10자 초과</span>
       </div>
-      <div class="preview-text" id="pt-7">강호에 봄이 드니 이 몸이 할일이 많다 나는 그물 …</div>
-      <div class="card-btns" id="cb-7">
+      <div class="preview-text" id="pt-66">강호에 봄이 드니 이 몸이 할일이 많다 나는 그물 …</div>
+      <div class="card-btns" id="cb-66">
         <button class="cbtn" onclick="doCopy(event,17)">텍스트 복사</button>
         <button class="cbtn primary" onclick="doPreviewDB(event,17)">배열 미리보기</button>
       </div>
-    </div><div class="card" onclick="toggleCard(this,8,29)">
+    </div><div class="card" onclick="toggleCard(this,67,29)">
       <div class="card-top">
         <div class="card-left">
           <div class="type-badge">현대시</div>
@@ -998,14 +2249,14 @@ header p { font-size: 11px; opacity: 0.55; margin-top: 4px; letter-spacing: 0.05
       </div>
       <div class="match-bar-wrap">
         <div class="match-bar"><div class="match-fill" style="width:33.333333333333336%"></div></div>
-        <span class="match-txt">2자 부족</span>
+        <span class="match-txt">10자 초과</span>
       </div>
-      <div class="preview-text" id="pt-8">산에는 꽃 피네 꽃이 피네 갈 봄 여름 없이 꽃이 …</div>
-      <div class="card-btns" id="cb-8">
+      <div class="preview-text" id="pt-67">산에는 꽃 피네 꽃이 피네 갈 봄 여름 없이 꽃이 …</div>
+      <div class="card-btns" id="cb-67">
         <button class="cbtn" onclick="doCopy(event,29)">텍스트 복사</button>
         <button class="cbtn primary" onclick="doPreviewDB(event,29)">배열 미리보기</button>
       </div>
-    </div><div class="card" onclick="toggleCard(this,9,39)">
+    </div><div class="card" onclick="toggleCard(this,68,39)">
       <div class="card-top">
         <div class="card-left">
           <div class="type-badge">명언·좋은글</div>
@@ -1019,14 +2270,14 @@ header p { font-size: 11px; opacity: 0.55; margin-top: 4px; letter-spacing: 0.05
       </div>
       <div class="match-bar-wrap">
         <div class="match-bar"><div class="match-fill" style="width:33.333333333333336%"></div></div>
-        <span class="match-txt">2자 부족</span>
+        <span class="match-txt">10자 초과</span>
       </div>
-      <div class="preview-text" id="pt-9">천 리 길도 한 걸음부터 시작된다 높은 산도 한 걸…</div>
-      <div class="card-btns" id="cb-9">
+      <div class="preview-text" id="pt-68">천 리 길도 한 걸음부터 시작된다 높은 산도 한 걸…</div>
+      <div class="card-btns" id="cb-68">
         <button class="cbtn" onclick="doCopy(event,39)">텍스트 복사</button>
         <button class="cbtn primary" onclick="doPreviewDB(event,39)">배열 미리보기</button>
       </div>
-    </div><div class="card" onclick="toggleCard(this,10,52)">
+    </div><div class="card" onclick="toggleCard(this,69,52)">
       <div class="card-top">
         <div class="card-left">
           <div class="type-badge">유교·한시</div>
@@ -1040,56 +2291,392 @@ header p { font-size: 11px; opacity: 0.55; margin-top: 4px; letter-spacing: 0.05
       </div>
       <div class="match-bar-wrap">
         <div class="match-bar"><div class="match-fill" style="width:33.333333333333336%"></div></div>
-        <span class="match-txt">2자 부족</span>
+        <span class="match-txt">10자 초과</span>
       </div>
-      <div class="preview-text" id="pt-10">군자는 두루 사귀되 편을 가르지 않고 소인은 편을 …</div>
-      <div class="card-btns" id="cb-10">
+      <div class="preview-text" id="pt-69">군자는 두루 사귀되 편을 가르지 않고 소인은 편을 …</div>
+      <div class="card-btns" id="cb-69">
         <button class="cbtn" onclick="doCopy(event,52)">텍스트 복사</button>
         <button class="cbtn primary" onclick="doPreviewDB(event,52)">배열 미리보기</button>
       </div>
-    </div><div class="card" onclick="toggleCard(this,11,33)">
+    </div><div class="card" onclick="toggleCard(this,70,96)">
       <div class="card-top">
         <div class="card-left">
-          <div class="type-badge">명언·좋은글</div>
-          <div class="card-title">하루를 살아도</div>
-          <div class="card-author">법정 스님</div>
+          <div class="type-badge">현대시</div>
+          <div class="card-title">산유화</div>
+          <div class="card-author">김소월</div>
         </div>
         <div class="card-count">
-          <span class="count-num">57</span>
+          <span class="count-num">58</span>
           <span class="count-unit">글자</span>
         </div>
       </div>
       <div class="match-bar-wrap">
-        <div class="match-bar"><div class="match-fill" style="width:0%"></div></div>
-        <span class="match-txt">3자 부족</span>
+        <div class="match-bar"><div class="match-fill" style="width:33.333333333333336%"></div></div>
+        <span class="match-txt">10자 초과</span>
       </div>
-      <div class="preview-text" id="pt-11">하루를 살아도 맑고 향기롭게 살아라 좋은 생각을 가…</div>
-      <div class="card-btns" id="cb-11">
-        <button class="cbtn" onclick="doCopy(event,33)">텍스트 복사</button>
-        <button class="cbtn primary" onclick="doPreviewDB(event,33)">배열 미리보기</button>
+      <div class="preview-text" id="pt-70">산에는 꽃 피네 꽃이 피네 갈 봄 여름없이 꽃이 피…</div>
+      <div class="card-btns" id="cb-70">
+        <button class="cbtn" onclick="doCopy(event,96)">텍스트 복사</button>
+        <button class="cbtn primary" onclick="doPreviewDB(event,96)">배열 미리보기</button>
       </div>
-    </div><div class="card" onclick="toggleCard(this,12,38)">
+    </div><div class="card" onclick="toggleCard(this,71,117)">
       <div class="card-top">
         <div class="card-left">
           <div class="type-badge">명언·좋은글</div>
-          <div class="card-title">작은 것의 소중함</div>
+          <div class="card-title">마음의 거울</div>
+          <div class="card-author">장자</div>
+        </div>
+        <div class="card-count">
+          <span class="count-num">58</span>
+          <span class="count-unit">글자</span>
+        </div>
+      </div>
+      <div class="match-bar-wrap">
+        <div class="match-bar"><div class="match-fill" style="width:33.333333333333336%"></div></div>
+        <span class="match-txt">10자 초과</span>
+      </div>
+      <div class="preview-text" id="pt-71">지인의 마음 씀은 거울과 같으니 보내지도 아니하고 …</div>
+      <div class="card-btns" id="cb-71">
+        <button class="cbtn" onclick="doCopy(event,117)">텍스트 복사</button>
+        <button class="cbtn primary" onclick="doPreviewDB(event,117)">배열 미리보기</button>
+      </div>
+    </div><div class="card" onclick="toggleCard(this,72,26)">
+      <div class="card-top">
+        <div class="card-left">
+          <div class="type-badge">현대시</div>
+          <div class="card-title">향수</div>
+          <div class="card-author">정지용</div>
+        </div>
+        <div class="card-count">
+          <span class="count-num">59</span>
+          <span class="count-unit">글자</span>
+        </div>
+      </div>
+      <div class="match-bar-wrap">
+        <div class="match-bar"><div class="match-fill" style="width:26.66666666666667%"></div></div>
+        <span class="match-txt">11자 초과</span>
+      </div>
+      <div class="preview-text" id="pt-72">넓은 벌 동쪽 끝으로 옛이야기 지줄대는 실개천이 휘…</div>
+      <div class="card-btns" id="cb-72">
+        <button class="cbtn" onclick="doCopy(event,26)">텍스트 복사</button>
+        <button class="cbtn primary" onclick="doPreviewDB(event,26)">배열 미리보기</button>
+      </div>
+    </div><div class="card" onclick="toggleCard(this,73,40)">
+      <div class="card-top">
+        <div class="card-left">
+          <div class="type-badge">명언·좋은글</div>
+          <div class="card-title">꽃이 피는 이유</div>
           <div class="card-author">현대 명언</div>
         </div>
         <div class="card-count">
-          <span class="count-num">57</span>
+          <span class="count-num">59</span>
           <span class="count-unit">글자</span>
         </div>
       </div>
       <div class="match-bar-wrap">
-        <div class="match-bar"><div class="match-fill" style="width:0%"></div></div>
-        <span class="match-txt">3자 부족</span>
+        <div class="match-bar"><div class="match-fill" style="width:26.66666666666667%"></div></div>
+        <span class="match-txt">11자 초과</span>
       </div>
-      <div class="preview-text" id="pt-12">작은 것에 감사할 줄 아는 사람이 큰 것도 얻을 수…</div>
-      <div class="card-btns" id="cb-12">
-        <button class="cbtn" onclick="doCopy(event,38)">텍스트 복사</button>
-        <button class="cbtn primary" onclick="doPreviewDB(event,38)">배열 미리보기</button>
+      <div class="preview-text" id="pt-73">꽃이 피는 것은 봄 때문이 아니다 꽃이 피고 싶어서…</div>
+      <div class="card-btns" id="cb-73">
+        <button class="cbtn" onclick="doCopy(event,40)">텍스트 복사</button>
+        <button class="cbtn primary" onclick="doPreviewDB(event,40)">배열 미리보기</button>
       </div>
-    </div><div class="card" onclick="toggleCard(this,13,48)">
+    </div><div class="card" onclick="toggleCard(this,74,42)">
+      <div class="card-top">
+        <div class="card-left">
+          <div class="type-badge">명언·좋은글</div>
+          <div class="card-title">먹과 종이의 만남</div>
+          <div class="card-author">서예 명언</div>
+        </div>
+        <div class="card-count">
+          <span class="count-num">59</span>
+          <span class="count-unit">글자</span>
+        </div>
+      </div>
+      <div class="match-bar-wrap">
+        <div class="match-bar"><div class="match-fill" style="width:26.66666666666667%"></div></div>
+        <span class="match-txt">11자 초과</span>
+      </div>
+      <div class="preview-text" id="pt-74">한 번 내려간 붓은 되돌릴 수 없다 그러니 매 획마…</div>
+      <div class="card-btns" id="cb-74">
+        <button class="cbtn" onclick="doCopy(event,42)">텍스트 복사</button>
+        <button class="cbtn primary" onclick="doPreviewDB(event,42)">배열 미리보기</button>
+      </div>
+    </div><div class="card" onclick="toggleCard(this,75,45)">
+      <div class="card-top">
+        <div class="card-left">
+          <div class="type-badge">불경·경전</div>
+          <div class="card-title">인연의 가르침</div>
+          <div class="card-author">불교 경전</div>
+        </div>
+        <div class="card-count">
+          <span class="count-num">59</span>
+          <span class="count-unit">글자</span>
+        </div>
+      </div>
+      <div class="match-bar-wrap">
+        <div class="match-bar"><div class="match-fill" style="width:26.66666666666667%"></div></div>
+        <span class="match-txt">11자 초과</span>
+      </div>
+      <div class="preview-text" id="pt-75">모든 것은 인연으로 모이고 인연이 다하면 흩어진다 …</div>
+      <div class="card-btns" id="cb-75">
+        <button class="cbtn" onclick="doCopy(event,45)">텍스트 복사</button>
+        <button class="cbtn primary" onclick="doPreviewDB(event,45)">배열 미리보기</button>
+      </div>
+    </div><div class="card" onclick="toggleCard(this,76,83)">
+      <div class="card-top">
+        <div class="card-left">
+          <div class="type-badge">유교·한시</div>
+          <div class="card-title">등고</div>
+          <div class="card-author">두보 (당나라)</div>
+        </div>
+        <div class="card-count">
+          <span class="count-num">59</span>
+          <span class="count-unit">글자</span>
+        </div>
+      </div>
+      <div class="match-bar-wrap">
+        <div class="match-bar"><div class="match-fill" style="width:26.66666666666667%"></div></div>
+        <span class="match-txt">11자 초과</span>
+      </div>
+      <div class="preview-text" id="pt-76">바람 급하고 하늘 높아 잔나비 슬피 울고 맑은 물가…</div>
+      <div class="card-btns" id="cb-76">
+        <button class="cbtn" onclick="doCopy(event,83)">텍스트 복사</button>
+        <button class="cbtn primary" onclick="doPreviewDB(event,83)">배열 미리보기</button>
+      </div>
+    </div><div class="card" onclick="toggleCard(this,77,108)">
+      <div class="card-top">
+        <div class="card-left">
+          <div class="type-badge">현대시</div>
+          <div class="card-title">향수 일부</div>
+          <div class="card-author">정지용</div>
+        </div>
+        <div class="card-count">
+          <span class="count-num">59</span>
+          <span class="count-unit">글자</span>
+        </div>
+      </div>
+      <div class="match-bar-wrap">
+        <div class="match-bar"><div class="match-fill" style="width:26.66666666666667%"></div></div>
+        <span class="match-txt">11자 초과</span>
+      </div>
+      <div class="preview-text" id="pt-77">넓은 벌 동쪽 끝으로 옛 이야기 지줄대는 실개천이 …</div>
+      <div class="card-btns" id="cb-77">
+        <button class="cbtn" onclick="doCopy(event,108)">텍스트 복사</button>
+        <button class="cbtn primary" onclick="doPreviewDB(event,108)">배열 미리보기</button>
+      </div>
+    </div><div class="card" onclick="toggleCard(this,78,122)">
+      <div class="card-top">
+        <div class="card-left">
+          <div class="type-badge">명언·좋은글</div>
+          <div class="card-title">시간</div>
+          <div class="card-author">주자</div>
+        </div>
+        <div class="card-count">
+          <span class="count-num">59</span>
+          <span class="count-unit">글자</span>
+        </div>
+      </div>
+      <div class="match-bar-wrap">
+        <div class="match-bar"><div class="match-fill" style="width:26.66666666666667%"></div></div>
+        <span class="match-txt">11자 초과</span>
+      </div>
+      <div class="preview-text" id="pt-78">젊음은 늙기 쉽고 학문은 이루기 어려우니 짧은 시간…</div>
+      <div class="card-btns" id="cb-78">
+        <button class="cbtn" onclick="doCopy(event,122)">텍스트 복사</button>
+        <button class="cbtn primary" onclick="doPreviewDB(event,122)">배열 미리보기</button>
+      </div>
+    </div><div class="card" onclick="toggleCard(this,79,44)">
+      <div class="card-top">
+        <div class="card-left">
+          <div class="type-badge">불경·경전</div>
+          <div class="card-title">자비의 마음</div>
+          <div class="card-author">불교 경전</div>
+        </div>
+        <div class="card-count">
+          <span class="count-num">60</span>
+          <span class="count-unit">글자</span>
+        </div>
+      </div>
+      <div class="match-bar-wrap">
+        <div class="match-bar"><div class="match-fill" style="width:19.999999999999996%"></div></div>
+        <span class="match-txt">12자 초과</span>
+      </div>
+      <div class="preview-text" id="pt-79">모든 중생이 행복하기를 모든 중생이 평화롭기를 모든…</div>
+      <div class="card-btns" id="cb-79">
+        <button class="cbtn" onclick="doCopy(event,44)">텍스트 복사</button>
+        <button class="cbtn primary" onclick="doPreviewDB(event,44)">배열 미리보기</button>
+      </div>
+    </div><div class="card" onclick="toggleCard(this,80,82)">
+      <div class="card-top">
+        <div class="card-left">
+          <div class="type-badge">유교·한시</div>
+          <div class="card-title">춘망</div>
+          <div class="card-author">두보 (당나라)</div>
+        </div>
+        <div class="card-count">
+          <span class="count-num">60</span>
+          <span class="count-unit">글자</span>
+        </div>
+      </div>
+      <div class="match-bar-wrap">
+        <div class="match-bar"><div class="match-fill" style="width:19.999999999999996%"></div></div>
+        <span class="match-txt">12자 초과</span>
+      </div>
+      <div class="preview-text" id="pt-80">나라가 깨어져도 산하는 그대로요 성에는 봄이 들어 …</div>
+      <div class="card-btns" id="cb-80">
+        <button class="cbtn" onclick="doCopy(event,82)">텍스트 복사</button>
+        <button class="cbtn primary" onclick="doPreviewDB(event,82)">배열 미리보기</button>
+      </div>
+    </div><div class="card" onclick="toggleCard(this,81,95)">
+      <div class="card-top">
+        <div class="card-left">
+          <div class="type-badge">현대시</div>
+          <div class="card-title">먼 후일</div>
+          <div class="card-author">김소월</div>
+        </div>
+        <div class="card-count">
+          <span class="count-num">60</span>
+          <span class="count-unit">글자</span>
+        </div>
+      </div>
+      <div class="match-bar-wrap">
+        <div class="match-bar"><div class="match-fill" style="width:19.999999999999996%"></div></div>
+        <span class="match-txt">12자 초과</span>
+      </div>
+      <div class="preview-text" id="pt-81">먼 훗날 당신이 찾으시면 그때에 내 말이 잊었노라 …</div>
+      <div class="card-btns" id="cb-81">
+        <button class="cbtn" onclick="doCopy(event,95)">텍스트 복사</button>
+        <button class="cbtn primary" onclick="doPreviewDB(event,95)">배열 미리보기</button>
+      </div>
+    </div><div class="card" onclick="toggleCard(this,82,50)">
+      <div class="card-top">
+        <div class="card-left">
+          <div class="type-badge">유교·한시</div>
+          <div class="card-title">학이시습지</div>
+          <div class="card-author">논어 · 학이편</div>
+        </div>
+        <div class="card-count">
+          <span class="count-num">61</span>
+          <span class="count-unit">글자</span>
+        </div>
+      </div>
+      <div class="match-bar-wrap">
+        <div class="match-bar"><div class="match-fill" style="width:13.33333333333333%"></div></div>
+        <span class="match-txt">13자 초과</span>
+      </div>
+      <div class="preview-text" id="pt-82">배우고 때때로 익히면 또한 기쁘지 아니한가 벗이 멀…</div>
+      <div class="card-btns" id="cb-82">
+        <button class="cbtn" onclick="doCopy(event,50)">텍스트 복사</button>
+        <button class="cbtn primary" onclick="doPreviewDB(event,50)">배열 미리보기</button>
+      </div>
+    </div><div class="card" onclick="toggleCard(this,83,54)">
+      <div class="card-top">
+        <div class="card-left">
+          <div class="type-badge">유교·한시</div>
+          <div class="card-title">호연지기</div>
+          <div class="card-author">맹자</div>
+        </div>
+        <div class="card-count">
+          <span class="count-num">61</span>
+          <span class="count-unit">글자</span>
+        </div>
+      </div>
+      <div class="match-bar-wrap">
+        <div class="match-bar"><div class="match-fill" style="width:13.33333333333333%"></div></div>
+        <span class="match-txt">13자 초과</span>
+      </div>
+      <div class="preview-text" id="pt-83">호연지기란 지극히 크고 지극히 강한 것이니 곧게 길…</div>
+      <div class="card-btns" id="cb-83">
+        <button class="cbtn" onclick="doCopy(event,54)">텍스트 복사</button>
+        <button class="cbtn primary" onclick="doPreviewDB(event,54)">배열 미리보기</button>
+      </div>
+    </div><div class="card" onclick="toggleCard(this,84,90)">
+      <div class="card-top">
+        <div class="card-left">
+          <div class="type-badge">유교·한시</div>
+          <div class="card-title">송인</div>
+          <div class="card-author">정지상 (고려)</div>
+        </div>
+        <div class="card-count">
+          <span class="count-num">61</span>
+          <span class="count-unit">글자</span>
+        </div>
+      </div>
+      <div class="match-bar-wrap">
+        <div class="match-bar"><div class="match-fill" style="width:13.33333333333333%"></div></div>
+        <span class="match-txt">13자 초과</span>
+      </div>
+      <div class="preview-text" id="pt-84">비 갠 긴 둑에 풀빛이 더욱 푸르른데 그대 보내는 …</div>
+      <div class="card-btns" id="cb-84">
+        <button class="cbtn" onclick="doCopy(event,90)">텍스트 복사</button>
+        <button class="cbtn primary" onclick="doPreviewDB(event,90)">배열 미리보기</button>
+      </div>
+    </div><div class="card" onclick="toggleCard(this,85,98)">
+      <div class="card-top">
+        <div class="card-left">
+          <div class="type-badge">현대시</div>
+          <div class="card-title">바라건대는 우리에게</div>
+          <div class="card-author">김소월</div>
+        </div>
+        <div class="card-count">
+          <span class="count-num">61</span>
+          <span class="count-unit">글자</span>
+        </div>
+      </div>
+      <div class="match-bar-wrap">
+        <div class="match-bar"><div class="match-fill" style="width:13.33333333333333%"></div></div>
+        <span class="match-txt">13자 초과</span>
+      </div>
+      <div class="preview-text" id="pt-85">우리에게 우리의 보습 대일 땅이 있었더면 이처럼 떠…</div>
+      <div class="card-btns" id="cb-85">
+        <button class="cbtn" onclick="doCopy(event,98)">텍스트 복사</button>
+        <button class="cbtn primary" onclick="doPreviewDB(event,98)">배열 미리보기</button>
+      </div>
+    </div><div class="card" onclick="toggleCard(this,86,107)">
+      <div class="card-top">
+        <div class="card-left">
+          <div class="type-badge">현대시</div>
+          <div class="card-title">빼앗긴 들에도</div>
+          <div class="card-author">이상화</div>
+        </div>
+        <div class="card-count">
+          <span class="count-num">61</span>
+          <span class="count-unit">글자</span>
+        </div>
+      </div>
+      <div class="match-bar-wrap">
+        <div class="match-bar"><div class="match-fill" style="width:13.33333333333333%"></div></div>
+        <span class="match-txt">13자 초과</span>
+      </div>
+      <div class="preview-text" id="pt-86">지금은 남의 땅 빼앗긴 들에도 봄은 오는가 나는 온…</div>
+      <div class="card-btns" id="cb-86">
+        <button class="cbtn" onclick="doCopy(event,107)">텍스트 복사</button>
+        <button class="cbtn primary" onclick="doPreviewDB(event,107)">배열 미리보기</button>
+      </div>
+    </div><div class="card" onclick="toggleCard(this,87,106)">
+      <div class="card-top">
+        <div class="card-left">
+          <div class="type-badge">현대시</div>
+          <div class="card-title">나룻배와 행인</div>
+          <div class="card-author">한용운</div>
+        </div>
+        <div class="card-count">
+          <span class="count-num">62</span>
+          <span class="count-unit">글자</span>
+        </div>
+      </div>
+      <div class="match-bar-wrap">
+        <div class="match-bar"><div class="match-fill" style="width:6.666666666666665%"></div></div>
+        <span class="match-txt">14자 초과</span>
+      </div>
+      <div class="preview-text" id="pt-87">나는 나룻배 당신은 행인 당신은 흙발로 나를 짓밟습…</div>
+      <div class="card-btns" id="cb-87">
+        <button class="cbtn" onclick="doCopy(event,106)">텍스트 복사</button>
+        <button class="cbtn primary" onclick="doPreviewDB(event,106)">배열 미리보기</button>
+      </div>
+    </div><div class="card" onclick="toggleCard(this,88,48)">
       <div class="card-top">
         <div class="card-left">
           <div class="type-badge">불경·경전</div>
@@ -1103,14 +2690,14 @@ header p { font-size: 11px; opacity: 0.55; margin-top: 4px; letter-spacing: 0.05
       </div>
       <div class="match-bar-wrap">
         <div class="match-bar"><div class="match-fill" style="width:0%"></div></div>
-        <span class="match-txt">3자 초과</span>
+        <span class="match-txt">15자 초과</span>
       </div>
-      <div class="preview-text" id="pt-13">색즉시공 공즉시색 모든 것은 비어 있으며 비어 있음…</div>
-      <div class="card-btns" id="cb-13">
+      <div class="preview-text" id="pt-88">색즉시공 공즉시색 모든 것은 비어 있으며 비어 있음…</div>
+      <div class="card-btns" id="cb-88">
         <button class="cbtn" onclick="doCopy(event,48)">텍스트 복사</button>
         <button class="cbtn primary" onclick="doPreviewDB(event,48)">배열 미리보기</button>
       </div>
-    </div><div class="card" onclick="toggleCard(this,14,58)">
+    </div><div class="card" onclick="toggleCard(this,89,58)">
       <div class="card-top">
         <div class="card-left">
           <div class="type-badge">유교·한시</div>
@@ -1124,10 +2711,10 @@ header p { font-size: 11px; opacity: 0.55; margin-top: 4px; letter-spacing: 0.05
       </div>
       <div class="match-bar-wrap">
         <div class="match-bar"><div class="match-fill" style="width:0%"></div></div>
-        <span class="match-txt">3자 초과</span>
+        <span class="match-txt">15자 초과</span>
       </div>
-      <div class="preview-text" id="pt-14">천지 사이에 정기 있으니 잡되게 형태를 나타내도다 …</div>
-      <div class="card-btns" id="cb-14">
+      <div class="preview-text" id="pt-89">천지 사이에 정기 있으니 잡되게 형태를 나타내도다 …</div>
+      <div class="card-btns" id="cb-89">
         <button class="cbtn" onclick="doCopy(event,58)">텍스트 복사</button>
         <button class="cbtn primary" onclick="doPreviewDB(event,58)">배열 미리보기</button>
       </div>
@@ -1146,9 +2733,9 @@ header p { font-size: 11px; opacity: 0.55; margin-top: 4px; letter-spacing: 0.05
       <div class="direct-count">
         입력 <strong id="d-count">0</strong>자
         <span style="color:#bbb;margin:0 4px">/</span>
-        목표 <strong id="d-target">60</strong>자
+        목표 <strong id="d-target">48</strong>자
       </div>
-      <div class="direct-diff" id="d-diff">0자 부족</div>
+      <div class="direct-diff" id="d-diff">48자 부족</div>
     </div>
     <button class="direct-preview-btn" id="d-preview-btn" onclick="directPreview()" disabled="">
       배열 미리보기
@@ -1169,8 +2756,8 @@ header p { font-size: 11px; opacity: 0.55; margin-top: 4px; letter-spacing: 0.05
     <div class="modal-handle"></div>
     <div class="modal-head">
       <div>
-        <div class="modal-title" id="m-title"></div>
-        <div class="modal-sub" id="m-sub"></div>
+        <div class="modal-title" id="m-title">쉽게 쓰여진 시 전문</div>
+        <div class="modal-sub" id="m-sub">윤동주 · 136자  /  본문 목표 150자</div>
       </div>
       <button class="modal-close" onclick="closeModal()">✕</button>
     </div>
@@ -1181,14 +2768,14 @@ header p { font-size: 11px; opacity: 0.55; margin-top: 4px; letter-spacing: 0.05
       <button class="m-paper-chip" data-pw="45" data-ph="70" data-c="5" data-r="12" onclick="setPaperFromModal(this,5,12,45,70)">3절<em>45×70</em></button>
       <button class="m-paper-chip" data-pw="35" data-ph="135" data-c="4" data-r="15" onclick="setPaperFromModal(this,4,15,35,135)">반절<em>35×135</em></button>
       <button class="m-paper-chip" data-pw="70" data-ph="135" data-c="6" data-r="20" onclick="setPaperFromModal(this,6,20,70,135)">전지<em>70×135</em></button>
-      <button class="m-paper-chip" data-pw="70" data-ph="200" data-c="6" data-r="25" onclick="setPaperFromModal(this,6,25,70,200)">국전지<em>70×200</em></button>
+      <button class="m-paper-chip active" data-pw="70" data-ph="200" data-c="6" data-r="25" onclick="setPaperFromModal(this,6,25,70,200)">국전지<em>70×200</em></button>
     </div>
 
     <!-- 서체 선택 -->
     <div class="script-toggle">
       <span class="script-lbl">서체</span>
       <button class="script-btn" id="script-gungseo" onclick="setScript(&#39;gungseo&#39;)">궁서체</button>
-      <button class="script-btn" id="script-panbon" onclick="setScript(&#39;panbon&#39;)">판본체</button>
+      <button class="script-btn active" id="script-panbon" onclick="setScript(&#39;panbon&#39;)">판본체</button>
     </div>
 
     <div class="grid-toolbar">
@@ -1205,12 +2792,14 @@ header p { font-size: 11px; opacity: 0.55; margin-top: 4px; letter-spacing: 0.05
     </div>
 
     <div class="paper-container">
-      <div class="paper-wrap" id="m-paper-wrap">
-        <div class="margin-zone left" id="m-margin-zone-left"></div>
-        <div class="sub-zone left" id="m-sub-zone-left"></div>
-        <div class="paper-grid" id="m-grid"></div>
-        <div class="sub-zone right" id="m-sub-zone-right"></div>
-        <div class="margin-zone right" id="m-margin-zone-right"></div>
+      <div class="paper-wrap" id="m-paper-wrap" style="width: 256px; height: 724px; padding-top: 26px; padding-bottom: 26px;">
+        <div class="margin-zone left" id="m-margin-zone-left" style="width: 37px; height: 672px;"></div>
+        <div class="sub-zone left script-panbon" id="m-sub-zone-left" style="width: 116px; height: 672px;"><div class="grid-col" style="width:29px;height:672px"><div class="grid-cell" style="width:29px;height:25px;font-size:19px" onclick="toggleCell(&#39;l&#39;,0,0)"><span class="cell-glyph stretch" style="transform:scale(1.404,1.158)">조</span></div><div class="grid-cell" style="width:29px;height:31px;font-size:19px" onclick="toggleCell(&#39;l&#39;,0,1)"><span class="cell-glyph stretch" style="transform:scale(1.404,1.436)">금</span></div><div class="grid-cell" style="width:29px;height:25px;font-size:19px" onclick="toggleCell(&#39;l&#39;,0,2)"><span class="cell-glyph stretch" style="transform:scale(1.404,1.158)">내</span></div><div class="grid-cell" style="width:29px;height:32px;font-size:19px" onclick="toggleCell(&#39;l&#39;,0,3)"><span class="cell-glyph stretch" style="transform:scale(1.404,1.482)">몰</span></div><div class="grid-cell" style="width:29px;height:25px;font-size:19px" onclick="toggleCell(&#39;l&#39;,0,4)"><span class="cell-glyph stretch" style="transform:scale(1.404,1.158)">고</span></div><div class="grid-cell" style="width:29px;height:25px;font-size:19px" onclick="toggleCell(&#39;l&#39;,0,5)"><span class="cell-glyph stretch" style="transform:scale(1.404,1.158)">시</span></div><div class="grid-cell" style="width:29px;height:25px;font-size:19px" onclick="toggleCell(&#39;l&#39;,0,6)"><span class="cell-glyph stretch" style="transform:scale(1.404,1.158)">대</span></div><div class="grid-cell" style="width:29px;height:25px;font-size:19px" onclick="toggleCell(&#39;l&#39;,0,7)"><span class="cell-glyph stretch" style="transform:scale(1.404,1.158)">처</span></div><div class="grid-cell" style="width:29px;height:32px;font-size:19px" onclick="toggleCell(&#39;l&#39;,0,8)"><span class="cell-glyph stretch" style="transform:scale(1.404,1.482)">럼</span></div><div class="grid-cell" style="width:29px;height:34px;font-size:19px" onclick="toggleCell(&#39;l&#39;,0,9)"><span class="cell-glyph stretch" style="transform:scale(1.404,1.575)">올</span></div><div class="grid-cell" style="width:29px;height:25px;font-size:19px" onclick="toggleCell(&#39;l&#39;,0,10)"><span class="cell-glyph stretch" style="transform:scale(1.404,1.158)">아</span></div><div class="grid-cell" style="width:29px;height:31px;font-size:19px" onclick="toggleCell(&#39;l&#39;,0,11)"><span class="cell-glyph stretch" style="transform:scale(1.404,1.436)">침</span></div><div class="grid-cell" style="width:29px;height:34px;font-size:19px" onclick="toggleCell(&#39;l&#39;,0,12)"><span class="cell-glyph stretch" style="transform:scale(1.404,1.575)">을</span></div><div class="grid-cell" style="width:29px;height:25px;font-size:19px" onclick="toggleCell(&#39;l&#39;,0,13)"><span class="cell-glyph stretch" style="transform:scale(1.404,1.158)">기</span></div><div class="grid-cell" style="width:29px;height:24px;font-size:19px" onclick="toggleCell(&#39;l&#39;,0,14)"><span class="cell-glyph stretch" style="transform:scale(1.404,1.112)">다</span></div><div class="grid-cell" style="width:29px;height:24px;font-size:19px" onclick="toggleCell(&#39;l&#39;,0,15)"><span class="cell-glyph stretch" style="transform:scale(1.404,1.112)">리</span></div><div class="grid-cell" style="width:29px;height:31px;font-size:19px" onclick="toggleCell(&#39;l&#39;,0,16)"><span class="cell-glyph stretch" style="transform:scale(1.404,1.436)">는</span></div><div class="grid-cell" style="width:29px;height:24px;font-size:19px" onclick="toggleCell(&#39;l&#39;,0,17)"><span class="cell-glyph stretch" style="transform:scale(1.404,1.112)">최</span></div><div class="grid-cell" style="width:29px;height:24px;font-size:19px" onclick="toggleCell(&#39;l&#39;,0,18)"><span class="cell-glyph stretch" style="transform:scale(1.404,1.112)">후</span></div><div class="grid-cell" style="width:29px;height:24px;font-size:19px" onclick="toggleCell(&#39;l&#39;,0,19)"><span class="cell-glyph stretch" style="transform:scale(1.404,1.112)">의</span></div><div class="grid-cell" style="width:29px;height:24px;font-size:19px" onclick="toggleCell(&#39;l&#39;,0,20)"><span class="cell-glyph stretch" style="transform:scale(1.404,1.112)">나</span></div><div class="grid-cell" style="width:29px;height:24px;font-size:19px" onclick="toggleCell(&#39;l&#39;,0,21)"><span class="cell-glyph stretch" style="transform:scale(1.404,1.112)">나</span></div><div class="grid-cell" style="width:29px;height:31px;font-size:19px" onclick="toggleCell(&#39;l&#39;,0,22)"><span class="cell-glyph stretch" style="transform:scale(1.404,1.436)">는</span></div><div class="grid-cell" style="width:29px;height:24px;font-size:19px" onclick="toggleCell(&#39;l&#39;,0,23)"><span class="cell-glyph stretch" style="transform:scale(1.404,1.112)">나</span></div><div class="grid-cell" style="width:29px;height:24px;font-size:19px" onclick="toggleCell(&#39;l&#39;,0,24)"><span class="cell-glyph stretch" style="transform:scale(1.404,1.112)">에</span></div></div><div class="grid-col" style="width:29px;height:672px"><div class="grid-cell" style="width:29px;height:24px;font-size:19px" onclick="toggleCell(&#39;l&#39;,1,0)"><span class="cell-glyph stretch" style="transform:scale(1.404,1.112)">게</span></div><div class="grid-cell" style="width:29px;height:31px;font-size:19px" onclick="toggleCell(&#39;l&#39;,1,1)"><span class="cell-glyph stretch" style="transform:scale(1.404,1.436)">작</span></div><div class="grid-cell" style="width:29px;height:31px;font-size:19px" onclick="toggleCell(&#39;l&#39;,1,2)"><span class="cell-glyph stretch" style="transform:scale(1.404,1.436)">은</span></div><div class="grid-cell" style="width:29px;height:29px;font-size:19px" onclick="toggleCell(&#39;l&#39;,1,3)"><span class="cell-glyph stretch" style="transform:scale(1.404,1.343)">손</span></div><div class="grid-cell" style="width:29px;height:33px;font-size:19px" onclick="toggleCell(&#39;l&#39;,1,4)"><span class="cell-glyph stretch" style="transform:scale(1.404,1.528)">을</span></div><div class="grid-cell" style="width:29px;height:24px;font-size:19px" onclick="toggleCell(&#39;l&#39;,1,5)"><span class="cell-glyph stretch" style="transform:scale(1.404,1.112)">내</span></div><div class="grid-cell" style="width:29px;height:31px;font-size:19px" onclick="toggleCell(&#39;l&#39;,1,6)"><span class="cell-glyph stretch" style="transform:scale(1.404,1.436)">밀</span></div><div class="grid-cell" style="width:29px;height:24px;font-size:19px" onclick="toggleCell(&#39;l&#39;,1,7)"><span class="cell-glyph stretch" style="transform:scale(1.404,1.112)">어</span></div><div class="grid-cell" style="width:29px;height:29px;font-size:19px" onclick="toggleCell(&#39;l&#39;,1,8)"><span class="cell-glyph stretch" style="transform:scale(1.404,1.343)">눈</span></div><div class="grid-cell" style="width:29px;height:31px;font-size:19px" onclick="toggleCell(&#39;l&#39;,1,9)"><span class="cell-glyph stretch" style="transform:scale(1.404,1.436)">물</span></div><div class="grid-cell" style="width:29px;height:24px;font-size:19px" onclick="toggleCell(&#39;l&#39;,1,10)"><span class="cell-glyph stretch" style="transform:scale(1.404,1.112)">과</span></div><div class="grid-cell" style="width:29px;height:24px;font-size:19px" onclick="toggleCell(&#39;l&#39;,1,11)"><span class="cell-glyph stretch" style="transform:scale(1.404,1.112)">위</span></div><div class="grid-cell" style="width:29px;height:31px;font-size:19px" onclick="toggleCell(&#39;l&#39;,1,12)"><span class="cell-glyph stretch" style="transform:scale(1.404,1.436)">안</span></div><div class="grid-cell" style="width:29px;height:24px;font-size:19px" onclick="toggleCell(&#39;l&#39;,1,13)"><span class="cell-glyph stretch" style="transform:scale(1.404,1.112)">으</span></div><div class="grid-cell" style="width:29px;height:24px;font-size:19px" onclick="toggleCell(&#39;l&#39;,1,14)"><span class="cell-glyph stretch" style="transform:scale(1.404,1.112)">로</span></div><div class="grid-cell" style="width:29px;height:31px;font-size:19px" onclick="toggleCell(&#39;l&#39;,1,15)"><span class="cell-glyph stretch" style="transform:scale(1.404,1.436)">잡</span></div><div class="grid-cell" style="width:29px;height:29px;font-size:19px" onclick="toggleCell(&#39;l&#39;,1,16)"><span class="cell-glyph stretch" style="transform:scale(1.404,1.343)">는</span></div><div class="grid-cell" style="width:29px;height:23px;font-size:19px" onclick="toggleCell(&#39;l&#39;,1,17)"><span class="cell-glyph stretch" style="transform:scale(1.404,1.065)">최</span></div><div class="grid-cell" style="width:29px;height:23px;font-size:19px" onclick="toggleCell(&#39;l&#39;,1,18)"><span class="cell-glyph stretch" style="transform:scale(1.404,1.065)">초</span></div><div class="grid-cell" style="width:29px;height:23px;font-size:19px" onclick="toggleCell(&#39;l&#39;,1,19)"><span class="cell-glyph stretch" style="transform:scale(1.404,1.065)">의</span></div><div class="grid-cell" style="width:29px;height:31px;font-size:19px" onclick="toggleCell(&#39;l&#39;,1,20)"><span class="cell-glyph stretch" style="transform:scale(1.404,1.436)">악</span></div><div class="grid-cell" style="width:29px;height:23px;font-size:19px" onclick="toggleCell(&#39;l&#39;,1,21)"><span class="cell-glyph stretch" style="transform:scale(1.404,1.065)">수</span></div><div class="grid-cell" style="width:29px;height:29px;font-size:19px" onclick="toggleCell(&#39;l&#39;,1,22)"><span class="cell-glyph stretch" style="transform:scale(1.404,1.343)">땀</span></div><div class="grid-cell" style="width:29px;height:23px;font-size:19px" onclick="toggleCell(&#39;l&#39;,1,23)"><span class="cell-glyph stretch" style="transform:scale(1.404,1.065)">내</span></div><div class="grid-cell" style="width:29px;height:23px;font-size:19px" onclick="toggleCell(&#39;l&#39;,1,24)"><span class="cell-glyph stretch" style="transform:scale(1.404,1.065)">와</span></div></div><div class="grid-col" style="width:29px;height:672px"><div class="grid-cell" style="width:29px;height:24px;font-size:19px" onclick="toggleCell(&#39;l&#39;,2,0)"><span class="cell-glyph stretch" style="transform:scale(1.404,1.112)">사</span></div><div class="grid-cell" style="width:29px;height:33px;font-size:19px" onclick="toggleCell(&#39;l&#39;,2,1)"><span class="cell-glyph stretch" style="transform:scale(1.404,1.528)">랑</span></div><div class="grid-cell" style="width:29px;height:24px;font-size:19px" onclick="toggleCell(&#39;l&#39;,2,2)"><span class="cell-glyph stretch" style="transform:scale(1.404,1.112)">내</span></div><div class="grid-cell" style="width:29px;height:24px;font-size:19px" onclick="toggleCell(&#39;l&#39;,2,3)"><span class="cell-glyph stretch" style="transform:scale(1.404,1.112)">포</span></div><div class="grid-cell" style="width:29px;height:29px;font-size:19px" onclick="toggleCell(&#39;l&#39;,2,4)"><span class="cell-glyph stretch" style="transform:scale(1.404,1.343)">근</span></div><div class="grid-cell" style="width:29px;height:24px;font-size:19px" onclick="toggleCell(&#39;l&#39;,2,5)"><span class="cell-glyph stretch" style="transform:scale(1.404,1.112)">히</span></div><div class="grid-cell" style="width:29px;height:29px;font-size:19px" onclick="toggleCell(&#39;l&#39;,2,6)"><span class="cell-glyph stretch" style="transform:scale(1.404,1.343)">품</span></div><div class="grid-cell" style="width:29px;height:29px;font-size:19px" onclick="toggleCell(&#39;l&#39;,2,7)"><span class="cell-glyph stretch" style="transform:scale(1.404,1.343)">긴</span></div><div class="grid-cell" style="width:29px;height:24px;font-size:19px" onclick="toggleCell(&#39;l&#39;,2,8)"><span class="cell-glyph stretch" style="transform:scale(1.404,1.112)">보</span></div><div class="grid-cell" style="width:29px;height:24px;font-size:19px" onclick="toggleCell(&#39;l&#39;,2,9)"><span class="cell-glyph stretch" style="transform:scale(1.404,1.112)">내</span></div><div class="grid-cell" style="width:29px;height:24px;font-size:19px" onclick="toggleCell(&#39;l&#39;,2,10)"><span class="cell-glyph stretch" style="transform:scale(1.404,1.112)">주</span></div><div class="grid-cell" style="width:29px;height:29px;font-size:19px" onclick="toggleCell(&#39;l&#39;,2,11)"><span class="cell-glyph stretch" style="transform:scale(1.404,1.343)">신</span></div><div class="grid-cell" style="width:29px;height:31px;font-size:19px" onclick="toggleCell(&#39;l&#39;,2,12)"><span class="cell-glyph stretch" style="transform:scale(1.404,1.436)">학</span></div><div class="grid-cell" style="width:29px;height:24px;font-size:19px" onclick="toggleCell(&#39;l&#39;,2,13)"><span class="cell-glyph stretch" style="transform:scale(1.404,1.112)">비</span></div><div class="grid-cell" style="width:29px;height:31px;font-size:19px" onclick="toggleCell(&#39;l&#39;,2,14)"><span class="cell-glyph stretch" style="transform:scale(1.404,1.436)">봉</span></div><div class="grid-cell" style="width:29px;height:24px;font-size:19px" onclick="toggleCell(&#39;l&#39;,2,15)"><span class="cell-glyph stretch" style="transform:scale(1.404,1.112)">투</span></div><div class="grid-cell" style="width:29px;height:33px;font-size:19px" onclick="toggleCell(&#39;l&#39;,2,16)"><span class="cell-glyph stretch" style="transform:scale(1.404,1.528)">를</span></div><div class="grid-cell" style="width:29px;height:29px;font-size:19px" onclick="toggleCell(&#39;l&#39;,2,17)"><span class="cell-glyph stretch" style="transform:scale(1.404,1.343)">받</span></div><div class="grid-cell" style="width:29px;height:24px;font-size:19px" onclick="toggleCell(&#39;l&#39;,2,18)"><span class="cell-glyph stretch" style="transform:scale(1.404,1.112)">아</span></div><div class="grid-cell" style="width:29px;height:24px;font-size:19px" onclick="toggleCell(&#39;l&#39;,2,19)"><span class="cell-glyph stretch" style="transform:scale(1.404,1.112)">대</span></div><div class="grid-cell" style="width:29px;height:31px;font-size:19px" onclick="toggleCell(&#39;l&#39;,2,20)"><span class="cell-glyph stretch" style="transform:scale(1.404,1.436)">학</span></div><div class="grid-cell" style="width:29px;height:24px;font-size:19px" onclick="toggleCell(&#39;l&#39;,2,21)"><span class="cell-glyph stretch" style="transform:scale(1.404,1.112)">노</span></div><div class="grid-cell" style="width:29px;height:24px;font-size:19px" onclick="toggleCell(&#39;l&#39;,2,22)"><span class="cell-glyph stretch" style="transform:scale(1.404,1.112)">트</span></div><div class="grid-cell" style="width:29px;height:33px;font-size:19px" onclick="toggleCell(&#39;l&#39;,2,23)"><span class="cell-glyph stretch" style="transform:scale(1.404,1.528)">를</span></div><div class="grid-cell" style="width:29px;height:23px;font-size:19px" onclick="toggleCell(&#39;l&#39;,2,24)"><span class="cell-glyph stretch" style="transform:scale(1.404,1.065)">끼</span></div></div><div class="grid-col" style="width:29px;height:672px"><div class="grid-cell" style="width:29px;height:26px;font-size:19px" onclick="toggleCell(&#39;l&#39;,3,0)"><span class="cell-glyph stretch" style="transform:scale(1.404,1.204)">고</span></div><div class="grid-cell" style="width:29px;height:33px;font-size:19px" onclick="toggleCell(&#39;l&#39;,3,1)"><span class="cell-glyph stretch" style="transform:scale(1.404,1.528)">늙</span></div><div class="grid-cell" style="width:29px;height:33px;font-size:19px" onclick="toggleCell(&#39;l&#39;,3,2)"><span class="cell-glyph stretch" style="transform:scale(1.404,1.528)">은</span></div><div class="grid-cell" style="width:29px;height:26px;font-size:19px" onclick="toggleCell(&#39;l&#39;,3,3)"><span class="cell-glyph stretch" style="transform:scale(1.404,1.204)">교</span></div><div class="grid-cell" style="width:29px;height:26px;font-size:19px" onclick="toggleCell(&#39;l&#39;,3,4)"><span class="cell-glyph stretch" style="transform:scale(1.404,1.204)">수</span></div><div class="grid-cell" style="width:29px;height:26px;font-size:19px" onclick="toggleCell(&#39;l&#39;,3,5)"><span class="cell-glyph stretch" style="transform:scale(1.404,1.204)">의</span></div><div class="grid-cell" style="width:29px;height:33px;font-size:19px" onclick="toggleCell(&#39;l&#39;,3,6)"><span class="cell-glyph stretch" style="transform:scale(1.404,1.528)">강</span></div><div class="grid-cell" style="width:29px;height:26px;font-size:19px" onclick="toggleCell(&#39;l&#39;,3,7)"><span class="cell-glyph stretch" style="transform:scale(1.404,1.204)">의</span></div><div class="grid-cell" style="width:29px;height:33px;font-size:19px" onclick="toggleCell(&#39;l&#39;,3,8)"><span class="cell-glyph stretch" style="transform:scale(1.404,1.528)">들</span></div><div class="grid-cell" style="width:29px;height:26px;font-size:19px" onclick="toggleCell(&#39;l&#39;,3,9)"><span class="cell-glyph stretch" style="transform:scale(1.404,1.204)">으</span></div><div class="grid-cell" style="width:29px;height:26px;font-size:19px" onclick="toggleCell(&#39;l&#39;,3,10)"><span class="cell-glyph stretch" style="transform:scale(1.404,1.204)">러</span></div><div class="grid-cell" style="width:29px;height:32px;font-size:19px" onclick="toggleCell(&#39;l&#39;,3,11)"><span class="cell-glyph stretch" style="transform:scale(1.404,1.482)">간</span></div><div class="grid-cell" style="width:29px;height:26px;font-size:19px" onclick="toggleCell(&#39;l&#39;,3,12)"><span class="cell-glyph stretch" style="transform:scale(1.404,1.204)">다</span></div><div class="grid-cell empty" style="width:29px;height:25px;font-size:19px" onclick="toggleCell(&#39;l&#39;,3,13)"></div><div class="grid-cell empty" style="width:29px;height:25px;font-size:19px" onclick="toggleCell(&#39;l&#39;,3,14)"></div><div class="grid-cell empty" style="width:29px;height:25px;font-size:19px" onclick="toggleCell(&#39;l&#39;,3,15)"></div><div class="grid-cell empty" style="width:29px;height:25px;font-size:19px" onclick="toggleCell(&#39;l&#39;,3,16)"></div><div class="grid-cell empty" style="width:29px;height:25px;font-size:19px" onclick="toggleCell(&#39;l&#39;,3,17)"></div><div class="grid-cell empty" style="width:29px;height:25px;font-size:19px" onclick="toggleCell(&#39;l&#39;,3,18)"></div><div class="grid-cell empty" style="width:29px;height:25px;font-size:19px" onclick="toggleCell(&#39;l&#39;,3,19)"></div><div class="grid-cell empty" style="width:29px;height:25px;font-size:19px" onclick="toggleCell(&#39;l&#39;,3,20)"></div><div class="grid-cell empty" style="width:29px;height:25px;font-size:19px" onclick="toggleCell(&#39;l&#39;,3,21)"></div><div class="grid-cell empty" style="width:29px;height:25px;font-size:19px" onclick="toggleCell(&#39;l&#39;,3,22)"></div><div class="grid-cell empty" style="width:29px;height:25px;font-size:19px" onclick="toggleCell(&#39;l&#39;,3,23)"></div><div class="grid-cell empty" style="width:29px;height:25px;font-size:19px" onclick="toggleCell(&#39;l&#39;,3,24)"></div></div></div>
+        <div class="zone-gap left" id="m-gap-zone-left" style="display: none;"></div>
+        <div class="paper-grid script-panbon" id="m-grid" style="width: 84px; height: 672px;"><div class="grid-col" style="width:42px;height:672px"><div class="grid-cell" style="width:42px;height:32px;font-size:21px" onclick="toggleCell(&#39;m&#39;,0,0)"><span class="cell-glyph stretch" style="transform:scale(1.840,1.341)">창</span></div><div class="grid-cell" style="width:42px;height:30px;font-size:21px" onclick="toggleCell(&#39;m&#39;,0,1)"><span class="cell-glyph stretch" style="transform:scale(1.840,1.257)">밖</span></div><div class="grid-cell" style="width:42px;height:24px;font-size:21px" onclick="toggleCell(&#39;m&#39;,0,2)"><span class="cell-glyph stretch" style="transform:scale(1.840,1.006)">에</span></div><div class="grid-cell" style="width:42px;height:30px;font-size:21px" onclick="toggleCell(&#39;m&#39;,0,3)"><span class="cell-glyph stretch" style="transform:scale(1.840,1.257)">밤</span></div><div class="grid-cell" style="width:42px;height:24px;font-size:21px" onclick="toggleCell(&#39;m&#39;,0,4)"><span class="cell-glyph stretch" style="transform:scale(1.840,1.006)">비</span></div><div class="grid-cell" style="width:42px;height:24px;font-size:21px" onclick="toggleCell(&#39;m&#39;,0,5)"><span class="cell-glyph stretch" style="transform:scale(1.840,1.006)">가</span></div><div class="grid-cell" style="width:42px;height:30px;font-size:21px" onclick="toggleCell(&#39;m&#39;,0,6)"><span class="cell-glyph stretch" style="transform:scale(1.840,1.257)">속</span></div><div class="grid-cell" style="width:42px;height:32px;font-size:21px" onclick="toggleCell(&#39;m&#39;,0,7)"><span class="cell-glyph stretch" style="transform:scale(1.840,1.341)">살</span></div><div class="grid-cell" style="width:42px;height:24px;font-size:21px" onclick="toggleCell(&#39;m&#39;,0,8)"><span class="cell-glyph stretch" style="transform:scale(1.840,1.006)">거</span></div><div class="grid-cell" style="width:42px;height:24px;font-size:21px" onclick="toggleCell(&#39;m&#39;,0,9)"><span class="cell-glyph stretch" style="transform:scale(1.840,1.006)">려</span></div><div class="grid-cell" style="width:42px;height:32px;font-size:21px" onclick="toggleCell(&#39;m&#39;,0,10)"><span class="cell-glyph stretch" style="transform:scale(1.840,1.341)">육</span></div><div class="grid-cell" style="width:42px;height:30px;font-size:21px" onclick="toggleCell(&#39;m&#39;,0,11)"><span class="cell-glyph stretch" style="transform:scale(1.840,1.257)">첩</span></div><div class="grid-cell" style="width:42px;height:32px;font-size:21px" onclick="toggleCell(&#39;m&#39;,0,12)"><span class="cell-glyph stretch" style="transform:scale(1.840,1.341)">방</span></div><div class="grid-cell" style="width:42px;height:31px;font-size:21px" onclick="toggleCell(&#39;m&#39;,0,13)"><span class="cell-glyph stretch" style="transform:scale(1.840,1.299)">은</span></div><div class="grid-cell" style="width:42px;height:30px;font-size:21px" onclick="toggleCell(&#39;m&#39;,0,14)"><span class="cell-glyph stretch" style="transform:scale(1.840,1.257)">남</span></div><div class="grid-cell" style="width:42px;height:24px;font-size:21px" onclick="toggleCell(&#39;m&#39;,0,15)"><span class="cell-glyph stretch" style="transform:scale(1.840,1.006)">의</span></div><div class="grid-cell" style="width:42px;height:24px;font-size:21px" onclick="toggleCell(&#39;m&#39;,0,16)"><span class="cell-glyph stretch" style="transform:scale(1.840,1.006)">나</span></div><div class="grid-cell" style="width:42px;height:24px;font-size:21px" onclick="toggleCell(&#39;m&#39;,0,17)"><span class="cell-glyph stretch" style="transform:scale(1.840,1.006)">라</span></div><div class="grid-cell" style="width:42px;height:24px;font-size:21px" onclick="toggleCell(&#39;m&#39;,0,18)"><span class="cell-glyph stretch" style="transform:scale(1.840,1.006)">시</span></div><div class="grid-cell" style="width:42px;height:31px;font-size:21px" onclick="toggleCell(&#39;m&#39;,0,19)"><span class="cell-glyph stretch" style="transform:scale(1.840,1.299)">인</span></div><div class="grid-cell" style="width:42px;height:24px;font-size:21px" onclick="toggleCell(&#39;m&#39;,0,20)"><span class="cell-glyph stretch" style="transform:scale(1.840,1.006)">이</span></div><div class="grid-cell" style="width:42px;height:31px;font-size:21px" onclick="toggleCell(&#39;m&#39;,0,21)"><span class="cell-glyph stretch" style="transform:scale(1.840,1.299)">란</span></div><div class="grid-cell" style="width:42px;height:31px;font-size:21px" onclick="toggleCell(&#39;m&#39;,0,22)"><span class="cell-glyph stretch" style="transform:scale(1.840,1.299)">슬</span></div><div class="grid-cell" style="width:42px;height:30px;font-size:21px" onclick="toggleCell(&#39;m&#39;,0,23)"><span class="cell-glyph stretch" style="transform:scale(1.840,1.257)">픈</span></div></div><div class="grid-col" style="width:42px;height:672px"><div class="grid-cell" style="width:42px;height:28px;font-size:21px" onclick="toggleCell(&#39;m&#39;,1,0)"><span class="cell-glyph stretch" style="transform:scale(1.840,1.173)">천</span></div><div class="grid-cell" style="width:42px;height:30px;font-size:21px" onclick="toggleCell(&#39;m&#39;,1,1)"><span class="cell-glyph stretch" style="transform:scale(1.840,1.257)">명</span></div><div class="grid-cell" style="width:42px;height:30px;font-size:21px" onclick="toggleCell(&#39;m&#39;,1,2)"><span class="cell-glyph stretch" style="transform:scale(1.840,1.257)">인</span></div><div class="grid-cell" style="width:42px;height:32px;font-size:21px" onclick="toggleCell(&#39;m&#39;,1,3)"><span class="cell-glyph stretch" style="transform:scale(1.840,1.341)">줄</span></div><div class="grid-cell" style="width:42px;height:32px;font-size:21px" onclick="toggleCell(&#39;m&#39;,1,4)"><span class="cell-glyph stretch" style="transform:scale(1.840,1.341)">알</span></div><div class="grid-cell" style="width:42px;height:28px;font-size:21px" onclick="toggleCell(&#39;m&#39;,1,5)"><span class="cell-glyph stretch" style="transform:scale(1.840,1.173)">면</span></div><div class="grid-cell" style="width:42px;height:23px;font-size:21px" onclick="toggleCell(&#39;m&#39;,1,6)"><span class="cell-glyph stretch" style="transform:scale(1.840,0.964)">서</span></div><div class="grid-cell" style="width:42px;height:23px;font-size:21px" onclick="toggleCell(&#39;m&#39;,1,7)"><span class="cell-glyph stretch" style="transform:scale(1.840,0.964)">도</span></div><div class="grid-cell" style="width:42px;height:30px;font-size:21px" onclick="toggleCell(&#39;m&#39;,1,8)"><span class="cell-glyph stretch" style="transform:scale(1.840,1.257)">한</span></div><div class="grid-cell" style="width:42px;height:32px;font-size:21px" onclick="toggleCell(&#39;m&#39;,1,9)"><span class="cell-glyph stretch" style="transform:scale(1.840,1.341)">줄</span></div><div class="grid-cell" style="width:42px;height:23px;font-size:21px" onclick="toggleCell(&#39;m&#39;,1,10)"><span class="cell-glyph stretch" style="transform:scale(1.840,0.964)">시</span></div><div class="grid-cell" style="width:42px;height:32px;font-size:21px" onclick="toggleCell(&#39;m&#39;,1,11)"><span class="cell-glyph stretch" style="transform:scale(1.840,1.341)">를</span></div><div class="grid-cell" style="width:42px;height:29px;font-size:21px" onclick="toggleCell(&#39;m&#39;,1,12)"><span class="cell-glyph stretch" style="transform:scale(1.840,1.215)">적</span></div><div class="grid-cell" style="width:42px;height:23px;font-size:21px" onclick="toggleCell(&#39;m&#39;,1,13)"><span class="cell-glyph stretch" style="transform:scale(1.840,0.964)">어</span></div><div class="grid-cell" style="width:42px;height:29px;font-size:21px" onclick="toggleCell(&#39;m&#39;,1,14)"><span class="cell-glyph stretch" style="transform:scale(1.840,1.215)">볼</span></div><div class="grid-cell" style="width:42px;height:23px;font-size:21px" onclick="toggleCell(&#39;m&#39;,1,15)"><span class="cell-glyph stretch" style="transform:scale(1.840,0.964)">까</span></div><div class="grid-cell" style="width:42px;height:29px;font-size:21px" onclick="toggleCell(&#39;m&#39;,1,16)"><span class="cell-glyph stretch" style="transform:scale(1.840,1.215)">등</span></div><div class="grid-cell" style="width:42px;height:29px;font-size:21px" onclick="toggleCell(&#39;m&#39;,1,17)"><span class="cell-glyph stretch" style="transform:scale(1.840,1.215)">불</span></div><div class="grid-cell" style="width:42px;height:32px;font-size:21px" onclick="toggleCell(&#39;m&#39;,1,18)"><span class="cell-glyph stretch" style="transform:scale(1.840,1.341)">을</span></div><div class="grid-cell" style="width:42px;height:29px;font-size:21px" onclick="toggleCell(&#39;m&#39;,1,19)"><span class="cell-glyph stretch" style="transform:scale(1.840,1.215)">밝</span></div><div class="grid-cell" style="width:42px;height:23px;font-size:21px" onclick="toggleCell(&#39;m&#39;,1,20)"><span class="cell-glyph stretch" style="transform:scale(1.840,0.964)">혀</span></div><div class="grid-cell" style="width:42px;height:23px;font-size:21px" onclick="toggleCell(&#39;m&#39;,1,21)"><span class="cell-glyph stretch" style="transform:scale(1.840,0.964)">어</span></div><div class="grid-cell" style="width:42px;height:28px;font-size:21px" onclick="toggleCell(&#39;m&#39;,1,22)"><span class="cell-glyph stretch" style="transform:scale(1.840,1.173)">둠</span></div><div class="grid-cell" style="width:42px;height:32px;font-size:21px" onclick="toggleCell(&#39;m&#39;,1,23)"><span class="cell-glyph stretch" style="transform:scale(1.840,1.341)">을</span></div></div></div>
+        <div class="zone-gap right" id="m-gap-zone-right" style="display: none;"></div>
+        <div class="sub-zone right script-panbon" id="m-sub-zone-right" style="width: 19px; height: 690px; display: none;"><div class="grid-col" style="width:19px;height:690px"><div class="grid-cell" style="width:19px;height:17px;font-size:13px" onclick="toggleCell(&#39;r&#39;,0,0)"><span class="cell-glyph stretch" style="transform:scale(1.345,1.151)">이</span></div><div class="grid-cell" style="width:19px;height:21px;font-size:13px" onclick="toggleCell(&#39;r&#39;,0,1)"><span class="cell-glyph stretch" style="transform:scale(1.345,1.422)">몸</span></div><div class="grid-cell" style="width:19px;height:21px;font-size:13px" onclick="toggleCell(&#39;r&#39;,0,2)"><span class="cell-glyph stretch" style="transform:scale(1.345,1.422)">삼</span></div><div class="grid-cell" style="width:19px;height:17px;font-size:13px" onclick="toggleCell(&#39;r&#39;,0,3)"><span class="cell-glyph stretch" style="transform:scale(1.345,1.151)">기</span></div><div class="grid-cell" style="width:19px;height:21px;font-size:13px" onclick="toggleCell(&#39;r&#39;,0,4)"><span class="cell-glyph stretch" style="transform:scale(1.345,1.422)">실</span></div><div class="grid-cell" style="width:19px;height:17px;font-size:13px" onclick="toggleCell(&#39;r&#39;,0,5)"><span class="cell-glyph stretch" style="transform:scale(1.345,1.151)">제</span></div><div class="grid-cell" style="width:19px;height:21px;font-size:13px" onclick="toggleCell(&#39;r&#39;,0,6)"><span class="cell-glyph stretch" style="transform:scale(1.345,1.422)">임</span></div><div class="grid-cell" style="width:19px;height:23px;font-size:13px" onclick="toggleCell(&#39;r&#39;,0,7)"><span class="cell-glyph stretch" style="transform:scale(1.345,1.557)">을</span></div><div class="grid-cell" style="width:19px;height:17px;font-size:13px" onclick="toggleCell(&#39;r&#39;,0,8)"><span class="cell-glyph stretch" style="transform:scale(1.345,1.151)">따</span></div><div class="grid-cell" style="width:19px;height:17px;font-size:13px" onclick="toggleCell(&#39;r&#39;,0,9)"><span class="cell-glyph stretch" style="transform:scale(1.345,1.151)">라</span></div><div class="grid-cell" style="width:19px;height:21px;font-size:13px" onclick="toggleCell(&#39;r&#39;,0,10)"><span class="cell-glyph stretch" style="transform:scale(1.345,1.422)">삼</span></div><div class="grid-cell" style="width:19px;height:17px;font-size:13px" onclick="toggleCell(&#39;r&#39;,0,11)"><span class="cell-glyph stretch" style="transform:scale(1.345,1.151)">기</span></div><div class="grid-cell" style="width:19px;height:17px;font-size:13px" onclick="toggleCell(&#39;r&#39;,0,12)"><span class="cell-glyph stretch" style="transform:scale(1.345,1.151)">시</span></div><div class="grid-cell" style="width:19px;height:16px;font-size:13px" onclick="toggleCell(&#39;r&#39;,0,13)"><span class="cell-glyph stretch" style="transform:scale(1.345,1.083)">니</span></div><div class="grid-cell" style="width:19px;height:21px;font-size:13px" onclick="toggleCell(&#39;r&#39;,0,14)"><span class="cell-glyph stretch" style="transform:scale(1.345,1.422)">한</span></div><div class="grid-cell" style="width:19px;height:21px;font-size:13px" onclick="toggleCell(&#39;r&#39;,0,15)"><span class="cell-glyph stretch" style="transform:scale(1.345,1.422)">생</span></div><div class="grid-cell" style="width:19px;height:21px;font-size:13px" onclick="toggleCell(&#39;r&#39;,0,16)"><span class="cell-glyph stretch" style="transform:scale(1.345,1.422)">연</span></div><div class="grid-cell" style="width:19px;height:21px;font-size:13px" onclick="toggleCell(&#39;r&#39;,0,17)"><span class="cell-glyph stretch" style="transform:scale(1.345,1.422)">분</span></div><div class="grid-cell" style="width:19px;height:16px;font-size:13px" onclick="toggleCell(&#39;r&#39;,0,18)"><span class="cell-glyph stretch" style="transform:scale(1.345,1.083)">이</span></div><div class="grid-cell" style="width:19px;height:16px;font-size:13px" onclick="toggleCell(&#39;r&#39;,0,19)"><span class="cell-glyph stretch" style="transform:scale(1.345,1.083)">며</span></div><div class="grid-cell" style="width:19px;height:16px;font-size:13px" onclick="toggleCell(&#39;r&#39;,0,20)"><span class="cell-glyph stretch" style="transform:scale(1.345,1.083)">하</span></div><div class="grid-cell" style="width:19px;height:21px;font-size:13px" onclick="toggleCell(&#39;r&#39;,0,21)"><span class="cell-glyph stretch" style="transform:scale(1.345,1.422)">늘</span></div><div class="grid-cell" style="width:19px;height:16px;font-size:13px" onclick="toggleCell(&#39;r&#39;,0,22)"><span class="cell-glyph stretch" style="transform:scale(1.345,1.083)">모</span></div><div class="grid-cell" style="width:19px;height:23px;font-size:13px" onclick="toggleCell(&#39;r&#39;,0,23)"><span class="cell-glyph stretch" style="transform:scale(1.345,1.557)">를</span></div><div class="grid-cell" style="width:19px;height:23px;font-size:13px" onclick="toggleCell(&#39;r&#39;,0,24)"><span class="cell-glyph stretch" style="transform:scale(1.345,1.557)">일</span></div><div class="grid-cell" style="width:19px;height:16px;font-size:13px" onclick="toggleCell(&#39;r&#39;,0,25)"><span class="cell-glyph stretch" style="transform:scale(1.345,1.083)">이</span></div><div class="grid-cell" style="width:19px;height:21px;font-size:13px" onclick="toggleCell(&#39;r&#39;,0,26)"><span class="cell-glyph stretch" style="transform:scale(1.345,1.422)">런</span></div><div class="grid-cell" style="width:19px;height:16px;font-size:13px" onclick="toggleCell(&#39;r&#39;,0,27)"><span class="cell-glyph stretch" style="transform:scale(1.345,1.083)">가</span></div><div class="grid-cell" style="width:19px;height:16px;font-size:13px" onclick="toggleCell(&#39;r&#39;,0,28)"><span class="cell-glyph stretch" style="transform:scale(1.345,1.083)">나</span></div><div class="grid-cell" style="width:19px;height:16px;font-size:13px" onclick="toggleCell(&#39;r&#39;,0,29)"><span class="cell-glyph stretch" style="transform:scale(1.345,1.083)">하</span></div><div class="grid-cell" style="width:19px;height:16px;font-size:13px" onclick="toggleCell(&#39;r&#39;,0,30)"><span class="cell-glyph stretch" style="transform:scale(1.345,1.083)">나</span></div><div class="grid-cell" style="width:19px;height:21px;font-size:13px" onclick="toggleCell(&#39;r&#39;,0,31)"><span class="cell-glyph stretch" style="transform:scale(1.345,1.422)">젊</span></div><div class="grid-cell" style="width:19px;height:16px;font-size:13px" onclick="toggleCell(&#39;r&#39;,0,32)"><span class="cell-glyph stretch" style="transform:scale(1.345,1.083)">어</span></div><div class="grid-cell" style="width:19px;height:21px;font-size:13px" onclick="toggleCell(&#39;r&#39;,0,33)"><span class="cell-glyph stretch" style="transform:scale(1.345,1.422)">있</span></div><div class="grid-cell" style="width:19px;height:16px;font-size:13px" onclick="toggleCell(&#39;r&#39;,0,34)"><span class="cell-glyph stretch" style="transform:scale(1.345,1.083)">고</span></div><div class="grid-cell" style="width:19px;height:21px;font-size:13px" onclick="toggleCell(&#39;r&#39;,0,35)"><span class="cell-glyph stretch" style="transform:scale(1.345,1.422)">임</span></div><div class="grid-cell" style="width:19px;height:16px;font-size:13px" onclick="toggleCell(&#39;r&#39;,0,36)"><span class="cell-glyph stretch" style="transform:scale(1.345,1.083)">하</span></div></div></div>
+        <div class="margin-zone right" id="m-margin-zone-right" style="width: 19px; height: 672px;"></div>
       </div>
 
       <!-- 우측 사이드 패널 (주영역 + 부영역 토글) -->
@@ -1221,20 +2810,20 @@ header p { font-size: 11px; opacity: 0.55; margin-top: 4px; letter-spacing: 0.05
           <div class="side-sub">열</div>
           <div class="side-ctrl">
             <button class="side-btn dark" onclick="modalAdj(&#39;cols&#39;,-1)">−</button>
-            <b id="m-cols">4</b>
+            <b id="m-cols">2</b>
             <button class="side-btn dark" onclick="modalAdj(&#39;cols&#39;,+1)">+</button>
           </div>
           <div class="side-sub">칸</div>
           <div class="side-ctrl">
             <button class="side-btn dark" onclick="modalAdj(&#39;rows&#39;,-1)">−</button>
-            <b id="m-rows">15</b>
+            <b id="m-rows">24</b>
             <button class="side-btn dark" onclick="modalAdj(&#39;rows&#39;,+1)">+</button>
           </div>
-          <div class="side-total">본문 <b id="m-total">60</b>칸</div>
+          <div class="side-total">본문 <b id="m-total">48</b>칸</div>
         </div>
 
         <!-- 우측 부영역 (활성 시 카드, 비활성 시 토글 칩) -->
-        <div class="side-card sub-card" id="sub-card-right" style="display:none;">
+        <div class="side-card sub-card" id="sub-card-right" style="display: none;">
           <button class="side-x" onclick="toggleSubZone(&#39;right&#39;,false)" title="비활성화">×</button>
           <div class="side-label">우측 ▶</div>
           <div class="side-sub">열</div>
@@ -1246,20 +2835,20 @@ header p { font-size: 11px; opacity: 0.55; margin-top: 4px; letter-spacing: 0.05
           <div class="side-sub">칸</div>
           <div class="side-ctrl">
             <button class="side-btn light" onclick="adjSub(&#39;right&#39;,&#39;rows&#39;,-1)">−</button>
-            <b id="m-sub-right-rows">25</b>
+            <b id="m-sub-right-rows">37</b>
             <button class="side-btn light" onclick="adjSub(&#39;right&#39;,&#39;rows&#39;,+1)">+</button>
           </div>
         </div>
-        <button class="side-toggle" id="sub-toggle-right" onclick="toggleSubZone(&#39;right&#39;,true)">＋ 우측</button>
+        <button class="side-toggle" id="sub-toggle-right" onclick="toggleSubZone(&#39;right&#39;,true)" style="">＋ 우측</button>
 
         <!-- 좌측 부영역 -->
-        <div class="side-card sub-card" id="sub-card-left" style="display:none;">
+        <div class="side-card sub-card" id="sub-card-left" style="">
           <button class="side-x" onclick="toggleSubZone(&#39;left&#39;,false)" title="비활성화">×</button>
           <div class="side-label">◀ 좌측</div>
           <div class="side-sub">열</div>
           <div class="side-ctrl">
             <button class="side-btn light" onclick="adjSub(&#39;left&#39;,&#39;cols&#39;,-1)">−</button>
-            <b id="m-sub-left-cols">1</b>
+            <b id="m-sub-left-cols">4</b>
             <button class="side-btn light" onclick="adjSub(&#39;left&#39;,&#39;cols&#39;,+1)">+</button>
           </div>
           <div class="side-sub">칸</div>
@@ -1269,7 +2858,7 @@ header p { font-size: 11px; opacity: 0.55; margin-top: 4px; letter-spacing: 0.05
             <button class="side-btn light" onclick="adjSub(&#39;left&#39;,&#39;rows&#39;,+1)">+</button>
           </div>
         </div>
-        <button class="side-toggle" id="sub-toggle-left" onclick="toggleSubZone(&#39;left&#39;,true)">＋ 좌측</button>
+        <button class="side-toggle" id="sub-toggle-left" onclick="toggleSubZone(&#39;left&#39;,true)" style="display: none;">＋ 좌측</button>
 
         <!-- 여백 카드 (4행) -->
         <div class="margin-card">
@@ -1277,38 +2866,51 @@ header p { font-size: 11px; opacity: 0.55; margin-top: 4px; letter-spacing: 0.05
           <div class="margin-row">
             <span class="margin-lbl">◀ 좌</span>
             <button class="side-btn light" onclick="adjMargin(&#39;left&#39;,-1)">−</button>
-            <b id="m-margin-left">0</b>
+            <b id="m-margin-left">10</b>
             <button class="side-btn light" onclick="adjMargin(&#39;left&#39;,+1)">+</button>
           </div>
           <div class="margin-row">
             <span class="margin-lbl">우 ▶</span>
             <button class="side-btn light" onclick="adjMargin(&#39;right&#39;,-1)">−</button>
-            <b id="m-margin-right">0</b>
+            <b id="m-margin-right">5</b>
             <button class="side-btn light" onclick="adjMargin(&#39;right&#39;,+1)">+</button>
           </div>
           <div class="margin-row">
             <span class="margin-lbl">▲ 상</span>
             <button class="side-btn light" onclick="adjMargin(&#39;top&#39;,-1)">−</button>
-            <b id="m-margin-top">0</b>
+            <b id="m-margin-top">7</b>
             <button class="side-btn light" onclick="adjMargin(&#39;top&#39;,+1)">+</button>
           </div>
           <div class="margin-row">
             <span class="margin-lbl">▼ 하</span>
             <button class="side-btn light" onclick="adjMargin(&#39;bottom&#39;,-1)">−</button>
-            <b id="m-margin-bottom">0</b>
+            <b id="m-margin-bottom">7</b>
             <button class="side-btn light" onclick="adjMargin(&#39;bottom&#39;,+1)">+</button>
+          </div>
+          <div class="margin-divider-line"></div>
+          <div class="margin-row">
+            <span class="margin-lbl">영역간</span>
+            <button class="side-btn light" onclick="adjMargin(&#39;gap&#39;,-1)">−</button>
+            <b id="m-margin-gap">0</b>
+            <button class="side-btn light" onclick="adjMargin(&#39;gap&#39;,+1)">+</button>
           </div>
         </div>
       </div>
     </div>
 
-    <div class="stats-bar" id="m-stats"></div>
+    <div class="stats-bar" id="m-stats">
+    <div class="stat-item"><span class="stat-num gold">136</span><span class="stat-lbl">쓸 글자</span></div>
+    <div class="stat-item"><span class="stat-num">148</span><span class="stat-lbl">총 칸</span></div>
+    <div class="stat-item"><span class="stat-num">0</span><span class="stat-lbl">띄운 칸</span></div>
+    <div class="stat-item"><span class="stat-num">12</span><span class="stat-lbl">빈 칸</span></div>
+    
+  </div>
 
-    <div id="m-overflow" style="display:none;background:#fff0f0;border:1px solid #f5c6c6;border-radius:8px;padding:10px 13px;margin-bottom:10px;font-size:12px;line-height:1.8;color:#cc3333;"></div>
+    <div id="m-overflow" style="display: none; background: rgb(255, 240, 240); border: 1px solid rgb(245, 198, 198); border-radius: 8px; padding: 10px 13px; margin-bottom: 10px; font-size: 12px; line-height: 1.8; color: rgb(204, 51, 51);"><strong>배치 불가 1자 (칸을 늘리거나 띄운 칸을 줄이세요):</strong><br>꼬</div>
 
     <div class="full-text-box">
       <div class="full-text-label">전체 글</div>
-      <div class="full-text-content" id="m-text"></div>
+      <div class="full-text-content" id="m-text">창밖에 밤비가 속살거려 육첩방은 남의 나라 시인이란 슬픈 천명인 줄 알면서도 한 줄 시를 적어 볼까 등불을 밝혀 어둠을 조금 내몰고 시대처럼 올 아침을 기다리는 최후의 나 나는 나에게 작은 손을 내밀어 눈물과 위안으로 잡는 최초의 악수 땀내와 사랑내 포근히 품긴 보내주신 학비 봉투를 받아 대학 노트를 끼고 늙은 교수의 강의 들으러 간다</div>
     </div>
 
     <button class="modal-copy" id="m-copy">텍스트 복사하기</button>
@@ -1388,6 +2990,124 @@ const DB = [
   { type:'confucian', title:'강설 · 유종원', author:'유종원 (당나라)', text:'천 산에 새 날아다님 끊어지고 만 길에 사람 자취 사라졌네 외로운 배에 도롱이 삿갓 쓴 늙은이 홀로 낚시하네 차가운 강 눈 속에서' },
   { type:'confucian', title:'춘야희우 · 두보', author:'두보 (당나라)', text:'봄비가 제때에 내리는구나 은밀히 밤을 타고 만물을 적시네 구름 따라 들길을 모두 캄캄하게 하고 강물 위의 배에만 불빛이 있구나 내일 아침에는 붉은 꽃이 무겁게 젖어 있겠지' },
   { type:'confucian', title:'정기가 (일부)', author:'문천상 (송나라)', text:'천지 사이에 정기 있으니 잡되게 형태를 나타내도다 아래로는 강과 산이 되고 위로는 해와 별이 되도다 사람에게서는 호연의 기운이 되어 페부를 꽉 채우도다' },
+
+  // ───── 시조 추가 ─────
+  { type:'sijo', title:'어부사 일부', author:'윤선도', text:'우는 것이 뻐꾸기인가 푸른 것이 버들숲인가 어촌 두어 집이 안개 속에 들락날락 한 점 외로운 배는 만경창파에 떠 있구나' },
+  { type:'sijo', title:'동지달 기나긴 밤', author:'황진이', text:'동지달 기나긴 밤을 한 허리를 베어내어 춘풍 이불 아래 서리서리 넣었다가 어른 님 오신 날 밤이어든 굽이굽이 펴리라' },
+  { type:'sijo', title:'청산리 벽계수야', author:'황진이', text:'청산리 벽계수야 쉬이 감을 자랑마라 일도창해하면 다시 오기 어려워라 명월이 만공산하니 쉬어간들 어떠리' },
+  { type:'sijo', title:'산은 옛산이로되', author:'황진이', text:'산은 옛 산이로되 물은 옛 물이 아니로다 주야에 흐르거든 옛 물이 있을쏘냐 인걸도 물과 같아서 가고 아니 오노매라' },
+  { type:'sijo', title:'까마귀 검다 하고', author:'이직', text:'까마귀 검다 하고 백로야 웃지 마라 겉이 검다고 속조차 검을쏘냐 겉 희고 속 검은 이는 너뿐인가 하노라' },
+  { type:'sijo', title:'반중 조홍감이', author:'박인로', text:'반중 조홍감이 곱게도 보이는구나 유자 아니라도 품음직 하다마는 품어 가 반길 이 없어 그를 슬퍼하노라' },
+  { type:'sijo', title:'태산이 높다 하되', author:'양사언', text:'태산이 높다 하되 하늘 아래 뫼이로다 오르고 또 오르면 못 오를 리 없건마는 사람이 제 아니 오르고 뫼만 높다 하더라' },
+  { type:'sijo', title:'백설이 자자진 골에', author:'이색', text:'백설이 잦아진 골에 구름이 험하구나 반가운 매화는 어느 곳에 피었는고 석양에 홀로 서서 갈 곳 몰라 하노라' },
+  { type:'sijo', title:'이몸이 죽고죽어', author:'정몽주', text:'이 몸이 죽고 죽어 일백 번 고쳐 죽어 백골이 진토 되어 넋이라도 있고 없고 임 향한 일편단심이야 가실 줄이 있으랴' },
+  { type:'sijo', title:'이런들 어떠하리', author:'이방원', text:'이런들 어떠하며 저런들 어떠하리 만수산 드렁칡이 얽혀진들 어떠하리 우리도 이같이 얽혀져 백년까지 누리리라' },
+  { type:'sijo', title:'어부단가', author:'이현보', text:'이중에 시름 없으니 어부의 생애로다 일엽편주를 만경파에 띄워두고 인세를 다 잊었으니 날 가는 줄 알랴' },
+  { type:'sijo', title:'십년을 경영하여', author:'송순', text:'십년을 경영하여 초려삼간 지어내니 나 한 칸 달 한 칸에 청풍 한 칸 맡겨두고 강산은 들일 데 없으니 둘러두고 보리라' },
+  { type:'sijo', title:'두류산 양단수를', author:'조식', text:'두류산 양단수를 예 듣고 이제 보니 도화 뜬 맑은 물에 산영조차 잠겼어라 아이야 무릉이 어디뇨 나는 옌가 하노라' },
+  { type:'sijo', title:'한 손에 가시 들고', author:'우탁', text:'한 손에 가시 들고 또 한 손에 막대 들고 늙는 길 가시로 막고 오는 백발 막대로 치려더니 백발이 제 먼저 알고 지름길로 오더라' },
+  { type:'sijo', title:'어버이 살아실 제', author:'정철', text:'어버이 살아실 제 섬길 일을 다 하여라 지나간 후이면 애닯다 어이하리 평생에 고쳐 못할 일이 이뿐인가 하노라' },
+  { type:'sijo', title:'재 너머 성권농 집에', author:'정철', text:'재 너머 성권농 집에 술 익단 말 어제 듣고 누운 소 발로 박차 언치 놓아 지즐 타고 아이야 네 권농 계시냐 정좌수 왔다 일러라' },
+  { type:'sijo', title:'마음이 어린 후이니', author:'서경덕', text:'마음이 어린 후이니 하는 일이 다 어리다 만중운산에 어느 임 오리마는 지는 잎 부는 바람에 행여 그인가 하노라' },
+  { type:'sijo', title:'간밤에 부던 바람', author:'유응부', text:'간밤에 부던 바람 눈서리 치단 말가 낙락장송이 다 기울어 가노매라 하물며 못다 핀 꽃이야 일러 무삼하리오' },
+  { type:'sijo', title:'벽오동 심은 뜻은', author:'이세보', text:'벽오동 심은 뜻은 봉황을 보려더니 봉황은 아니 오고 오작만 날아드네 동자야 오작 쫓아라 봉황 오게 하리라' },
+  { type:'sijo', title:'국화야 너는 어이', author:'이정보', text:'국화야 너는 어이 삼월동풍 다 보내고 낙목한천에 너 홀로 피었느냐 아마도 오상고절은 너뿐인가 하노라' },
+
+  // ───── 한시 번역 추가 ─────
+  { type:'confucian', title:'산중문답', author:'이백 (당나라)', text:'무슨 일로 청산에 사느냐 묻기에 웃으며 답 아니하니 마음 절로 한가롭다 복사꽃 흐르는 물 아득히 가니 별천지요 인간세상이 아니로구나' },
+  { type:'confucian', title:'정야사', author:'이백 (당나라)', text:'침상 앞 밝은 달빛 땅 위에 서리 내린 듯하구나 머리 들어 산달을 바라보고 머리 숙여 고향을 그리노라' },
+  { type:'confucian', title:'장진주', author:'이백 (당나라)', text:'그대 보지 못하였는가 황하의 물이 하늘에서 내려와 바다로 흘러가 다시 돌아오지 못함을 그대 보지 못하였는가 거울 속의 슬픈 백발이 아침에는 검은 실 같더니 저녁에는 흰 눈이 되었음을' },
+  { type:'confucian', title:'춘망', author:'두보 (당나라)', text:'나라가 깨어져도 산하는 그대로요 성에는 봄이 들어 초목이 무성하다 시절을 느껴 꽃을 봐도 눈물 흘리고 이별을 한탄하니 새소리도 마음 놀라게 한다' },
+  { type:'confucian', title:'등고', author:'두보 (당나라)', text:'바람 급하고 하늘 높아 잔나비 슬피 울고 맑은 물가 흰 모래에 새들 날아 돌아온다 끝없는 낙엽은 우수수 떨어지고 다함없는 장강은 도도히 흘러온다' },
+  { type:'confucian', title:'음주', author:'도연명 (동진)', text:'사람 사는 곳에 오두막 지었어도 수레와 말의 시끄러움 없도다 그대에게 묻노니 어찌 그러한가 마음이 멀어지면 땅도 절로 외지구나 동쪽 울 밑에서 국화를 꺾어 들고 유연히 남산을 바라본다' },
+  { type:'confucian', title:'귀거래사 일부', author:'도연명 (동진)', text:'돌아가리 돌아가리 전원이 장차 거칠어지려 하는데 어찌 돌아가지 않으리오 이미 마음을 몸의 부림으로 삼았으니 어찌 슬퍼하며 홀로 슬퍼하리오 지난 일은 따질 수 없음을 깨달았고 올 일은 좇을 수 있음을 알았네' },
+  { type:'confucian', title:'적벽부 일부', author:'소동파 (송나라)', text:'무릇 천지간에 만물은 각기 주인이 있나니 진실로 내 것이 아니면 한 터럭이라도 취하지 말 것이라 오직 강 위의 맑은 바람과 산간의 밝은 달은 귀로 들으면 소리가 되고 눈으로 만나면 빛을 이루느니라' },
+  { type:'confucian', title:'녹시', author:'왕유 (당나라)', text:'빈 산에 사람은 보이지 아니하고 다만 사람의 말소리만 들려온다 저녁 햇살이 깊은 숲에 들어와 다시 푸른 이끼 위에 비추인다' },
+  { type:'confucian', title:'송별', author:'왕유 (당나라)', text:'산속에서 그대를 보내고 날이 저물어 사립문을 닫는다 봄풀은 내년에도 푸르를 텐데 그대는 돌아올까 돌아오지 않을까' },
+  { type:'confucian', title:'추야우중', author:'최치원 (신라)', text:'가을바람에 괴로이 읊조리니 세상에 알아주는 이 적도다 창밖에 밤비는 내리고 등불 앞 만리의 마음이로다' },
+  { type:'confucian', title:'송인', author:'정지상 (고려)', text:'비 갠 긴 둑에 풀빛이 더욱 푸르른데 그대 보내는 남포에 슬픈 노래 일어나는구나 대동강 물은 어느 때나 마를꼬 이별의 눈물 해마다 푸른 물결에 더해지네' },
+  { type:'confucian', title:'야설', author:'이양연 (조선)', text:'눈 덮인 들판을 걸어갈 때 함부로 어지러이 걷지 말지어다 오늘 내가 걸어간 발자취가 마침내 뒷사람의 길잡이가 되리니' },
+  { type:'confucian', title:'관저', author:'시경', text:'꾸욱꾸욱 우는 물수리는 황하의 모래섬에 있구나 아리따운 숙녀는 군자의 좋은 짝이로다 들쭉날쭉한 마름풀을 이리저리 따라서 캐어내노라' },
+
+  // ───── 현대시 추가 (저작권 만료) ─────
+  { type:'modern', title:'진달래꽃', author:'김소월', text:'나 보기가 역겨워 가실 때에는 말없이 고이 보내 드리오리다 영변에 약산 진달래꽃 아름 따다 가실 길에 뿌리오리다' },
+  { type:'modern', title:'진달래꽃 후반', author:'김소월', text:'가시는 걸음 걸음 놓인 그 꽃을 사뿐히 즈려 밟고 가시옵소서 나 보기가 역겨워 가실 때에는 죽어도 아니 눈물 흘리오리다' },
+  { type:'modern', title:'먼 후일', author:'김소월', text:'먼 훗날 당신이 찾으시면 그때에 내 말이 잊었노라 당신이 속으로 나무라면 무척 그리다가 잊었노라 그래도 당신이 나무라면 믿기지 않아서 잊었노라' },
+  { type:'modern', title:'산유화', author:'김소월', text:'산에는 꽃 피네 꽃이 피네 갈 봄 여름없이 꽃이 피네 산에 산에 피는 꽃은 저만치 혼자서 피어있네 산에서 우는 작은 새여 꽃이 좋아 산에서 사노라네' },
+  { type:'modern', title:'엄마야 누나야', author:'김소월', text:'엄마야 누나야 강변 살자 뜰에는 반짝이는 금모래빛 뒷문 밖에는 갈잎의 노래 엄마야 누나야 강변 살자' },
+  { type:'modern', title:'바라건대는 우리에게', author:'김소월', text:'우리에게 우리의 보습 대일 땅이 있었더면 이처럼 떠돌으랴 집 없는 몸이라 그러나 어쩌면 황송한 이 심정을 날로 나날이 내 앞에는 그저 보이는 듯하구나' },
+  { type:'modern', title:'서시', author:'윤동주', text:'죽는 날까지 하늘을 우러러 한 점 부끄럼이 없기를 잎새에 이는 바람에도 나는 괴로워했다 별을 노래하는 마음으로 모든 죽어가는 것을 사랑해야지 그리고 나한테 주어진 길을 걸어가야겠다 오늘 밤에도 별이 바람에 스치운다' },
+  { type:'modern', title:'별 헤는 밤 일부', author:'윤동주', text:'계절이 지나가는 하늘에는 가을로 가득 차 있습니다 나는 아무 걱정도 없이 가을 속의 별들을 다 헬 듯합니다 가슴 속에 하나 둘 새겨지는 별을 이제 다 못 헤는 것은 쉬이 아침이 오는 까닭이요' },
+  { type:'modern', title:'자화상', author:'윤동주', text:'산모퉁이를 돌아 논가 외딴 우물을 홀로 찾아가선 가만히 들여다봅니다 우물 속에는 달이 밝고 구름이 흐르고 하늘이 펼치고 파란 바람이 불고 가을이 있습니다' },
+  { type:'modern', title:'쉽게 쓰여진 시 일부', author:'윤동주', text:'창밖에 밤비가 속살거려 육첩방은 남의 나라 시인이란 슬픈 천명인 줄 알면서도 한 줄 시를 적어 볼까 등불을 밝혀 어둠을 조금 내몰고 시대처럼 올 아침을 기다리는 최후의 나' },
+  { type:'modern', title:'님의 침묵 일부', author:'한용운', text:'님은 갔습니다 아아 사랑하는 나의 님은 갔습니다 푸른 산빛을 깨치고 단풍나무 숲을 향하여 난 작은 길을 걸어서 차마 떨치고 갔습니다' },
+  { type:'modern', title:'알 수 없어요', author:'한용운', text:'바람도 없는 공중에 수직의 파문을 내이며 고요히 떨어지는 오동잎은 누구의 발자취입니까 지리한 장마끝에 서풍에 몰려가는 무서운 검은 구름의 터진 틈으로 언뜻언뜻 보이는 푸른 하늘은 누구의 얼굴입니까' },
+  { type:'modern', title:'복종', author:'한용운', text:'남들은 자유를 사랑한다지마는 나는 복종을 좋아하여요 자유를 모르는 것은 아니지만 당신에게는 복종만 하고 싶어요 복종하고 싶은데 복종하는 것은 아름다운 자유보다도 달콤합니다' },
+  { type:'modern', title:'나룻배와 행인', author:'한용운', text:'나는 나룻배 당신은 행인 당신은 흙발로 나를 짓밟습니다 나는 당신을 안고 물을 건너갑니다 나는 당신을 안으면 깊으나 옅으나 급한 여울이나 건너갑니다' },
+  { type:'modern', title:'빼앗긴 들에도', author:'이상화', text:'지금은 남의 땅 빼앗긴 들에도 봄은 오는가 나는 온몸에 햇살을 받고 푸른 하늘 푸른 들이 맞붙은 곳으로 가르마 같은 논길을 따라 꿈속을 가듯 걸어만 간다' },
+  { type:'modern', title:'향수 일부', author:'정지용', text:'넓은 벌 동쪽 끝으로 옛 이야기 지줄대는 실개천이 회돌아 나가고 얼룩백이 황소가 해설피 금빛 게으른 울음을 우는 곳 그곳이 차마 꿈엔들 잊힐리야' },
+  { type:'modern', title:'유리창', author:'정지용', text:'유리에 차고 슬픈 것이 어른거린다 열없이 붙어 서서 입김을 흐리우니 길들은 양 언 날개를 파다거린다 지우고 보고 지우고 보아도 새까만 밤이 밀려 나가고 밀려와 부딪치고' },
+  { type:'modern', title:'호수', author:'정지용', text:'얼굴 하나야 손바닥 둘로 폭 가리지만 보고 싶은 마음 호수만 하니 눈 감을 밖에' },
+  { type:'modern', title:'고향', author:'정지용', text:'고향에 고향에 돌아와도 그리던 고향은 아니러뇨 산꿩이 알을 품고 뻐꾸기 제철에 울건만 마음은 제 고향 지니지 않고 머언 항구로 떠도는 구름' },
+
+  // ───── 명언 추가 ─────
+  { type:'saying', title:'자족', author:'노자', text:'족함을 알면 욕되지 않고 그칠 줄 알면 위태롭지 않으니 가히 오래 갈 수 있다' },
+  { type:'saying', title:'천리길', author:'노자', text:'천리 길도 한걸음에서 시작되고 아홉 길 누대도 한 줌의 흙에서 일어나니 만사가 다 처음을 신중히 함에 있도다' },
+  { type:'saying', title:'상선약수', author:'노자', text:'가장 좋은 것은 물과 같으니 물은 만물을 이롭게 하면서도 다투지 아니하고 뭇 사람이 싫어하는 낮은 곳에 처하니 도에 가깝다' },
+  { type:'saying', title:'대기만성', author:'노자', text:'큰 그릇은 늦게 이루어지고 큰 소리는 들리지 않으며 큰 형상은 형태가 없으니 도는 숨어 이름이 없도다' },
+  { type:'saying', title:'화광동진', author:'노자', text:'그 빛을 부드럽게 하여 티끌과 함께하니 깊고 깊어 보일 듯 말 듯하구나 이를 일러 현묘한 같음이라 하느니라' },
+  { type:'saying', title:'마음의 거울', author:'장자', text:'지인의 마음 씀은 거울과 같으니 보내지도 아니하고 맞이하지도 아니하며 응하되 감추지 아니한다 그러므로 능히 사물을 이기되 상하지 않는다' },
+  { type:'saying', title:'역경 격언', author:'주역', text:'하늘의 운행은 굳세니 군자는 이로써 스스로 굳세고 쉬지 않는다 땅의 형세는 두터우니 군자는 이로써 두터운 덕으로 만물을 싣는다' },
+  { type:'saying', title:'적선지가', author:'주역', text:'선을 쌓은 집에는 반드시 남은 경사가 있고 불선을 쌓은 집에는 반드시 남은 재앙이 있나니 가히 삼가지 아니하랴' },
+  { type:'saying', title:'겸손', author:'명심보감', text:'산이 높고 클지라도 아무도 알아주지 않으면 그 높음을 알 수 없고 사람이 어질지라도 행동으로 드러나지 않으면 그 어짊을 알 수 없도다' },
+  { type:'saying', title:'독서삼도', author:'주자', text:'독서에는 세 가지 도가 있으니 눈으로 보고 입으로 읽고 마음으로 깨닫는 것이라 셋 가운데 마음이 가장 절실하니 마음이 이르지 못하면 눈과 입이 어찌 이르리오' },
+  { type:'saying', title:'시간', author:'주자', text:'젊음은 늙기 쉽고 학문은 이루기 어려우니 짧은 시간이라도 가벼이 여기지 말라 못가의 봄풀이 꿈을 깨기도 전에 섬돌 앞 오동잎이 가을 소리 알리네' },
+
+  // ───── 긴 글 (전지·국전지용) ─────
+  { type:'sijo', title:'사미인곡 일부', author:'정철', text:'이 몸 삼기실 제 임을 따라 삼기시니 한생 연분이며 하늘 모를 일이런가 나 하나 젊어 있고 임 하나 날 사랑하시니 이 마음 이 사랑 견줄 데 다시 없다 평생에 원하기를 함께 살자 하였더니 늙어서야 무슨 일로 외로이 두고 그리는고 엊그제 임을 모셔 광한전에 올랐더니 그동안 어이하여 하계에 내려왔는가' },
+  { type:'sijo', title:'관동별곡 일부', author:'정철', text:'강호에 병이 깊어 죽림에 누웠더니 관동 팔백리에 방면을 맡기시니 어와 성은이야 갈수록 망극하다 연추문 들이달아 경회 남문 바라보며 하직코 물러나니 옥절이 앞에 서 있다 평구역 말을 갈아 흑수로 돌아드니 섬강은 어디메오 치악이 여기로다' },
+  { type:'modern', title:'논개', author:'변영로', text:'거룩한 분노는 종교보다도 깊고 불붙는 정열은 사랑보다도 강하다 아 강낭콩꽃보다도 더 푸른 그 물결 위에 양귀비꽃보다도 더 붉은 그 마음 흘러라 흐르는 강물이여 푸르고 푸르거라 너는 사랑보다도 강하다 거룩한 정열은 사랑보다도 강하다' },
+  { type:'modern', title:'광야', author:'이육사', text:'까마득한 날에 하늘이 처음 열리고 어디 닭 우는 소리 들렸으랴 모든 산맥들이 바다를 연모해 휘달릴 때도 차마 이곳을 범하든 못하였으리라 끊임없는 광음을 부지런한 계절이 피어선 지고 큰 강물이 비로소 길을 열었다' },
+  { type:'modern', title:'청포도', author:'이육사', text:'내 고장 칠월은 청포도가 익어가는 시절 이 마을 전설이 주절이 주절이 열리고 먼 데 하늘이 꿈꾸며 알알이 들어와 박혀 하늘 밑 푸른 바다가 가슴을 열고 흰 돛 단 배가 곱게 밀려서 오면 내가 바라는 손님은 고달픈 몸으로 청포를 입고 찾아온다고 했으니' },
+  { type:'modern', title:'절정', author:'이육사', text:'매운 계절의 채찍에 갈겨 마침내 북방으로 휩쓸려 오다 하늘도 그만 지쳐 끝난 고원 서릿발 칼날진 그 위에 서다 어디다 무릎을 꿇어야 하나 한발 재겨 디딜 곳조차 없다 이러매 눈 감아 생각해 볼밖에 겨울은 강철로 된 무지개인가 보다' },
+  { type:'modern', title:'나의 침실로 일부', author:'이상화', text:'마돈나 지금은 밤도 모든 목거지에 다니노라 피곤하여 돌아가련도다 아 너도 먼동이 트기 전으로 수밀도의 네 가슴에 이슬이 맺도록 달려오너라 마돈나 오너라 가자 앞산 그리매가 도깨비처럼 발도 없이 가까이 오도다' },
+  { type:'modern', title:'님의 침묵 후반', author:'한용운', text:'우리는 만날 때에 떠날 것을 염려하는 것과 같이 떠날 때에 다시 만날 것을 믿습니다 아아 님은 갔지마는 나는 님을 보내지 아니하였습니다 제 곡조를 못 이기는 사랑의 노래는 님의 침묵을 휩싸고 도옵니다' },
+  { type:'modern', title:'복효복지', author:'한용운', text:'아침에 일어나서 하늘을 보니 푸르른 하늘이 가슴에 안겨오고 저녁에 잠들기 전에 별을 보니 깜박이는 별빛이 마음에 스며든다 길을 가다가 만나는 풀잎 하나에도 생명이 있고 강가에서 마시는 한 잔의 물에도 우주가 들어있다' },
+  { type:'modern', title:'국화 옆에서', author:'서정주', text:'한 송이의 국화꽃을 피우기 위해 봄부터 소쩍새는 그렇게 울었나 보다 한 송이의 국화꽃을 피우기 위해 천둥은 먹구름 속에서 또 그렇게 울었나 보다 그립고 아쉬움에 가슴 조이던 머언 먼 젊음의 뒤안길에서 인제는 돌아와 거울 앞에 선 내 누님같이 생긴 꽃이여' },
+
+  // ───── 추가 명언 (긴 글) ─────
+  { type:'saying', title:'안분지족', author:'채근담', text:'세상사 옳고 그름을 모두 가리려 하면 마음의 안식을 얻을 수 없으니 굳이 시비를 따지지 말고 흐르는 물처럼 자연스럽게 살아가라 사람의 일생은 길지 않으니 매 순간을 소중히 여기고 작은 일에도 감사하며 살아가야 하느니라' },
+  { type:'saying', title:'인생무상', author:'장자', text:'인생은 흰 망아지가 좁은 틈을 지나는 것과 같으니 순식간에 지나간다 그러므로 군자는 부귀에 빠지지 아니하고 빈천에 흔들리지 아니하며 위세에 굽히지 아니하니 이를 일러 대장부라 하느니라' },
+  { type:'saying', title:'무위자연', author:'노자', text:'성인은 무위로써 일을 처리하고 말없이 가르침을 행한다 만물이 일어나도 사양하지 아니하고 살리되 가지지 아니하며 행하되 자랑하지 아니하고 공을 이루어도 머무르지 아니하니 머무르지 아니하기 때문에 떠나지도 아니한다' },
+  { type:'saying', title:'중용지도', author:'중용', text:'기쁨과 노여움과 슬픔과 즐거움이 아직 드러나지 아니한 것을 중이라 이르고 드러나서 모두 절도에 맞는 것을 화라 이르니 중이라는 것은 천하의 큰 근본이요 화라는 것은 천하에 두루 통하는 도이니라' },
+  { type:'saying', title:'학문의 길', author:'논어', text:'배우고 때때로 익히면 또한 기쁘지 아니한가 벗이 먼 곳으로부터 찾아오면 또한 즐겁지 아니한가 남이 나를 알아주지 않아도 노여워하지 않으면 또한 군자가 아니겠는가' },
+  { type:'buddhist', title:'반야심경 일부', author:'반야심경', text:'관자재보살이 깊은 반야바라밀다를 행할 때에 오온이 다 공한 것을 비추어 보고 일체의 괴로움과 액난에서 벗어났느니라 사리자여 색이 공과 다르지 아니하고 공이 색과 다르지 아니하니 색이 곧 공이요 공이 곧 색이니라' },
+  { type:'buddhist', title:'법구경 일부', author:'법구경', text:'마음이 모든 것의 근본이니 마음에서 모든 일이 일어나도다 깨끗한 마음으로 말하고 행동하면 행복이 그를 따르되 그림자가 형체를 따르듯 하느니라 마음이 모든 것의 근본이니 마음에서 모든 일이 일어나도다' },
+  { type:'buddhist', title:'금강경 일부', author:'금강경', text:'무릇 형상이 있는 것은 모두 허망하니 만약 모든 형상이 형상 아님을 본다면 곧 여래를 보리라 응당히 머무는 바 없이 그 마음을 낼지니라 과거의 마음도 얻을 수 없고 현재의 마음도 얻을 수 없으며 미래의 마음도 얻을 수 없도다' },
+  { type:'buddhist', title:'화엄경 보현행원품', author:'화엄경', text:'모든 부처님께 예경하며 부처님을 찬탄하고 널리 공양을 닦으며 업장을 참회하고 남의 공덕을 따라 기뻐하며 법륜 굴리기를 청하고 부처님께 세상에 머무시기를 청하며 항상 부처님을 따라 배우고 항상 중생을 수순하리라' },
+  { type:'buddhist', title:'유마경 일부', author:'유마경', text:'마음이 깨끗하면 국토가 깨끗하다 보살이 정토를 얻고자 하면 마땅히 그 마음을 깨끗이 할지니 그 마음이 깨끗하면 곧 국토가 깨끗하리라 직심이 보살의 정토이며 깊은 마음이 보살의 정토요 보리심이 보살의 정토이니라' },
+
+  // ───── 긴 글 (전지 120칸 이상, 국전지 150칸용) ─────
+  { type:'sijo', title:'사미인곡 더 긴 일부', author:'정철', text:'이 몸 삼기실 제 임을 따라 삼기시니 한생 연분이며 하늘 모를 일이런가 나 하나 젊어 있고 임 하나 날 사랑하시니 이 마음 이 사랑 견줄 데 다시 없다 평생에 원하기를 함께 살자 하였더니 늙어서야 무슨 일로 외로이 두고 그리는고 엊그제 임을 모셔 광한전에 올랐더니 그동안 어이하여 하계에 내려왔는가 올 적에 빗은 머리 헝클어진 지 삼년이라 연지분 있다마는 누구를 위하여 곱게 할꼬' },
+  { type:'sijo', title:'속미인곡 일부', author:'정철', text:'저기 가는 저 각시 본 듯도 한져이고 천상 백옥경을 어찌하여 이별하고 해 다 저문 날에 누굴 보러 가시는고 어와 너로구나 내 사설 들어보소 내 얼굴 이 거동이 임 사랑함직 한가마는 어쩐지 날 보시고 너로구나 여기시매 나도 임을 믿어 군뜻이 전혀 없어 이래야 교태야 어지러이 하였던지 반기시는 빛이 옛과 어찌 다른신고' },
+  { type:'sijo', title:'관동별곡 추가', author:'정철', text:'강호에 병이 깊어 죽림에 누웠더니 관동 팔백리에 방면을 맡기시니 어와 성은이야 갈수록 망극하다 연추문 들이달아 경회 남문 바라보며 하직코 물러나니 옥절이 앞에 서 있다 평구역 말을 갈아 흑수로 돌아드니 섬강은 어디메오 치악이 여기로다 소양강 내린 물이 어디로 흘러든다 외로운 신하 서울 떠나매 백발도 많을시고 동주 밤 겨우 새워 북관정에 올라하니' },
+  { type:'modern', title:'님의 침묵 전문', author:'한용운', text:'님은 갔습니다 아아 사랑하는 나의 님은 갔습니다 푸른 산빛을 깨치고 단풍나무 숲을 향하여 난 작은 길을 걸어서 차마 떨치고 갔습니다 황금의 꽃같이 굳고 빛나던 옛 맹세는 차디찬 티끌이 되어서 한숨의 미풍에 날아갔습니다 날카로운 첫키스의 추억은 나의 운명의 지침을 돌려놓고 뒷걸음쳐서 사라졌습니다 나는 향기로운 님의 말소리에 귀먹고 꽃다운 님의 얼굴에 눈멀었습니다' },
+  { type:'modern', title:'님의 침묵 후반 전문', author:'한용운', text:'사랑도 사람의 일이라 만날 때에 미리 떠날 것을 염려하고 경계하지 아니한 것은 아니지만 이별은 뜻밖의 일이 되고 놀란 가슴은 새로운 슬픔에 터집니다 그러나 이별을 쓸데없는 눈물의 원천을 만들고 마는 것은 스스로 사랑을 깨치는 것인 줄 아는 까닭에 걷잡을 수 없는 슬픔의 힘을 옮겨서 새 희망의 정수박이에 들어부었습니다' },
+  { type:'modern', title:'빼앗긴 들에도 후반', author:'이상화', text:'지금은 남의 땅 빼앗긴 들에도 봄은 오는가 나는 온몸에 햇살을 받고 푸른 하늘 푸른 들이 맞붙은 곳으로 가르마 같은 논길을 따라 꿈속을 가듯 걸어만 간다 입술을 다문 하늘아 들아 내 맘에는 내 혼자 온 것 같지를 않구나 네가 끄을었느냐 누가 부르더냐 답답워라 말을 해 다오 바람은 내 귀에 속삭이며 한자국도 섰지마라 옷자락을 흔들고' },
+  { type:'modern', title:'향수 전문', author:'정지용', text:'넓은 벌 동쪽 끝으로 옛 이야기 지줄대는 실개천이 회돌아 나가고 얼룩백이 황소가 해설피 금빛 게으른 울음을 우는 곳 그곳이 차마 꿈엔들 잊힐리야 질화로에 재가 식어지면 비인 밭에 밤바람 소리 말을 달리고 엷은 졸음에 겨운 늙으신 아버지가 짚베개를 돋아 고이시는 곳 그곳이 차마 꿈엔들 잊힐리야' },
+  { type:'modern', title:'향수 후반', author:'정지용', text:'흙에서 자란 내 마음 파아란 하늘빛이 그리워 함부로 쏜 화살을 찾으러 풀섶 이슬에 함초롬 휘적시던 곳 그곳이 차마 꿈엔들 잊힐리야 전설바다에 춤추는 밤물결 같은 검은 귀밑머리 날리는 어린 누이와 아무렇지도 않고 예쁠 것도 없는 사철 발벗은 안해가 따가운 햇살을 등에 지고 이삭 줍던 곳 그곳이 차마 꿈엔들 잊힐리야' },
+  { type:'modern', title:'별 헤는 밤 전반', author:'윤동주', text:'계절이 지나가는 하늘에는 가을로 가득 차 있습니다 나는 아무 걱정도 없이 가을 속의 별들을 다 헬 듯합니다 가슴 속에 하나 둘 새겨지는 별을 이제 다 못 헤는 것은 쉬이 아침이 오는 까닭이요 내일 밤이 남은 까닭이요 아직 나의 청춘이 다하지 않은 까닭입니다 별 하나에 추억과 별 하나에 사랑과 별 하나에 쓸쓸함과 별 하나에 동경과' },
+  { type:'modern', title:'별 헤는 밤 중반', author:'윤동주', text:'별 하나에 시와 별 하나에 어머니 어머니 어머님 나는 별 하나에 아름다운 말 한마디씩 불러봅니다 소학교 때 책상을 같이 했던 아이들의 이름과 패 경 옥 이런 이국 소녀들의 이름과 벌써 아기 어머니 된 계집애들의 이름과 가난한 이웃 사람들의 이름과 비둘기 강아지 토끼 노새 노루 시인의 이름을 불러봅니다' },
+  { type:'modern', title:'쉽게 쓰여진 시 전문', author:'윤동주', text:'창밖에 밤비가 속살거려 육첩방은 남의 나라 시인이란 슬픈 천명인 줄 알면서도 한 줄 시를 적어 볼까 등불을 밝혀 어둠을 조금 내몰고 시대처럼 올 아침을 기다리는 최후의 나 나는 나에게 작은 손을 내밀어 눈물과 위안으로 잡는 최초의 악수 땀내와 사랑내 포근히 품긴 보내주신 학비 봉투를 받아 대학 노트를 끼고 늙은 교수의 강의 들으러 간다' },
+  { type:'modern', title:'국화 옆에서 전문', author:'서정주', text:'한 송이의 국화꽃을 피우기 위해 봄부터 소쩍새는 그렇게 울었나 보다 한 송이의 국화꽃을 피우기 위해 천둥은 먹구름 속에서 또 그렇게 울었나 보다 그립고 아쉬움에 가슴 조이던 머언 먼 젊음의 뒤안길에서 인제는 돌아와 거울 앞에 선 내 누님같이 생긴 꽃이여 노오란 네 꽃잎이 피려고 간밤엔 무서리가 저리 내리고 내게는 잠도 오지 않았나 보다' },
+  { type:'confucian', title:'적벽부 더 긴 일부', author:'소동파', text:'무릇 천지간에 만물은 각기 주인이 있나니 진실로 내 것이 아니면 한 터럭이라도 취하지 말 것이라 오직 강 위의 맑은 바람과 산간의 밝은 달은 귀로 들으면 소리가 되고 눈으로 만나면 빛을 이루느니라 이를 취하여도 금하는 이 없고 이를 써도 다하지 아니하니 이것은 조물주의 다함 없는 보배요 나와 그대가 함께 즐기는 바이니라' },
+  { type:'confucian', title:'귀거래사 더 긴 일부', author:'도연명', text:'돌아가리 돌아가리 전원이 장차 거칠어지려 하는데 어찌 돌아가지 않으리오 이미 마음을 몸의 부림으로 삼았으니 어찌 슬퍼하며 홀로 슬퍼하리오 지난 일은 따질 수 없음을 깨달았고 올 일은 좇을 수 있음을 알았네 진실로 길을 잃었으나 멀리 오지 않았으니 지금이 옳고 어제가 그릇되었음을 깨달았네 배는 흔들흔들 가벼이 날리고 바람은 살랑살랑 옷자락을 날리네' },
+  { type:'modern', title:'광야 전문', author:'이육사', text:'까마득한 날에 하늘이 처음 열리고 어디 닭 우는 소리 들렸으랴 모든 산맥들이 바다를 연모해 휘달릴 때도 차마 이곳을 범하든 못하였으리라 끊임없는 광음을 부지런한 계절이 피어선 지고 큰 강물이 비로소 길을 열었다 지금 눈 내리고 매화향기 홀로 아득하니 내 여기 가난한 노래의 씨를 뿌려라 다시 천고의 뒤에 백마 타고 오는 초인이 있어 이 광야에서 목놓아 부르게 하리라' },
+  { type:'modern', title:'청포도 전문', author:'이육사', text:'내 고장 칠월은 청포도가 익어가는 시절 이 마을 전설이 주절이 주절이 열리고 먼 데 하늘이 꿈꾸며 알알이 들어와 박혀 하늘 밑 푸른 바다가 가슴을 열고 흰 돛 단 배가 곱게 밀려서 오면 내가 바라는 손님은 고달픈 몸으로 청포를 입고 찾아온다고 했으니 내 그를 맞아 이 포도를 따 먹으면 두 손은 함뿍 적셔도 좋으련 아이야 우리 식탁엔 은쟁반에 하이얀 모시 수건을 마련해 두렴' },
+  { type:'saying', title:'중용 첫장', author:'중용', text:'하늘이 명한 것을 성이라 이르고 성을 따르는 것을 도라 이르며 도를 닦는 것을 교라 이르나니 도라는 것은 잠시도 떠날 수 없는 것이라 떠날 수 있으면 도가 아니니라 그러므로 군자는 보지 않는 바에도 경계하고 삼가며 듣지 않는 바에도 두려워하느니라 숨겨진 것보다 더 잘 보이는 것이 없고 미세한 것보다 더 잘 드러나는 것이 없나니 그러므로 군자는 홀로 있을 때를 삼가느니라' },
+  { type:'saying', title:'대학 격물치지', author:'대학', text:'옛날에 밝은 덕을 천하에 밝히고자 하는 자는 먼저 그 나라를 다스렸고 그 나라를 다스리고자 하는 자는 먼저 그 집안을 가지런히 하였으며 그 집안을 가지런히 하고자 하는 자는 먼저 그 몸을 닦았고 그 몸을 닦고자 하는 자는 먼저 그 마음을 바르게 하였으며 그 마음을 바르게 하고자 하는 자는 먼저 그 뜻을 정성스럽게 하였고 그 뜻을 정성스럽게 하고자 하는 자는 먼저 그 앎을 이루었으니 앎을 이룸은 사물을 궁구함에 있느니라' },
+  { type:'buddhist', title:'반야심경 더 긴 일부', author:'반야심경', text:'관자재보살이 깊은 반야바라밀다를 행할 때에 오온이 다 공한 것을 비추어 보고 일체의 괴로움과 액난에서 벗어났느니라 사리자여 색이 공과 다르지 아니하고 공이 색과 다르지 아니하니 색이 곧 공이요 공이 곧 색이니라 수상행식도 또한 이와 같으니라 사리자여 이 모든 법의 공한 모습은 나지도 아니하고 없어지지도 아니하며 더럽지도 아니하고 깨끗하지도 아니하며 늘어나지도 아니하고 줄어들지도 아니하느니라' },
+  { type:'buddhist', title:'금강경 응무소주', author:'금강경', text:'무릇 형상이 있는 것은 모두 허망하니 만약 모든 형상이 형상 아님을 본다면 곧 여래를 보리라 응당히 머무는 바 없이 그 마음을 낼지니라 마땅히 색에 머물러서 마음을 내지 말 것이며 마땅히 소리와 향과 맛과 감촉과 법에 머물러서 마음을 내지 말 것이니 마땅히 머무는 바 없이 그 마음을 낼지니라 과거의 마음도 얻을 수 없고 현재의 마음도 얻을 수 없으며 미래의 마음도 얻을 수 없도다' },
 ];
 
 // ═══════════════════════════════════
@@ -1403,8 +3123,8 @@ const S = {
   marginRightCm: 0,
   marginTopCm: 0,
   marginBottomCm: 0,
+  zoneGapCm: 0,    // 주영역과 부영역 사이 여백 (양쪽 동일 적용)
   script: 'gungseo',
-  // 부영역 (활성화 시에만 사용)
   subRight: { active: false, cols: 1, rows: 25 },
   subLeft:  { active: false, cols: 1, rows: 25 },
   tol: 3, filter: 'all', mode: 'search'
@@ -1704,6 +3424,7 @@ function syncDimDisplay() {
   document.getElementById('m-margin-right').textContent = S.marginRightCm;
   document.getElementById('m-margin-top').textContent = S.marginTopCm;
   document.getElementById('m-margin-bottom').textContent = S.marginBottomCm;
+  document.getElementById('m-margin-gap').textContent = S.zoneGapCm;
   document.getElementById('m-total').textContent = bodyTarget();
   // 서체 토글 active
   document.getElementById('script-gungseo').classList.toggle('active', S.script === 'gungseo');
@@ -1760,6 +3481,10 @@ function adjMargin(side, d) {
     const maxTotal = Math.floor(S.paperH * 0.8);
     const maxThis = Math.max(0, maxTotal - S[otherKey]);
     S[key] = Math.max(0, Math.min(maxThis, S[key] + d));
+  } else if (side === 'gap') {
+    // 영역간 여백 — 좌우 여백·종이 폭의 30% 이하로
+    const max = Math.max(0, Math.floor((S.paperW - S.marginLeftCm - S.marginRightCm) * 0.3));
+    S.zoneGapCm = Math.max(0, Math.min(max, S.zoneGapCm + d));
   }
   syncDimDisplay();
   renderGrid();
@@ -1881,9 +3606,13 @@ function renderGrid() {
   const rightPxW  = Math.round(S.marginRightCm  * cmToPxW);
   const topPxH    = Math.round(S.marginTopCm    * cmToPxH);
   const bottomPxH = Math.round(S.marginBottomCm * cmToPxH);
+  // 영역간 여백 — 활성 부영역 쪽만 적용
+  const gapPxRaw = Math.round(S.zoneGapCm * cmToPxW);
+  const gapLeftPxW  = subL ? gapPxRaw : 0;
+  const gapRightPxW = subR ? gapPxRaw : 0;
 
-  // ── 본문 영역(여백 제외) 폭·높이 ──
-  const innerPxW = Math.max(0, paperPxW - leftPxW - rightPxW);
+  // ── 본문 영역(여백·gap 제외) 폭·높이 ──
+  const innerPxW = Math.max(0, paperPxW - leftPxW - rightPxW - gapLeftPxW - gapRightPxW);
   const innerPxH = Math.max(0, paperPxH - topPxH - bottomPxH);
 
   // ── 부영역(우/좌) 폭 비율로 분배 ──
@@ -1913,11 +3642,25 @@ function renderGrid() {
 
   // ── paper-wrap 크기 명시 (전체 종이 비율 유지, 상·하는 padding으로 처리) ──
   const wrap = document.getElementById('m-paper-wrap');
-  const fullW = leftPxW + subRPxW + mainPxW + subLPxW + rightPxW;
+  const fullW = leftPxW + subLPxW + gapLeftPxW + mainPxW + gapRightPxW + subRPxW + rightPxW;
   wrap.style.width  = fullW + 'px';
   wrap.style.height = (gridPxH + topPxH + bottomPxH) + 'px';
   wrap.style.paddingTop    = topPxH + 'px';
   wrap.style.paddingBottom = bottomPxH + 'px';
+
+  // ── 영역간 gap zone ──
+  const setGapZone = (id, pxW) => {
+    const el = document.getElementById(id);
+    if (pxW > 0) {
+      el.style.display = '';
+      el.style.width = pxW + 'px';
+      el.style.height = gridPxH + 'px';
+    } else {
+      el.style.display = 'none';
+    }
+  };
+  setGapZone('m-gap-zone-left',  gapLeftPxW);
+  setGapZone('m-gap-zone-right', gapRightPxW);
 
   // ── 여백 영역 ──
   const setMarginZone = (id, pxW) => {
@@ -1944,8 +3687,8 @@ function renderGrid() {
       // 컬럼별 셀 높이 (판본체 가변)
       let cellHeights;
       if (isPanbon) {
-        // 1단계: 비움 칸은 균등 cellH로 고정 (모든 영역에서 같은 픽셀)
-        // 2단계: 남은 공간을 글자/빈 칸들이 weight로 분배
+        // 1단계: 비움 칸은 균등 cellH로 고정
+        // 2단계: 글자 칸들이 남은 공간을 weight로 분배 + 잔여는 분산
         cellHeights = new Array(rows);
         let blankSum = 0;
         const charIdxList = [];
@@ -1954,7 +3697,7 @@ function renderGrid() {
         for (let r = 0; r < rows; r++) {
           const cell = map[c * rows + r];
           if (cell.type === 'blank') {
-            cellHeights[r] = cellH; // 비움은 균등 고정
+            cellHeights[r] = cellH;
             blankSum += cellH;
           } else {
             let w = 1.0;
@@ -1965,14 +3708,29 @@ function renderGrid() {
           }
         }
         const remainH = Math.max(1, gridH - blankSum);
+        // 1차 분배: floor
         let used = 0;
-        for (let k = 0; k < charIdxList.length - 1; k++) {
-          const h = Math.max(1, Math.floor(remainH * weights[k] / wSum));
-          cellHeights[charIdxList[k]] = h;
-          used += h;
+        const baseSizes = new Array(charIdxList.length);
+        const fracs = new Array(charIdxList.length);
+        for (let k = 0; k < charIdxList.length; k++) {
+          const exact = remainH * weights[k] / wSum;
+          const base = Math.max(1, Math.floor(exact));
+          baseSizes[k] = base;
+          fracs[k] = exact - base; // 소수부 (분산용)
+          used += base;
         }
-        if (charIdxList.length > 0) {
-          cellHeights[charIdxList[charIdxList.length - 1]] = Math.max(1, remainH - used);
+        // 잔여 픽셀을 소수부 큰 순서대로 1px씩 분산
+        let leftover = remainH - used;
+        if (leftover > 0 && charIdxList.length > 0) {
+          const order = fracs
+            .map((f, k) => ({ k, f }))
+            .sort((a, b) => b.f - a.f);
+          for (let i = 0; i < leftover; i++) {
+            baseSizes[order[i % order.length].k] += 1;
+          }
+        }
+        for (let k = 0; k < charIdxList.length; k++) {
+          cellHeights[charIdxList[k]] = baseSizes[k];
         }
       } else {
         cellHeights = new Array(rows).fill(cellH);
