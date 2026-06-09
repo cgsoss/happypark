@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- saved from url=(0043)file:///C:/Users/cg/Downloads/index_78.html -->
+<!-- saved from url=(0043)file:///C:/Users/cg/Downloads/index_79.html -->
 <html lang="ko"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -2070,13 +2070,8 @@ async function saveMyEntry() {
   document.querySelector('.btn-do-save').disabled = true;
 
   try {
-    await fetch(SCRIPT_URL, {
-      method: 'POST',
-      mode: 'no-cors',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ title, author, text: txt, type: 'mine' })
-    });
-    // no-cors라 응답 확인 불가 — 시트에서 확인
+    const params = new URLSearchParams({ action: 'save', title, author, text: txt, type: 'mine' });
+    await fetch(SCRIPT_URL + '?' + params.toString());
     const entry = { type: 'mine', title, author, text: txt };
     DB.push(entry);
     const tab = document.getElementById('mine-tab');
